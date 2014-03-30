@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TinderPro</title>
+
+	<script src="phonegap.js"></script>
+	<script src="cdv-plugin-fb-connect.js"></script>
+	<script src="facebook-js-sdk.js"></script>
+
+	<script type="text/javascript" src="libs/hammer.js"></script>
+	<script type="text/javascript" src="libs/jquery.js"></script>
+	<script type="text/javascript" src="libs/angular.min.js"></script>
+	<script type="text/javascript" src="libs/angular-route.min.js"></script>
+	<script type="text/javascript" src="libs/angular-animate.min.js"></script>
+	<script type="text/javascript" src="libs/angular-hammer.js"></script>
+
+	<script type="text/javascript" src="app.js"></script>
+
+	<script type="text/javascript" src="app/controllers/headerController.js"></script>
+	<script type="text/javascript" src="app/controllers/loginController.js"></script>
+	<script type="text/javascript" src="app/controllers/feedController.js"></script>
+	<script type="text/javascript" src="app/controllers/contactsController.js"></script>
+	<script type="text/javascript" src="app/controllers/chatController.js"></script>
+	<script type="text/javascript" src="app/controllers/matchController.js"></script>
+	<script type="text/javascript" src="app/controllers/settingsController.js"></script>
+	<script type="text/javascript" src="app/controllers/completeProfileController.js"></script>
+
+	<script type="text/javascript" src="app/factories/feedFactory.js"></script>
+	<script type="text/javascript" src="app/factories/loginFactory.js"></script>
+
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/ionicons.min.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="mobile-web-app-capable" content="yes">
+</head>
+<body id="document" style="display:none">
+	<div class="header" ng-controller="headerController" ng-init="init()">
+		<div id="popup" class="repeat-animation cards relative" ng-repeat="match in popups">
+			<div class="card current">
+				<h2>You and {{match.name}} matched!</h2>
+
+				<button class="full-width white" ng-click="sayHi(match.id,match.name)">Say hi to {{match.name}} <i class="ion-ios7-arrow-right"></i></button>
+				<button class="full-width red" ng-click="closePopup()">Close <i class="ion-ios7-close-empty"></i></button>
+			</div>
+		</div>
+
+		<a onclick="window.history.back()" class="menu-item-back left" id="back"><i class="ion-ios7-arrow-left"></i></a>
+		<a ng-click="navigate('settings')" class="menu-item left" id="settingsHandler"><i class="ion-ios7-gear-outline"></i></a>
+		<a class="menu-item left" id="logo"><i class="ion-ios7-chatboxes-outline"></i></a>
+		<h1 ng-click="headerClick()">Babble</h1>
+		<a ng-click="navigate('contacts')" class="menu-item right" id="chatsHandler"><i class="ion-ios7-chatbubble-outline"></i></a>
+	</div>
+
+    <div class="container" ng-view></div>
+</body>
+</html>
+        
+	<script>
+		$(document).ready(function() {
+//			alert('document ready');
+			document.addEventListener('deviceready', function onDeviceReady() {
+//				alert('device ready');
+				angular.bootstrap(document.getElementById("document"), ['TinderPro']);
+				$('body').fadeIn(100);
+			}, false);
+		});
+	</script>
+</body>
+</html>

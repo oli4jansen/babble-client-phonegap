@@ -1,0 +1,20 @@
+<div ng-controller="feedController" ng-init="init()">
+
+	<div class="cards stack" id="feed">
+		<p id="feedStatus">Fetchin' you them hotties...</p>
+		<div class="card repeat-animation" id="{{card.id}}" ng-class="{current: $first}" ng-repeat="card in feed | filter: f">
+			<h2 hammer-drag="stopPropagation()">{{card.name}}, {{card.age}}</h2>
+
+			<p>{{card.description}}</p>
+
+			<span class="half-width"><i class="ion-ios7-navigate-outline"></i> {{card.distance}}</span><span class="half-width"><i class="ion-ios7-people-outline"></i> 0 mutual</span>
+
+			<div class="gesture-handle" hammer-release="handleGesture($event)" hammer-drag="handleGesture($event)"></div>
+		</div>
+	</div>
+
+	<div class="like-buttons button-holder">
+		<button class="dislike" ng-click="dislike()">Nah</button><button class="like" ng-click="like()">Like</button>
+	</div>
+
+</div>

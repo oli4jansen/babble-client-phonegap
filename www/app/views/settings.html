@@ -1,0 +1,27 @@
+<div ng-controller="settingsController" ng-init="init()">
+   	<div class="cards relative">
+   		<div class="card current name-card" id="userPicture"><h2>{{user.name}}</h2></div>
+
+		<div class="card current">
+    		<h2>About you</h2>
+    		<form action="" method="post" id="settingsForm">
+				<label>Biography (140 characters):</label>
+			    <label><textarea name="description" rows="4" maxlength="140">{{user.description}}</textarea></label>
+
+				<label>I like..</label>
+		   		<label class="half-width checkbox"><input type="checkbox" id="checkboxMen" name="likeMen" value="1">Men</label><label class="half-width checkbox"><input type="checkbox" id="checkboxWomen" name="likeWomen" value="1">Women</label>
+
+				<label>Search radius (in km)</label>
+		   		<label><input type="number" id="searchRadius" name="searchRadius" value="{{user.searchRadius}}" max="5000"></label>
+
+		   		<button class="full-width green" ng-click="update()">Update <i class="ion-ios7-arrow-right"></i></button>
+		   	</form>
+	   	</div>
+	   	<div class="card current">
+	   		<h2>Your account</h2>
+	   		<p>Resync with Facebook to automatically update your data.</p>
+			<button class="full-width facebook" ng-click="resync()">Resync with Facebook <i class="ion-social-facebook-outline"></i></button>
+		   	<button class="full-width red" ng-click="deleteAccount()">Delete account <i class="ion-ios7-trash-outline"></i></button>
+		</div>
+	</div>
+</div>

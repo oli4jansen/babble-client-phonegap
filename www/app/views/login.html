@@ -1,0 +1,11 @@
+<div ng-controller="loginController" ng-init="init()">
+    <div class="cards">
+		<div class="card current transparent">
+			<h2 hammer-drag="stopPropagation()">Meet the one!</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed tincidunt dolor eget..</p>
+
+			<button class="full-width white" ng-click="learnMore()">Learn more <i class="ion-ios7-arrow-right"></i></button>
+			<button class="full-width facebook" id="loginButton" ng-click="logIn()">{{status}} <i class="ion-social-facebook-outline"></i></button>
+		</div>
+	</div>
+</div>

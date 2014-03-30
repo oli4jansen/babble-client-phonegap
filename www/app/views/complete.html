@@ -1,0 +1,27 @@
+<div ng-controller="completeProfileController" ng-init="init()">
+   	<div class="cards relative">
+   		<div class="card current name-card" id="userPicture"><h2>{{user.name}}</h2></div>
+
+		<div class="card current">
+    		<h2>Missing information</h2>
+    		<form action="" method="post" id="completeProfileForm">
+				<label>Biography (140 characters):</label>
+			    <label><textarea name="description" rows="4" maxlength="140">{{user.description}}</textarea></label>
+
+			    <label for="birthday">Birthday:</label>
+			    <label><input type="date" id="birthday" name="birthday" placeholder="mm/dd/yyyy"></label>
+
+			    <label for="location">Location:</label>
+			    <label><input type="text" id="location" name="location" value="{{user.location}}" placeholder="City, State/Province, Country"></label>
+
+				<label>I like..</label>
+		   		<label class="half-width checkbox"><input type="checkbox" id="checkboxMen" name="likeMen" value="1">Men</label><label class="half-width checkbox"><input type="checkbox" id="checkboxWomen" name="likeWomen" value="1">Women</label>
+
+		   		<button class="full-width green" ng-click="start()">Start Babbling <i class="ion-ios7-arrow-right"></i></button>
+		   	</form>
+	   	</div>
+	   	<div class="card current">
+		   	<button class="full-width red" ng-click="deleteAccount()">Delete and sign out <i class="ion-ios7-trash-outline"></i></button>
+		</div>
+	</div>
+</div>

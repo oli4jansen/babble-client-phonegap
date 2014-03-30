@@ -1,0 +1,488 @@
+@font-face {
+	font-family: "Roboto";
+	src: url("../fonts/Roboto-Regular.ttf") format("opentype");   
+}
+@font-face {
+	font-family: "Roboto Condensed";
+	src: url("../fonts/RobotoCondensed-Regular.ttf") format("opentype");   
+}
+
+* {
+	margin: 0;
+    padding: 0;
+    
+    -webkit-font-smoothing: antialiased;
+    
+    /* The better box model */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    /* Fixing iOS/Win8 text fails */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+	font-family: "Roboto";
+}
+
+html, body {
+	height: 100%;
+	overflow: auto;
+	background-color: #31A2F9;
+	background-color: #e0e0e0;
+	color: #4c4c4c;
+	background-size: cover;
+	background-position: center;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Roboto Condensed"
+}
+h2 {
+	text-align: center;
+	font-weight: 300;
+	padding: 20px 0 5px;
+}
+img { vertical-align: top; }
+
+.btn, button {
+	background-color: #fff;
+	border: 0;
+	border-top: 1px solid #ddd;
+	-webkit-appearance: none;
+	color: #4c4c4c;
+	border-radius: 0;
+	padding: 15px 25px;
+	font-size: 18px;
+	outline: none;
+}
+	.btn i, button i {
+		float: right;
+		font-size: 25px;
+	}
+	.facebook {
+		background-color: #3B5998;
+		border-color: #3B5998;
+		color: white;
+	}
+	.red {
+		background-color: #d94c30;
+		border-color: #d94c30;
+		color: white;
+	}
+	.green {
+		background-color: #35B03F;
+		border-color: #35B03F;
+		color: white;
+	}
+.full-width {
+	width: 100%;
+}
+.half-width {
+	width: 50%;
+	display: inline-block;
+}
+
+textarea, input[type=text], input[type=number], input[type=date] {
+	border: 0;
+	display: block;
+	width: 100%;
+	margin: 15px 0;
+	padding: 15px;
+	outline: none;
+	font-size: 16px;
+	line-height: 25px;
+	-webkit-appearance: none;
+	border: 1px solid #ddd;
+	background-color: #eee;
+}
+input[type=checkbox] {
+	border: 1px solid #d94c30;
+	-webkit-appearance: none;
+	width: 15px;
+	height: 15px;
+	outline: none;
+	position: relative;
+	margin: 15px 10px;
+	margin-right: 15px;
+}
+input[type=checkbox]:checked {
+	background-color: #d94c30;
+}
+label {
+	display: block;
+	text-align: left;
+	padding: 10px 20px 0;
+	vertical-align: top;
+}
+label.checkbox {
+	line-height: 45px;
+}
+.search {
+	margin: 0 !important;
+}
+
+.header {
+	background-color: #d94c30;
+	border-bottom: 1px solid #bc3b20;
+	border-top: 1px solid #ef5435;
+	color: #fff;
+	text-align: center;
+	padding: 0;
+	line-height: 46px;
+	height: 48px;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 999999999999999999999999;
+	box-shadow: 0 1px 0px 1px rgba(0,0,0,0.1);
+
+	-webkit-transition: .3s;
+	transition: .3s;
+}
+	.header h1 {
+		font-family: "Roboto Condensed";
+		font-size: 18px;
+		font-weight: 300;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		text-align: center;
+		z-index: 0;
+		text-align: left;
+		padding-left: 50px;
+	}
+	.header .menu-item, .header .menu-item-back {
+		display: inline-block;
+		position: absolute;
+		top: 0;
+		height: 48px;
+		font-size: 35px;
+		padding: 0 15px;
+		display: none;
+		z-index: 999999;
+	}
+	.header .left { left: 0; }
+	.header .right { right: 0; }
+
+.container {
+	background-color: transparent;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	z-index: 99;
+	display: block;
+	padding: 70px 15px 0;
+	position: absolute;
+	overflow-x: hidden;
+
+	-webkit-transition: .3s;
+	transition: .3s;
+}
+body.popup .container {
+	-webkit-filter: blur(1px) brightness(.75);
+}
+
+	.cards {
+		display: block;
+		text-align: center;
+		padding: 60px;
+		position: relative;
+		max-width: 400px;
+		margin: 0 auto;
+	}
+	.cards.relative {
+		padding: 0;
+	}
+		.cards .card {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 0;
+			background-color: #fff;
+			color: #4c4c4c;
+			border-radius: 0;
+			width: 96%;
+			margin: 0 2%;
+			z-index: 10;
+			background-size: cover;
+			background-position: center;
+			border: 1px solid #ccc;
+			/*-webkit-transition: margin .3s, width .3s, background-color .3s;
+			transition: margin .3s, width .3s, background-color .3s;*/
+			-webkit-transition: margin .1s, width .1s;
+			transition: margin .1s, width .1s;
+		}
+		.cards.relative .card {
+			position: relative;
+			display: block;
+			margin-bottom: 15px;
+		}
+			.cards .card p {
+				padding: 25px 25px 25px;
+			}
+				.cards .card.name-card h2 {
+					padding: 55px 0;
+					color: white;
+					text-shadow: 1px 2px 2px rgba(0,0,0,0.35);
+				}
+			.cards .card span {
+				padding: 10px 0 20px 0;
+				text-align: center;
+				line-height: 35px;
+				vertical-align: top;
+			}
+				.cards .card span i {
+					font-size: 35px;
+					padding-right: 10px;
+				}
+
+		.cards .card:nth-child(3) {
+			width: 98%;
+			margin: 5px 1% 0;
+			z-index: 999999;
+		}
+		.cards .card.current {
+			margin: 0 0 15px;
+			width: 100%;
+			z-index: 99999999;
+			background-color: white;
+			box-shadow: none;
+		}
+		.cards .card.current.transparent {
+			background-color: transparent;
+			color: white;
+			border: 0;
+		}
+			.cards .card.current.transparent button.full-width {
+				color: white;
+				background-color: transparent;
+				border: 1px solid transparent;
+				border-left: 0;
+				border-right: 0;
+				border-bottom: 0;
+			}
+			.cards .card.current.transparent button.full-width.facebook {
+				border: 1px solid #3B5998;
+				border-left: 0;
+				border-right: 0;
+				border-bottom: 1px solid #3B5998;
+				color: white;
+				background-color: rgba(59, 89, 152, 0.25);
+			}
+		.cards .card.current.contact {
+			position: relative;
+			margin: 0;
+			border-top: 0;
+		}
+			.cards .card.current.contact h2 {
+				display: block;
+				padding: 15px 0 15px 25px;
+				line-height: 30px;
+				text-align: left;
+			}
+			.cards .card.current.contact img {
+				height: 50px;
+				margin: 5px 0;
+				display: inline-block;
+				vertical-align: top;
+				float: left;
+			}
+		.cards.stack .card.current {
+			margin: 10px 0 0;
+		}
+		.cards .card .gesture-handle {
+			position: absolute;
+			left: 0;
+			top: 0;
+			background-color: rgba(0,0,0,0);
+			width: 100%;
+			height: 100%;
+		}
+
+	.container > div > .button-holder {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		color: #4c4c4c;
+		border-top: 1px solid #ccc;
+		height: 60px;
+		width: 100%;
+		z-index: 999999;
+	}
+		.container > div > .button-holder button {
+			width: 50%;
+			height: 60px;
+			-webkit-transition: .5s;
+			transition: .5s;
+			border-top: 0;
+		}
+		.container > div > .button-holder button.dislike.selected,
+		.container > div > .button-holder button.dislike:active {
+			color: white;
+			background-color: #d94c30;
+		}
+		.container > div > .button-holder button.like.selected,
+		.container > div > .button-holder button.like:active {
+			background-color: #35B03F;
+			color: white;
+		}
+
+	.container img.fullScreen {
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 48px;
+	}
+
+
+.container.ng-enter,
+.container.ng-leave {
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.container.ng-enter { opacity: 0; -webkit-transform: ; }
+.container.ng-enter-active { opacity: 1; }
+.container.ng-leave { opacity: 1; }
+.container.ng-leave-active { opacity: 0; }
+
+
+
+.repeat-animation.ng-leave {
+	opacity: 1;
+	-webkit-transition: .15s linear all !important;
+	-moz-transition: .15s linear all !important;
+	-o-transition: .15s linear all !important;
+	transition: .15s linear all !important;
+}
+	.repeat-animation.ng-leave .card { -webkit-transform: rotate(0); }
+.repeat-animation.ng-leave.ng-leave-active { opacity: 0; }
+	.repeat-animation.ng-leave.ng-leave-active .card {	-webkit-transform: rotate(-5deg); }
+.repeat-animation.ng-enter {
+	-webkit-transform: rotate(5deg);
+	opacity: 0;
+	-webkit-transition: .15s linear all !important;
+	-moz-transition: .15s linear all !important;
+	-o-transition: .15s linear all !important;
+	transition: .15s linear all !important;
+}
+	.repeat-animation.ng-enter .card { -webkit-transform: rotate(5deg); }
+
+.repeat-animation.ng-enter.ng-leave-active { opacity: 1; }
+	.repeat-animation.ng-enter.ng-leave-active .card { -webkit-transform: rotate(0); }
+
+/*
+	POPUP
+*/
+
+#popup {
+	display: block;
+	height: 100%;
+	width: 100%;
+	padding: 75px 25px;
+	margin: 0;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	z-index: 99999999999999999999999999;
+	background-color: rgba(0,0,0,0.5);
+}
+	#popup .card {
+		border: 0;
+		max-width: 400px;
+		margin: 0 auto 15px;
+	}
+		#popup .card h2 {
+			padding: 25px 0;
+		}
+	#popup .images {
+		position: relative;
+		height: 125px;
+		width: 100%;
+		display: block;
+		background-color: #fff;
+	}
+		#popup .images .image {
+			display: block;
+			height: 125px;
+			background-position: center;
+			background-size: cover;
+			width: 50%;
+			position: absolute;
+			top: 0;
+			box-shadow: 0 1px 1px 0px rgba(0,0,0,0.5);
+			text-align: center;
+			line-height: 125px;
+			font-size: 30px;
+			word-wrap: break-word;
+			color: white;
+		}
+		#popup .images .image1 {
+			left: 0;
+   			-webkit-transform: rotate(-10deg);
+   			background-color: #4956de;
+		}
+		#popup .images .image2 { 
+			left: 50%;
+   			-webkit-transform: rotate(10deg);
+   			background-color: #d94c30;
+   		}
+
+/*
+	CHAT
+*/
+
+        #content {
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: block;
+            padding-bottom: 65px;
+        }
+        #inputDiv {
+            position: fixed;
+            display: block;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+        #input {
+            border-radius: 0;
+            border: 0;
+            outline: none;
+            margin: 0;
+            padding: 14px 15px;
+            width: 100%;
+            font-size: 1em;
+           	background-color: #fff;
+        }
+        .chatMessage {
+            display: block;
+            width: 100%;
+            padding: 3px 0;
+            color: rgba(0,0,0,0.35);
+            font-size: .75em;
+        }
+            .chatMessage span {
+                display: inline-block;
+                width: auto;
+                max-width: 400px !important;
+                background-color: white;
+                padding: 10px 15px 5px;
+                margin-bottom: 2px;
+                color: #4c4c4c;
+                font-size: 1.05em;
+                box-shadow: 0 1px 1px 0px rgba(0,0,0,0.08);
+                line-height: 1.8em;
+            }
+	            .chatMessage span small {
+					display: block;
+					color: rgba(0,0,0,0.35);
+				}
+        .myMessage {
+            text-align: right;
+        }
