@@ -1,5 +1,7 @@
 app.controller("feedController", function($scope, $rootScope, feedFactory, loginFactory){
 
+    $scope.status = 'Fetchin\' you them hotties, please wait..';
+
 	// Als de pagina geladen wordt
     $scope.init = function() {
         $('.header h1').html("Babble");
@@ -9,10 +11,10 @@ app.controller("feedController", function($scope, $rootScope, feedFactory, login
         if($scope.feed === undefined) {
         	feedFactory.getFeed(loginFactory.accessToken, 0, loginFactory.userId, loginFactory.userInfo.gender, loginFactory.userInfo.likeMen, loginFactory.userInfo.likeWomen, loginFactory.userInfo.latitude, loginFactory.userInfo.longitude, loginFactory.userInfo.searchRadius).success(function(data) {
         		$scope.feed = $scope.parseFeed(data.data);
+                $scope.status = 'Uhoh, you went through all of them.';
         	});
         }
 
-        $('#feedStatus').html("Uhoh.. You went through all of them!");
     };
 
     $scope.like = function() {
@@ -60,7 +62,9 @@ app.controller("feedController", function($scope, $rootScope, feedFactory, login
         // Ook checken of we de array niet aan moeten vullen met nieuwe mensjes
         if($scope.feed.length < 5) {
             // Zo ja, haal de feed op bij de feedFactory
+            $scope.status = 'Fetchin\' you them hotties, please wait..';
             feedFactory.getFeed(loginFactory.accessToken, $scope.feed.length, loginFactory.userId, loginFactory.userInfo.gender, loginFactory.userInfo.likeMen, loginFactory.userInfo.likeWomen, loginFactory.userInfo.latitude, loginFactory.userInfo.longitude, loginFactory.userInfo.searchRadius).success(function(data) {
+                $scope.status = 'Uhoh, you went through all of them.';
                 // Ga elk resultaat langs en push het naar $scope.feed 
                 data = $scope.parseFeed(data.data);
                 for(var key in data) {
