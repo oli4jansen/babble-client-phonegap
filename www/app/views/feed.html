@@ -1,6 +1,6 @@
 <div>
 	<div class="cards stack" id="feed">
-		<p id="feedStatus">{{status}}</p>
+		<div id="feedStatus" ng-bind-html-unsafe="status"></div>
 		<div class="card repeat-animation" id="{{card.id}}" ng-class="{current: $first}" ng-repeat="card in feed | filter: f">
 			<h2 hammer-drag="stopPropagation()">{{card.name}}, {{card.age}}</h2>
 
