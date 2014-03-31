@@ -115,7 +115,7 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                             this.like();
                         }
                         $(".button-holder button").removeClass("selected");
-
+                        $(".card").animate({left:"0", top: "0", transform: "none"}, 0);
                     } else {
                         $(".button-holder button").removeClass("selected");
                         $(ev.target).parent()
