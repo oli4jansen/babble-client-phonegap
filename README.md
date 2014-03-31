@@ -1,8 +1,13 @@
 # Babble - Phonegap App #
 
-Deze repo bevat de Phonegap app die gebruikt wordt als client voor de Babble backend.
+Deze repo bevat de Phonegap app die gebruikt wordt als client voor de Babble backend. [Download laatste build](https://build.phonegap.com/apps/850932/share).
 
 ## Inhoud ##
+
+- [Bestanden structuur](#bestanden-structuur)
+	- [Phonegap Build](#phonegap-build)
+	- [Angular](#angular)
+	- [Overig](#overig)
 
 ## Bestanden structuur ##
 

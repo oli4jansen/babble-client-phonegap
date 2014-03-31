@@ -1,6 +1,5 @@
 app.controller("feedController", function($scope, $rootScope, feedFactory, loginFactory){
 
-
 	// Als de pagina geladen wordt
     $scope.init = function() {
         $('.header h1').html("Babble");
