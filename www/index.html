@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>TinderPro</title>
+	<title>Babble</title>
 
 	<script src="phonegap.js"></script>
 	<script src="cdv-plugin-fb-connect.js"></script>
@@ -57,11 +57,13 @@
 </html>
         
 	<script>
+		// Als het document klaar is met laden
 		$(document).ready(function() {
-//			alert('document ready');
+			// En de telefoon klaar is
 			document.addEventListener('deviceready', function onDeviceReady() {
-//				alert('device ready');
-				angular.bootstrap(document.getElementById("document"), ['TinderPro']);
+				// Start de Angular app
+				angular.bootstrap(document.getElementById("document"), ['Babble']);
+				// En laat de body zien
 				$('body').fadeIn(100);
 			}, false);
 		});
