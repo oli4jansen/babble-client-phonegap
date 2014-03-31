@@ -7,14 +7,14 @@ app.controller("feedController", function($scope, $rootScope, feedFactory, login
         $('body').css("background-image", "url('img/background.png')").css("color", "white");
 
     	// Feed ophalen bij de feedFactory
-    	feedFactory.getFeed(loginFactory.accessToken, 0, loginFactory.userId, loginFactory.userInfo.gender, loginFactory.userInfo.likeMen, loginFactory.userInfo.likeWomen, loginFactory.userInfo.latitude, loginFactory.userInfo.longitude, loginFactory.userInfo.searchRadius).success(function(data) {
-    		$scope.feed = $scope.parseFeed(data.data);
-    	});
+        if($scope.feed === undefined) {
+        	feedFactory.getFeed(loginFactory.accessToken, 0, loginFactory.userId, loginFactory.userInfo.gender, loginFactory.userInfo.likeMen, loginFactory.userInfo.likeWomen, loginFactory.userInfo.latitude, loginFactory.userInfo.longitude, loginFactory.userInfo.searchRadius).success(function(data) {
+        		$scope.feed = $scope.parseFeed(data.data);
+        	});
+        }
 
         $('#feedStatus').html("Uhoh.. You went through all of them!");
     };
-
-    $scope.feed = '';
 
     $scope.like = function() {
         var herId = $scope.feed[0].id;
