@@ -1,6 +1,6 @@
-app.controller("feedController", function($scope, $rootScope, feedFactory, loginFactory){
+app.controller("feedController", function($scope, $sce, $rootScope, feedFactory, loginFactory){
 
-    $scope.status = '<div class="loader"></div>Looking for people';
+    $scope.status = $sce.trustAsHtml('<div class="loader"></div>Looking for people');
 
 	// Als de pagina geladen wordt
     $scope.init = function() {
@@ -62,7 +62,7 @@ app.controller("feedController", function($scope, $rootScope, feedFactory, login
         // Ook checken of we de array niet aan moeten vullen met nieuwe mensjes
         if($scope.feed.length < 5) {
             // Zo ja, haal de feed op bij de feedFactory
-            $scope.status = '<div class="loader"></div>Looking for people';
+            $scope.status = $sce.trustAsHtml('<div class="loader"></div>Looking for people');
             feedFactory.getFeed(loginFactory.accessToken, $scope.feed.length, loginFactory.userId, loginFactory.userInfo.gender, loginFactory.userInfo.likeMen, loginFactory.userInfo.likeWomen, loginFactory.userInfo.latitude, loginFactory.userInfo.longitude, loginFactory.userInfo.searchRadius).success(function(data) {
                 $scope.status = 'Uhoh, you went through all of them.';
                 // Ga elk resultaat langs en push het naar $scope.feed 
