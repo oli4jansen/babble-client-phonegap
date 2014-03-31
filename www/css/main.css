@@ -221,6 +221,9 @@ body.popup .container {
 			.cards .card p {
 				padding: 25px 25px 25px;
 			}
+				.cards .card.name-card {
+					background-color: #999;
+				}
 				.cards .card.name-card h2 {
 					padding: 55px 0;
 					color: white;

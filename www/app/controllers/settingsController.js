@@ -1,6 +1,6 @@
 app.controller("settingsController", function($scope, $location, $route, $rootScope, loginFactory){
 
-	$scope.user = {name: 'Loading..'}
+	$scope.user = {name: ''}
 
 	$scope.init = function() {
 		$('.header h1').html("Settings");
@@ -12,7 +12,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 					$scope.user = data;
 					if(data.likeMen === 1) $('#checkboxMen').attr('checked', 'true');
 					if(data.likeWomen === 1) $('#checkboxWomen').attr('checked', 'true');
-					$('#userPicture').css('background-image', 'url('+data.picture+')')
+					$('#userPicture').css('background-image', 'url('+data.picture+')').children('h2').removeClass('loader');
 				}
 			}
 		});
