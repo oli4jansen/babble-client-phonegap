@@ -1,6 +1,6 @@
 app.controller("chatController", function($scope, $route, $routeParams, $location, loginFactory, $rootScope){
 
-	var URL = 'http://192.168.2.14';
+	var URL = 'http://192.168.10.61';
 
 	$scope.herId = $routeParams.userId;
 	$scope.herName = $routeParams.userName;

@@ -1,7 +1,7 @@
 app.factory('feedFactory', function($http) {
 	var factory = {};
 
-	var URL = 'http://192.168.2.14';
+	var URL = 'http://192.168.10.61';
 
 	factory.getFeed = function(accessToken, offset, userId, gender, likeMen, likeWomen, latitude, longitude, searchRadius) {
 		return $http.post(URL + '/feed/'+userId+'/'+offset+'/'+gender+'/'+likeMen+'/'+likeWomen+'/'+latitude+'/'+longitude+'/'+searchRadius, { accessToken: accessToken });
