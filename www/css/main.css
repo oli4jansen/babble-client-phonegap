@@ -222,7 +222,7 @@ body.popup .container {
 				padding: 25px 25px 25px;
 			}
 				.cards .card.name-card {
-					background-color: #999;
+					background-color: #999 !important;
 				}
 				.cards .card.name-card h2 {
 					padding: 55px 0;
@@ -510,6 +510,7 @@ body.popup .container {
 	display: block;
 	width: 12px;
 	height: 12px;
+	padding: 0 !important;
 	margin: 20px auto;
 	border-radius: 12px;
 	background-color: #fff;
