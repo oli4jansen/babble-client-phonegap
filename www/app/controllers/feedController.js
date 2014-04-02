@@ -16,7 +16,9 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                 }else{
                     alert(JSON.stringify(data));
                 }
-        	});
+        	}).error(function(data) {
+                alert(JSON.stringify(data));
+            });
         }
     };
 
