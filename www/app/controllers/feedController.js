@@ -69,9 +69,13 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
             feedFactory.getFeed(loginFactory.accessToken, $scope.feed.length, loginFactory.userId, loginFactory.userInfo.gender, loginFactory.userInfo.likeMen, loginFactory.userInfo.likeWomen, loginFactory.userInfo.latitude, loginFactory.userInfo.longitude, loginFactory.userInfo.searchRadius).success(function(data) {
                 $scope.status = 'Uhoh, you went through all of them.';
                 // Ga elk resultaat langs en push het naar $scope.feed 
-                data = $scope.parseFeed(data.data);
-                for(var key in data) {
-                    $scope.feed.push(data[key]);
+                if(data.status === '200') {
+                    $scope.feed = $scope.parseFeed(data.data);
+                    for(var key in data) {
+                        $scope.feed.push(data[key]);
+                    }
+                }else{
+                    alert(JSON.stringify(data));
                 }
             });
         }
