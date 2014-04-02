@@ -1,7 +1,7 @@
 app.factory('loginFactory', function($http, $location, $window) {
 
 	// API URL
-	var URL = 'http://192.168.10.61';
+	var URL = 'http://www.oli4jansen.nl:81';
 
 	// Facebook SDK variabele
 	var FB = $window.FB;
