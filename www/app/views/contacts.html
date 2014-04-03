@@ -1,6 +1,5 @@
 <div ng-init="init()">
 	<div class="cards relative">
-		<p id="contactsStatus"></p>
 		<input type="text" class="search" ng-model="search" placeholder="Search {{matches.length}} matches">
 		
 		<div ng-click="startChat(match.id, match.name)" class="card my-repeat-animation current contact" ng-repeat="match in matches | filter:search">
