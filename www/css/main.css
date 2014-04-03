@@ -60,7 +60,6 @@ img { vertical-align: top; }
 .btn, button {
 	background-color: #fff;
 	border: 0;
-	border-top: 1px solid #ddd;
 	-webkit-appearance: none;
 	color: #4c4c4c;
 	border-radius: 0;
@@ -72,36 +71,39 @@ img { vertical-align: top; }
 		float: right;
 		font-size: 25px;
 	}
+	.white {
+		background-color: rgba(255,255,255,0.25);
+		color: white;
+	}
 	.facebook {
-		background-color: #3B5998;
-		border-color: #3B5998;
+		background-color: #233F5A;
 		color: white;
 	}
 	.red {
 		background-color: #d94c30;
-		border-color: #d94c30;
 		color: white;
 	}
 	.green {
-		background-color: #35B03F;
-		border-color: #35B03F;
+		background-color: #27D42E;
 		color: white;
+	}
+	.btn.rounded, button.rounded {
+		border-radius: 100px;
+		margin: 5px 0;
 	}
 .full-width {
 	width: 100%;
-}
-.half-width {
-	width: 50%;
-	display: inline-block;
 }
 
 textarea, input[type=text], input[type=number], input[type=date] {
 	display: block;
 	width: 100%;
-	margin: 15px 0;
+	margin: 10px 0;
 	padding: 15px;
 	font-size: 16px;
 	line-height: 25px;
+
+	color: rgba(255,255,255,0.75);
 
 	outline: none;
 	border: none;
@@ -115,7 +117,7 @@ textarea, input[type=text], input[type=number], input[type=date] {
     -webkit-user-modify: read-write-plaintext-only;
 }
 input[type=checkbox] {
-	border: 1px solid #d94c30;
+	border: 2px solid #fff;
 	-webkit-appearance: none;
 	width: 15px;
 	height: 15px;
@@ -123,19 +125,30 @@ input[type=checkbox] {
 	position: relative;
 	margin: 15px 10px;
 	margin-right: 15px;
+	float: right;
+	border-radius: 10px;
 }
 input[type=checkbox]:checked {
-	background-color: #d94c30;
+	background-color: #fff;
 }
 label {
 	display: block;
 	text-align: left;
-	padding: 10px 20px 0;
+	padding: 10px 5px 0;
 	vertical-align: top;
+}
+label.section-header {
+	font-size: 1.25em;
 }
 label.checkbox {
 	line-height: 45px;
+	padding-left: 20px;
+	color: rgba(255,255,255,0.75);
 }
+.form-section {
+	margin-bottom: 30px;
+}
+
 .search {
 	margin: 0 !important;
 }
@@ -157,7 +170,7 @@ label.checkbox {
 	z-index: 999999999999999999999999;
 /*	box-shadow: 0 1px 0px 1px rgba(0,0,0,0.1);*/
 
-	box-shadow: inset 0 35px 40px -10px #2798D4;
+	box-shadow: inset 0 40px 25px -10px #2798D4;
 
 	-webkit-transition: .3s;
 	transition: .3s;
@@ -195,7 +208,7 @@ label.checkbox {
 	overflow: auto;
 	z-index: 99;
 	display: block;
-	padding: 70px 15px 0;
+	padding: 50px 15px 0;
 	position: absolute;
 	overflow-x: hidden;
 
@@ -280,22 +293,6 @@ body.popup .container {
 			color: white;
 			border: 0;
 		}
-			.cards .card.current.transparent button.full-width {
-				color: white;
-				background-color: transparent;
-				border: 1px solid transparent;
-				border-left: 0;
-				border-right: 0;
-				border-bottom: 0;
-			}
-			.cards .card.current.transparent button.full-width.facebook {
-				border: 1px solid #3B5998;
-				border-left: 0;
-				border-right: 0;
-				border-bottom: 1px solid #3B5998;
-				color: white;
-				background-color: rgba(59, 89, 152, 0.25);
-			}
 		.cards .card.current.contact {
 			position: relative;
 			margin: 0;
