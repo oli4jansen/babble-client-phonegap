@@ -495,59 +495,123 @@ body.popup .container {
  *	LOADER
  */
 
-.loader:before{
+.loader {
+	display: block;
+	position: relative;
+}
+
+.loaderA{
 	content: "";
 	position: absolute;
 	top: 0px;
+	left: 50%;
+	margin-left: -6px;
 	height: 12px;
 	width: 12px;
 	border-radius: 12px;
-	-webkit-animation: loader9g 2s ease-in-out infinite;
-			animation: loader10g 2s ease-in-out infinite;
+  -webkit-animation-name: loaderA;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+
+  -moz-animation-name: loaderA;
+  -moz-animation-duration: 2s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: ease-in-out;
+
+  -o-animation-name: loaderA;
+  -o-animation-duration: 2s;
+  -o-animation-iteration-count: infinite;
+  -o-animation-timing-function: ease-in-out;
+
+  animation-name: loaderA;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 }
 
-.loader {
+.loaderMain {
 	position: relative;
 	display: block;
 	width: 12px;
 	height: 12px;
-	padding: 0 !important;
 	margin: 20px auto;
 	border-radius: 12px;
 	background-color: #fff;
 }
 
 
-.loader:after{
+.loaderB{
 	content: "";
 	position: absolute;
 	top: 0px;
+	left: 50%;
+	margin-left: -6px;
 	height: 12px;
 	width: 12px;
 	border-radius: 12px;
-	-webkit-animation: loader9d 2s ease-in-out infinite;
-			animation: loader9d 2s ease-in-out infinite;
+  -webkit-animation-name: loaderB;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+
+  -moz-animation-name: loaderB;
+  -moz-animation-duration: 2s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: ease-in-out;
+
+  -o-animation-name: loaderB;
+  -o-animation-duration: 2s;
+  -o-animation-iteration-count: infinite;
+  -o-animation-timing-function: ease-in-out;
+
+  animation-name: loaderB;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 }
 
-@-webkit-keyframes loader9g{
-	0%{		left: -25px; background-color: rgba(255, 255, 255, .5); }
-	50%{	left: 25px;  background-color: rgba(255, 255, 255, 1); }
-	100%{	left: -25px;  background-color: rgba(255, 255, 255, .5); }
+
+@-webkit-keyframes loaderA {
+	0%{		margin-left: -31px; background-color: rgba(255, 255, 255, .5); }
+	50%{	margin-left: 19px;  background-color: rgba(255, 255, 255, 1); }
+	100%{	margin-left: -31px;  background-color: rgba(255, 255, 255, .5); }
+}
+@-webkit-keyframes loaderB {
+	0%{		margin-left: 19px; background-color: rgba(255, 255, 255, .5); }
+	50%{	margin-left: -31px;  background-color: rgba(255, 255, 255, 1); }
+	100%{	margin-left: 19px;  background-color: rgba(255, 255, 255, .5); }
 }
 
-@-webkit-keyframes loader9d{
-	0%{		left: 25px; background-color: rgba(255, 255, 255, .5); }
-	50%{	left: -25px;  background-color: rgba(255, 255, 255, 1); }
-	100%{	left: 25px;  background-color: rgba(255, 255, 255, .5); }
+@-moz-keyframes loaderA {
+	0%{		margin-left: -31px; background-color: rgba(255, 255, 255, .5); }
+	50%{	margin-left: 19px;  background-color: rgba(255, 255, 255, 1); }
+	100%{	margin-left: -31px;  background-color: rgba(255, 255, 255, .5); }
 }
-@keyframes loader9g{
-	0%{		left: -25px; background-color: rgba(255, 255, 255, .5); }
-	50%{	left: 25px;  background-color: rgba(255, 255, 255, 1); }
-	100%{	left: -25px;  background-color: rgba(255, 255, 255, .5); }
+@-moz-keyframes loaderB {
+	0%{		margin-left: 19px; background-color: rgba(255, 255, 255, .5); }
+	50%{	margin-left: -31px;  background-color: rgba(255, 255, 255, 1); }
+	100%{	margin-left: 19px;  background-color: rgba(255, 255, 255, .5); }
 }
 
-@keyframes loader9d{
-	0%{		left: 25px; background-color: rgba(255, 255, 255, .5); }
-	50%{	left: -25px;  background-color: rgba(255, 255, 255, 1); }
-	100%{	left: 25px;  background-color: rgba(255, 255, 255, .5); }
+@-o-keyframes loaderA {
+	0%{		margin-left: -31px; background-color: rgba(255, 255, 255, .5); }
+	50%{	margin-left: 19px;  background-color: rgba(255, 255, 255, 1); }
+	100%{	margin-left: -31px;  background-color: rgba(255, 255, 255, .5); }
+}
+@-o-keyframes loaderB {
+	0%{		margin-left: 19px; background-color: rgba(255, 255, 255, .5); }
+	50%{	margin-left: -31px;  background-color: rgba(255, 255, 255, 1); }
+	100%{	margin-left: 19px;  background-color: rgba(255, 255, 255, .5); }
+}
+
+@keyframes loaderA {
+	0%{		margin-left: -31px; background-color: rgba(255, 255, 255, .5); }
+	50%{	margin-left: 19px;  background-color: rgba(255, 255, 255, 1); }
+	100%{	margin-left: -31px;  background-color: rgba(255, 255, 255, .5); }
+}
+@keyframes loaderB {
+	0%{		margin-left: 19px; background-color: rgba(255, 255, 255, .5); }
+	50%{	margin-left: -31px;  background-color: rgba(255, 255, 255, 1); }
+	100%{	margin-left: 19px;  background-color: rgba(255, 255, 255, .5); }
 }
