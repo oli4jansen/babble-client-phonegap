@@ -10,7 +10,8 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
     	// Feed ophalen bij de feedFactory
         if($scope.feed === undefined) {
         	feedFactory.getFeed(loginFactory.accessToken, 0, loginFactory.userId, loginFactory.userInfo.gender, loginFactory.userInfo.likeMen, loginFactory.userInfo.likeWomen, loginFactory.userInfo.latitude, loginFactory.userInfo.longitude, loginFactory.userInfo.searchRadius).success(function(data) {
-                $scope.status = 'Uhoh, you went through all of them.';
+                alert(JSON.stringify(data));
+                $scope.status = $sce.trustAsHtml('Uhoh, you went through all of them.');
                 if(data.status === '200') {
                     $scope.feed = $scope.parseFeed(data.data);
                 }else{
@@ -69,7 +70,7 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
             // Zo ja, haal de feed op bij de feedFactory
             $scope.status = $sce.trustAsHtml('<div class="loader"></div>Looking for people');
             feedFactory.getFeed(loginFactory.accessToken, $scope.feed.length, loginFactory.userId, loginFactory.userInfo.gender, loginFactory.userInfo.likeMen, loginFactory.userInfo.likeWomen, loginFactory.userInfo.latitude, loginFactory.userInfo.longitude, loginFactory.userInfo.searchRadius).success(function(data) {
-                $scope.status = 'Uhoh, you went through all of them.';
+                $scope.status = $sce.trustAsHtml('Uhoh, you went through all of them.');
                 // Ga elk resultaat langs en push het naar $scope.feed 
                 if(data.status === '200') {
                     $scope.feed = $scope.parseFeed(data.data);
