@@ -8,7 +8,7 @@
     <name>Babble</name>
 
     <description>
-        Babble. Tinder meets Omegle. Alleen voor intellectuelen.
+        Babble. Tinder meets Omegle. Alleen voor intellectuelen. Jwz.
     </description>
 
     <author href="http://oli4jansen.nl" email="oli4jansen.nl@gmail.com">
@@ -34,6 +34,8 @@
         <param name="APP_ID" value="1432398570331786" />
         <param name="APP_NAME" value="Babble" />
     </gap:plugin>
+
+    <gap:plugin name="com.ququplay.websocket.websocket" version="0.1.0" />
 
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />

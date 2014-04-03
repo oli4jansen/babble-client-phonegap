@@ -19,7 +19,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 		window.WebSocket = window.WebSocket || window.MozWebSocket;
 
 		if (!window.WebSocket) {
-			content.html($('<p>', { text: 'Sorry, but your browser doesn\'t support WebSockets.'} ));
+			alert('Sorry, but your browser doesn\'t support WebSockets.');
 		}
 
 		// Verbinding met server maken
