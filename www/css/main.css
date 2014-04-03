@@ -114,6 +114,15 @@ textarea, input[type=text], input[type=number], input[type=date] {
 	outline: none;
 	border: none;
 	background-color: transparent;
+	background: bottom left 	-webkit-linear-gradient(#fff, #fff) no-repeat,
+				bottom center 	-webkit-linear-gradient(#fff, #fff) repeat-x,
+				bottom right 	-webkit-linear-gradient(#fff, #fff) no-repeat;
+	background: bottom left 	-moz-linear-gradient(#fff, #fff) no-repeat,
+				bottom center 	-moz-linear-gradient(#fff, #fff) repeat-x,
+				bottom right 	-moz-linear-gradient(#fff, #fff) no-repeat;
+	background: bottom left 	-o-linear-gradient(#fff, #fff) no-repeat,
+				bottom center 	-o-linear-gradient(#fff, #fff) repeat-x,
+				bottom right 	-o-linear-gradient(#fff, #fff) no-repeat;
 	background: bottom left 	linear-gradient(#fff, #fff) no-repeat,
 				bottom center 	linear-gradient(#fff, #fff) repeat-x,
 				bottom right 	linear-gradient(#fff, #fff) no-repeat;
