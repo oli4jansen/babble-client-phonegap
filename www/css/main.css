@@ -96,8 +96,9 @@ img { vertical-align: top; }
 .full-width {
 	width: 100%;
 }
-.full-width {
-	width: 100%;
+.half-width {
+	width: 50%;
+	display: inline-block;
 }
 
 textarea, input[type=text], input[type=number], input[type=date] {
