@@ -497,7 +497,7 @@ body.popup .container {
             bottom: 0;
             left: 0;
         }
-        #input {
+        #inputDiv #input {
             border-radius: 0;
             border: 0;
             outline: none;
@@ -505,9 +505,15 @@ body.popup .container {
             padding: 14px 15px;
             width: 100%;
             font-size: 1em;
-           	background-color: #2798D4;
+           	background-color: #fff;
            	box-shadow: 0 -1px 2px rgba(0,0,0,0.1);
         }
+        #inputDiv #input::-webkit-input-placeholder,
+        #inputDiv #input:-moz-placeholder,
+        #inputDiv #input::-moz-placeholder,
+        #inputDiv #input:-ms-input-placeholder {
+			color: #2798D4;
+		}
         .chatMessage {
             display: block;
             width: 100%;
