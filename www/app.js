@@ -56,6 +56,9 @@ var app = angular.module('Babble', ['ngRoute', 'hammer', 'ngAnimate']).config(fu
 	});
 
 }).run( function($rootScope, $location, loginFactory) {
+	// 300ms delay op mobiel weghalen
+	FastClick.attach(document.body);
+
 	// Als de route wijzigt...
 	$rootScope.$on( "$routeChangeStart", function(event, next, current) {
 		// ..checken of er ingelogd is
