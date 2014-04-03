@@ -5,7 +5,7 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
 	// Als de pagina geladen wordt
     $scope.init = function() {
         $('.header h1').html("Babble");
-        $('body').css("background-image", "url('img/background.png')").css("color", "white");
+//        $('body').css("background-image", "url('img/background.png')").css("color", "white");
 
     	// Feed ophalen bij de feedFactory
         if($scope.feed === undefined) {

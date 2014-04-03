@@ -24,12 +24,26 @@
 	font-family: "Roboto";
 }
 
+::-webkit-input-placeholder {
+	color: #fff;
+}
+:-moz-placeholder {
+	color: #fff;
+}
+::-moz-placeholder {
+	color: #fff;
+}
+:-ms-input-placeholder {
+	color: #fff;
+}
+
 html, body {
 	height: 100%;
 	overflow: auto;
 	background-color: #31A2F9;
-	background-color: #e0e0e0;
+	background-color: #2798D4;
 	color: #4c4c4c;
+	color: white;
 	background-size: cover;
 	background-position: center;
 }
@@ -82,17 +96,22 @@ img { vertical-align: top; }
 }
 
 textarea, input[type=text], input[type=number], input[type=date] {
-	border: 0;
 	display: block;
 	width: 100%;
 	margin: 15px 0;
 	padding: 15px;
-	outline: none;
 	font-size: 16px;
 	line-height: 25px;
+
+	outline: none;
+	border: none;
+	background-color: transparent;
+	background: bottom left 	linear-gradient(#fff, #fff) no-repeat,
+				bottom center 	linear-gradient(#fff, #fff) repeat-x,
+				bottom right 	linear-gradient(#fff, #fff) no-repeat;
+	background-size: 1px 5px, 1px 1px, 1px 5px;
+
 	-webkit-appearance: none;
-	border: 1px solid #ddd;
-	background-color: #eee;
     -webkit-user-modify: read-write-plaintext-only;
 }
 input[type=checkbox] {
@@ -122,9 +141,10 @@ label.checkbox {
 }
 
 .header {
-	background-color: #d94c30;
+/*	background-color: #d94c30;
 	border-bottom: 1px solid #bc3b20;
-	border-top: 1px solid #ef5435;
+	border-top: 1px solid #ef5435;*/
+	background-color: transparent;
 	color: #fff;
 	text-align: center;
 	padding: 0;
@@ -135,7 +155,9 @@ label.checkbox {
 	left: 0;
 	top: 0;
 	z-index: 999999999999999999999999;
-	box-shadow: 0 1px 0px 1px rgba(0,0,0,0.1);
+/*	box-shadow: 0 1px 0px 1px rgba(0,0,0,0.1);*/
+
+	box-shadow: inset 0 35px 40px -10px #2798D4;
 
 	-webkit-transition: .3s;
 	transition: .3s;
@@ -208,7 +230,7 @@ body.popup .container {
 			z-index: 10;
 			background-size: cover;
 			background-position: center;
-			border: 1px solid #ccc;
+			border: none;
 			/*-webkit-transition: margin .3s, width .3s, background-color .3s;
 			transition: margin .3s, width .3s, background-color .3s;*/
 			-webkit-transition: margin .1s, width .1s;
@@ -309,16 +331,17 @@ body.popup .container {
 		bottom: 0;
 		left: 0;
 		color: #4c4c4c;
-		border-top: 1px solid #ccc;
+		border-top: 2px solid rgba(0,0,0,0.1);
 		height: 60px;
 		width: 100%;
 		z-index: 999999;
+		background-color: white;
 	}
 		.container > div > .button-holder button {
 			width: 50%;
 			height: 60px;
-			-webkit-transition: .5s;
-			transition: .5s;
+			-webkit-transition: .1s;
+			transition: .1s;
 			border-top: 0;
 		}
 		.container > div > .button-holder button.dislike.selected,
@@ -330,6 +353,14 @@ body.popup .container {
 		.container > div > .button-holder button.like:active {
 			background-color: #35B03F;
 			color: white;
+		}
+		.container > div > .button-holder button:first-child {
+			background: center right linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)) no-repeat;
+			background-size: 1px 60%;
+		}
+		.container > div > .button-holder button:last-child {
+			background: center left linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)) no-repeat;
+			background-size: 1px 60%;
 		}
 
 	.container img.fullScreen {
