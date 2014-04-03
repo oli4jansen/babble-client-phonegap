@@ -10,9 +10,11 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
     	// Feed ophalen bij de feedFactory
         if($scope.feed === undefined) {
         	feedFactory.getFeed(loginFactory.accessToken, 0, loginFactory.userId, loginFactory.userInfo.gender, loginFactory.userInfo.likeMen, loginFactory.userInfo.likeWomen, loginFactory.userInfo.latitude, loginFactory.userInfo.longitude, loginFactory.userInfo.searchRadius).success(function(data) {
-                alert(JSON.stringify(data));
+                alert('Data: '+JSON.stringify(data));
+
                 $scope.status = $sce.trustAsHtml('Uhoh, you went through all of them.');
                 if(data.status === '200') {
+                    alert('Data appenden');
                     $scope.feed = $scope.parseFeed(data.data);
                 }else{
                     alert(JSON.stringify(data));

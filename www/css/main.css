@@ -93,6 +93,7 @@ textarea, input[type=text], input[type=number], input[type=date] {
 	-webkit-appearance: none;
 	border: 1px solid #ddd;
 	background-color: #eee;
+    -webkit-user-modify: read-write-plaintext-only;
 }
 input[type=checkbox] {
 	border: 1px solid #d94c30;
