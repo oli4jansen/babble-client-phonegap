@@ -8,9 +8,10 @@ app.controller("loginController", function($scope, $location, $http, $rootScope,
 	};
 
 	$scope.logIn = function() {
-	    $scope.status = 'Loading..';
 	    loginFactory.logIn();
 	};
+
+	$scope.status = loginFactory.status;
 
 
 /*	$scope.getLoginStatus = function() {

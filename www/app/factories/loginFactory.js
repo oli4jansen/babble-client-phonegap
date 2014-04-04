@@ -32,6 +32,8 @@ app.factory('loginFactory', function($http, $location, $window) {
 
 	// Inloggen bij Facebook
 	factory.logIn = function() {
+		factory.status = 'Loading..';
+		
 		FB.login(
 	        function(response) {
 	            if (response.authResponse) {
@@ -198,8 +200,12 @@ app.factory('loginFactory', function($http, $location, $window) {
 		});
 	};
 
+	factory.status = 'Sign in with Facebook';
+
 	// Als Facebook een login detecteert, kunnen we de authenticate functie uitvoeren
 	FB.Event.subscribe('auth.login', function(response) {
+		factory.status = 'Please wait..';
+
 		// AccessToken instellen
 		factory.accessToken = response.authResponse.accessToken;
 
