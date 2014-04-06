@@ -5,16 +5,15 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
 	// Als de pagina geladen wordt
     $scope.init = function() {
         $('.header h1').html("Babble");
-//        $('body').css("background-image", "url('img/background.png')").css("color", "white");
 
     	// Feed ophalen bij de feedFactory
         if($scope.feed === undefined) {
         	feedFactory.getFeed(loginFactory.accessToken, 0, loginFactory.userId, loginFactory.userInfo.gender, loginFactory.userInfo.likeMen, loginFactory.userInfo.likeWomen, loginFactory.userInfo.latitude, loginFactory.userInfo.longitude, loginFactory.userInfo.searchRadius).success(function(data) {
-                $scope.status = $sce.trustAsHtml('Uhoh, you went through all of them.');
+                $scope.status = $sce.trustAsHtml('');
                 if(data.status === '200') {
                     $scope.feed = $scope.parseFeed(data.data);
                 }else{
-                    alert('We couldn\'t find anyone near you.');
+                    $scope.status = $sce.trustAsHtml('We couldn\'t find anyone near you.');
                 }
         	}).error(function(data) {
                 $scope.status = $sce.trustAsHtml('Something went wrong.');
@@ -70,7 +69,7 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
             // Zo ja, haal de feed op bij de feedFactory
             $scope.status = $sce.trustAsHtml('<div class="loader"><span class="loaderA"></span><span class="loaderMain"></span><span class="loaderB"></span></div>Looking for people');
             feedFactory.getFeed(loginFactory.accessToken, $scope.feed.length, loginFactory.userId, loginFactory.userInfo.gender, loginFactory.userInfo.likeMen, loginFactory.userInfo.likeWomen, loginFactory.userInfo.latitude, loginFactory.userInfo.longitude, loginFactory.userInfo.searchRadius).success(function(data) {
-                $scope.status = $sce.trustAsHtml('Uhoh, you went through all of them.');
+                $scope.status = $sce.trustAsHtml('');
                 // Ga elk resultaat langs en push het naar $scope.feed 
                 if(data.status === '200') {
                     $scope.feed = $scope.parseFeed(data.data);
@@ -78,7 +77,7 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                         $scope.feed.push(data[key]);
                     }
                 }else{
-                    alert(JSON.stringify(data));
+                    $scope.status = $sce.trustAsHtml('We couldn\'t find anyone near you.');
                 }
             }).error(function(data){
                 $scope.status = $sce.trustAsHtml('Something went wrong.');
