@@ -33,10 +33,6 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 		});
 	}
 
-	$scope.resync = function() {
-		alert('Deze functie is nog in ontwikkeling.');
-	}
-
 	$scope.deleteAccount = function() {
 		if(confirm("Confirm that you want to delete your account.")) {
 
