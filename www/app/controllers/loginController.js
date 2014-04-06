@@ -1,4 +1,4 @@
-app.controller("loginController", function($scope, $location, $http, $rootScope, loginFactory){
+app.controller("loginController", function($scope, $location, $http, $rootScope, loginFactory, $sce){
 
 	$scope.status = $sce.trustAsHtml('Sign in with Facebook <i class="ion-social-facebook-outline"></i>');
 
