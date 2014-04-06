@@ -200,7 +200,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 		});
 	};
 
-	factory.status = $sce.trustAsHtml('Sign in with Facebook <i class="ion-social-facebook-outline"></i>';
+	factory.status = $sce.trustAsHtml('Sign in with Facebook <i class="ion-social-facebook-outline"></i>');
 
 	// Als Facebook een login detecteert, kunnen we de authenticate functie uitvoeren
 	FB.Event.subscribe('auth.login', function(response) {

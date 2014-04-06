@@ -1,6 +1,6 @@
 app.controller("loginController", function($scope, $location, $http, $rootScope, loginFactory){
 
-	$scope.status = $sce.trustAsHtml('Sign in with Facebook <i class="ion-social-facebook-outline"></i>';
+	$scope.status = $sce.trustAsHtml('Sign in with Facebook <i class="ion-social-facebook-outline"></i>');
 
 	$scope.init = function() {
 		$('.header h1').html("Babble");
