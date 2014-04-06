@@ -35,15 +35,12 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 
 	$scope.deleteAccount = function() {
 		if(confirm("Confirm that you want to delete your account.")) {
-
-
-			// TODO: facebook logout here
-
-
 			loginFactory.deleteAccount(function(err, data){
 				if(!err) {
 					if(data.status !== '200') {
 						alert('Something went wrong deleting your account from our database.');
+					}else{
+						loginFactory.logOut();
 					}
 				}else{
 					alert(err);

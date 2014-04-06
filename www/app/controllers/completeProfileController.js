@@ -1,7 +1,7 @@
 app.controller("completeProfileController", function($scope, $location, loginFactory){
 
 	$scope.user = {name: 'Loading..'}
-	$scoep.status = 'Start Babbling';
+	$scope.status = 'Start Babbling';
 
 	$scope.init = function() {
 		$('.header h1').html("Complete profile");
