@@ -569,7 +569,7 @@ body.popup .container {
 	position: relative;
 }
 	.loader span {
-		padding: 0;
+		padding: 0 !important;
 	}
 
 .loaderA{
