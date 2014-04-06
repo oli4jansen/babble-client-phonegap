@@ -6,6 +6,10 @@
 	font-family: "Roboto Condensed";
 	src: url("../fonts/RobotoCondensed-Regular.ttf") format("opentype");   
 }
+@font-face {
+	font-family: "Roboto Condensed Light";
+	src: url("../fonts/RobotoCondensed-Light.ttf") format("opentype");   
+}
 
 * {
 	margin: 0;
@@ -49,6 +53,12 @@ html, body {
 }
 h1, h2, h3, h4, h5, h6 {
 	font-family: "Roboto Condensed"
+}
+h1 {
+	font-family: "Roboto Condensed Light";
+	text-align: center;
+	padding: 30px 0 5px;
+
 }
 h2 {
 	text-align: center;
@@ -99,6 +109,9 @@ img { vertical-align: top; }
 .half-width {
 	width: 50%;
 	display: inline-block;
+}
+.intro-text {
+	padding: 25px 25px 35px !important;
 }
 
 textarea, input[type=text], input[type=number], input[type=date] {
@@ -197,6 +210,7 @@ label.checkbox {
 		text-align: center;
 		z-index: 0;
 		text-align: left;
+		padding: 0;
 		padding-left: 50px;
 	}
 	.header .menu-item, .header .menu-item-back {
