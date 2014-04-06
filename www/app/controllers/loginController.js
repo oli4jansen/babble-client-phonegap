@@ -1,6 +1,6 @@
 app.controller("loginController", function($scope, $location, $http, $rootScope, loginFactory){
 
-	$scope.status = 'Sign in with Facebook';
+	$scope.status = $sce.trustAsHtml('Sign in with Facebook <i class="ion-social-facebook-outline"></i>';
 
 	$scope.init = function() {
 		$('.header h1').html("Babble");
@@ -12,17 +12,5 @@ app.controller("loginController", function($scope, $location, $http, $rootScope,
 	};
 
 	$scope.status = loginFactory.status;
-
-
-/*	$scope.getLoginStatus = function() {
-		FB.getLoginStatus(function(response) {
-			if (response.status == 'connected') {
-				alert('logged in');
-				alert(JSON.stringify(response));
-			} else {
-				alert('not logged in');
-			}
-		});
-	};*/
 
 });

@@ -32,7 +32,7 @@ app.factory('loginFactory', function($http, $location, $window) {
 
 	// Inloggen bij Facebook
 	factory.logIn = function() {
-		factory.status = 'Loading..';
+		factory.status = $sce.trustAsHtml('<div class="loader"><span class="loaderA"></span><span class="loaderMain"></span><span class="loaderB"></span></div>');
 		
 		FB.login(
 	        function(response) {
@@ -200,11 +200,11 @@ app.factory('loginFactory', function($http, $location, $window) {
 		});
 	};
 
-	factory.status = 'Sign in with Facebook';
+	factory.status = $sce.trustAsHtml('Sign in with Facebook <i class="ion-social-facebook-outline"></i>';
 
 	// Als Facebook een login detecteert, kunnen we de authenticate functie uitvoeren
 	FB.Event.subscribe('auth.login', function(response) {
-		factory.status = 'Please wait..';
+		factory.status = $sce.trustAsHtml('<div class="loader"><span class="loaderA"></span><span class="loaderMain"></span><span class="loaderB"></span></div>');
 
 		// AccessToken instellen
 		factory.accessToken = response.authResponse.accessToken;
