@@ -32,8 +32,6 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 
 	// Inloggen bij Facebook
 	factory.logIn = function() {
-		factory.status = $sce.trustAsHtml('<div class="loader"><span class="loaderA"></span><span class="loaderMain"></span><span class="loaderB"></span></div>');
-		
 		FB.login(
 	        function(response) {
 	            if (response.authResponse) {
