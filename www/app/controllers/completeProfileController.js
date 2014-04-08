@@ -26,19 +26,7 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 
 		parsedData.accessToken  = loginFactory.accessToken;
 
-		loginFactory.authenticate(parsedData, function(err, data) {
-			if(err) {
-				alert(err);
-			}else{
-				if(data.status === '200') {
-					location.reload();
-				}else if(data.status === '500' && data.data !== undefined) {
-					navigator.notification.alert(data.data, function(){return;}, 'Woops..');
-				}else{
-					navigator.notification.alert('Our server didn\'t accept your request.', function(){return;}, 'Uhoh..');
-				}
-			}
-		});
+		loginFactory.authenticate(parsedData);
 	};
 
 	$scope.chosenDate = '1985/10/22';

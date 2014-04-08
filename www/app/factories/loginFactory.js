@@ -104,13 +104,15 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 
 				// Doorsturen naar een scherm om extra info in te voeren
 				$location.path('/completeProfile');
+			}else if(data.status === 500 && data.data !== undefined) {
+				navigator.notification.alert(data.data, function(){return;}, 'Woops..');
 			}else{
 				// Dit antwoord kennen we niet van de server, er is iets mis.
 				alert('Something went wrong while authenticating.');
 			}
 		}).error(function(data){
 			// Verbinding maken met API is mislukt
-			alert('Couldn\'t connect to the API server.');
+			alert('Couldn\'t connect to the API server: '+JSON.stringify(data));
 		});
 	};
 
