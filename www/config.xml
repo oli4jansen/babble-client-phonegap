@@ -2,6 +2,7 @@
 
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
+        xmlns:android   = "http://schemas.android.com/apk/res/android"
         id        = "nl.oli4jansen.babble"
         version   = "0.0.2">
 
@@ -46,6 +47,10 @@
     <gap:splash src="res/screen/android/drawable-hdpi/splash.9.png"  gap:platform="android" gap:density="hdpi" />
     <gap:splash src="res/screen/android/drawable-xhdpi/splash.9.png"  gap:platform="android" gap:density="xhdpi" />
     <gap:splash src="res/screen/android/drawable-xxhdpi/splash.9.png"  gap:platform="android" gap:density="xxhdpi" />
+
+    <gap:config-file platform="android" parent="/manifest">
+    	<application android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"></application>
+    </gap:config-file>
 
     <access origin="*"/>
 
