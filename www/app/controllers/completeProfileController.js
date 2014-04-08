@@ -39,10 +39,11 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 		});
 	};
 
-	$scope.chosenDate = '01/01/1985';
+	$scope.chosenDate = '1985/10/22';
 
-	$scope.pickDate = function() {
-		datePicker.show({ date: new Date(), mode: 'date', allowFutureDates: false }, function(date){
+	$scope.pickDate = function($event) {
+		$event.preventDefault();
+		datePicker.show({ date: new Date($scope.chosenDate), mode: 'date', allowFutureDates: false }, function(date){
 			$scope.chosenDate = date;
 			$scope.$apply();
 		});
