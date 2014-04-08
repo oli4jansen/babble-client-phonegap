@@ -50,6 +50,7 @@
 
     <gap:config-file platform="android" parent="/manifest">
     	<application android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"></application>
+      <item name="android:windowTranslucentStatus">true</item>
     </gap:config-file>
 
     <access origin="*"/>
