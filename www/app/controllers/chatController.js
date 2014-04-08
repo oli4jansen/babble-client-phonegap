@@ -185,8 +185,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	    }
 
 	    function refreshDOM() {
-	    	console.log(localStorage.getItem('chat-history-'+herName));
-
+				content.empty();
 	    	var history = JSON.parse(localStorage.getItem('chat-history-'+herName));
 	    	for (var key in history) {
 	    		addMessage(history[key].id, history[key].author, history[key].message, history[key].time);
