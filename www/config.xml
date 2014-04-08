@@ -36,6 +36,7 @@
 
     <gap:plugin name="com.ququplay.websocket.websocket" version="0.1.0" />
     <gap:plugin name="org.apache.cordova.dialogs" version="0.2.6" />
+    <gap:plugin name="com.dileep.plugins.datepicker" version="0.0.1" />
 
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />

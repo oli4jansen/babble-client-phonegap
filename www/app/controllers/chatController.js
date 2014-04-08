@@ -124,7 +124,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	          addMessage(json.data.id, json.data.author, json.data.text, json.data.time);
 
 						// Leuk geluidje laten horen
-						navigator.notification.beep(1);
+						if(json.data.author !== myName) navigator.notification.beep(1);
 
 	          // Laten weten dat we het bericht ontvangen hebben
 	          connection.send(JSON.stringify({ gotMessage: json.data }));
