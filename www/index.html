@@ -65,13 +65,13 @@
 			document.addEventListener('deviceready', function onDeviceReady() {
 
 				var options = {
-  date: new Date(),
-  mode: 'date'
-};
-// calling show() function with options and a result handler
-datePicker.show(options, function(date){
-  console.log("date result " + date);
-});
+				  date: new Date(),
+				  mode: 'date'
+				};
+				// calling show() function with options and a result handler
+				datePicker.show(options, function(date){
+				  alert("date result " + date);
+				});
 
 				// Start de Angular app
 				angular.bootstrap(document.getElementById("document"), ['Babble']);
