@@ -7,46 +7,46 @@ var app = angular.module('Babble', ['ngRoute', 'hammer', 'ngAnimate']).config(fu
 
 		templateUrl: 'app/views/login.html',
 		controller: 'loginController'
-	
-	}).when('/feed', 
+
+	}).when('/feed',
 	{
 		// Route /feed is de feed met personen
-	
+
 		templateUrl: 'app/views/feed.html',
 		controller: 'feedController'
-	
-	}).when('/contacts', 
+
+	}).when('/contacts',
 	{
 		// Route /contacts is het overzicht met alle matches
-	
+
 		templateUrl: 'app/views/contacts.html',
 		controller: 'contactsController'
-	
-	}).when('/chat/:userId/:userName', 
+
+	}).when('/chat/:userId/:userName',
 	{
 		// Route /chat/:userId/:userName is het chatten met persoon met userId :userId
-	
+
 		templateUrl: 'app/views/chat.html',
 		controller: 'chatController'
-	
-	}).when('/match/:userId', 
+
+	}).when('/match/:userId',
 	{
 		// Route /match/:userId is de pagina met details over de match met gebruiker met userId :userId
-	
+
 		templateUrl: 'app/views/match.html',
 		controller: 'matchController'
-	
-	}).when('/settings', 
+
+	}).when('/settings',
 	{
 		// Route /settings is de pagina met instellingen
-	
+
 		templateUrl: 'app/views/settings.html',
 		controller: 'settingsController'
 
-	}).when('/completeProfile', 
+	}).when('/completeProfile',
 	{
 		// Route /completeProfile is de pagina die ingevuld moet worden voordat het account aangemaakt wordt
-	
+
 		templateUrl: 'app/views/complete.html',
 		controller: 'completeProfileController'
 
@@ -58,6 +58,7 @@ var app = angular.module('Babble', ['ngRoute', 'hammer', 'ngAnimate']).config(fu
 }).run( function($rootScope, $location, loginFactory) {
 	// 300ms delay op mobiel weghalen
 	FastClick.attach(document.body);
+	$('input, textarea').placeholder();
 
 	// Als de route wijzigt...
 	$rootScope.$on( "$routeChangeStart", function(event, next, current) {
