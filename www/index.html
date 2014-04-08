@@ -64,17 +64,15 @@
 			// En de telefoon klaar is
 			document.addEventListener('deviceready', function onDeviceReady() {
 
-				navigator.notification.beep(2);
-				function alertDismissed() {
-				    navigator.notification.beep(6);
+
+				function alertDismissed(index) {
+				    if(index !== 1) {
+							navigator.notification.alert('Je moet accepteren g.', function(){return;});
+						}
 				}
 
-				navigator.notification.alert(
-				    'Device is ready!',  // message
-				    alertDismissed,         // callback
-				    'Yeah beaches',            // title
-				    'OK!'                  // buttonName
-				);
+				navigator.notification.confirm(
+					'Ben jij er klaar voor?', alertDismissed, 'We zijn er klaar voor.', ['JA!', 'Nah']);
 
 				// Start de Angular app
 				angular.bootstrap(document.getElementById("document"), ['Babble']);

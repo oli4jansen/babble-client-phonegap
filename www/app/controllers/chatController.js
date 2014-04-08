@@ -41,7 +41,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	    	refreshDOM();
 	        connection.send(JSON.stringify({ myName: myName, herName: herName }));
 	    };
-	 
+
 	    // Binnenkomende berichten:
 	    connection.onmessage = function (message) {
 	        // JSON parsen naar een bruikbaar object/array
@@ -52,7 +52,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	            console.log('Het ontvangen bericht is corrupt: ', message.data);
 	            return;
 	        }
-	 
+
 	        // Checken wat voor soort bericht je ontvangen hebt
 	        if (json.type === 'status') {
 
@@ -118,13 +118,16 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	        	history[json.data.id] = { author: json.data.author, message: json.data.text, time: new Date(json.data.time) };
 
 	        	// Array weer in localstorage zetten
-	            localStorage.setItem('chat-history-'+herName, JSON.stringify(history));
+	          localStorage.setItem('chat-history-'+herName, JSON.stringify(history));
 
-	            // Bericht ook toevoegen aan DOM
-	            addMessage(json.data.id, json.data.author, json.data.text, json.data.time);
+	          // Bericht ook toevoegen aan DOM
+	          addMessage(json.data.id, json.data.author, json.data.text, json.data.time);
 
-	            // Laten weten dat we het bericht ontvangen hebben
-	            connection.send(JSON.stringify({ gotMessage: json.data }));
+						// Leuk geluidje laten horen
+						navigator.notification.beep(1);
+
+	          // Laten weten dat we het bericht ontvangen hebben
+	          connection.send(JSON.stringify({ gotMessage: json.data }));
 	        } else if (json.type === 'update') {
 
 	        	if(json.counter < 26) {
@@ -133,13 +136,13 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 		        	$scope.$apply();
 		        } else if(json.counter === 26 && $scope.status === 'hidden') {
 		        	alert('You can see '+$scope.herName+'\'s pictures!');
-		        }	
+		        }
 
 	        } else {
 	            console.log('Hmm..., I\'ve never seen JSON like this: ', json);
 	        }
 	    };
-	 
+
 	    // Als er op enter gedrukt is: verstuur bericht
 	    input.keydown(function(e) {
 	        if (e.keyCode === 13) {
@@ -149,7 +152,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	            $(this).val('');
 	        }
 	    });
-	 
+
 	    // Error laten zien als de verbinding met de server is weggevallen
 	    setInterval(function() {
 	        if (connection.readyState !== 1) {
@@ -159,7 +162,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	    var monthNames = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
-	 
+
 	    // DOM bewerkingsfunctie: message toevoegen
 	    function addMessage(id, author, message, timeOri) {
 	        var className = '';
