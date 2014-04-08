@@ -26,8 +26,6 @@
     <preference name="android-installLocation"    value="auto" />
 
     <!-- Plugins -->
-    <gap:plugin name="org.apache.cordova.geolocation" />
-    <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
 
@@ -51,7 +49,6 @@
 
     <gap:config-file platform="android" parent="/manifest">
     	<application android:theme="@android:style/Theme.Holo.Light.NoActionBar "></application>
-      <item name="android:windowTranslucentStatus">true</item>
     </gap:config-file>
 
     <access origin="*"/>
