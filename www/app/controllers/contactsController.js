@@ -20,5 +20,5 @@ app.controller("contactsController", function($scope, $location, loginFactory){
 //		alert(id);
 		$location.path('/chat/'+id+'/'+name);
 	}
-	
+
 });

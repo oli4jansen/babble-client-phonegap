@@ -17,7 +17,7 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                 }
         	}).error(function(data) {
                 $scope.status = $sce.trustAsHtml('Something went wrong.');
-                alert(JSON.stringify(data));
+                alert('Woops:'+JSON.stringify(data));
             });
         }
     };
@@ -70,7 +70,7 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
             $scope.status = $sce.trustAsHtml('<div class="loader"><span class="loaderA"></span><span class="loaderMain"></span><span class="loaderB"></span></div>Looking for people');
             feedFactory.getFeed(loginFactory.accessToken, $scope.feed.length, loginFactory.userId, loginFactory.userInfo.gender, loginFactory.userInfo.likeMen, loginFactory.userInfo.likeWomen, loginFactory.userInfo.latitude, loginFactory.userInfo.longitude, loginFactory.userInfo.searchRadius).success(function(data) {
                 $scope.status = $sce.trustAsHtml('');
-                // Ga elk resultaat langs en push het naar $scope.feed 
+                // Ga elk resultaat langs en push het naar $scope.feed
                 if(data.status === '200') {
                     $scope.feed = $scope.parseFeed(data.data);
                     for(var key in data) {
@@ -111,13 +111,13 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                         $(".button-holder .like").removeClass("selected");
                         $(".button-holder .dislike").removeClass("selected");
                     }
-                    
+
                     break;
 
             case 'release':
                     // more then 50% moved, navigate
                     if(Math.abs(ev.gesture.deltaX) > border) {
-                        
+
                         var user = $scope.feed[0];
 
                         if(ev.gesture.direction == 'left') {
