@@ -41,7 +41,7 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 
 	$scope.chosenDate = '01/01/1985';
 
-	$scope.pickData = function() {
+	$scope.pickDate = function() {
 		datePicker.show({ date: new Date(), mode: 'date' }, function(date){
 			$scope.chosenData = date;
 		});
