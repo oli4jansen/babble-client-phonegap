@@ -27,7 +27,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 				if(data.status === '200') {
 					alert('Your settings are saved!');
 				}else{
-					alert('The server didn\'t accept your request.');	
+					alert('The server didn\'t accept your request.');
 				}
 			}
 		});

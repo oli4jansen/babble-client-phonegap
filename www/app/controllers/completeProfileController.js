@@ -37,7 +37,15 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 				}
 			}
 		});
-	}
+	};
+
+	$scope.chosenDate = '01/01/1985';
+
+	$scope.pickData = function() {
+		datePicker.show({ date: new Date(), mode: 'date' }, function(date){
+			$scope.chosenData = date;
+		});
+	};
 
 	$scope.deleteAccount = function() {
 		if(confirm('Are you sure you want to delete your account and sign out?')){
