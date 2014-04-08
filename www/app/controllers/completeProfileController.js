@@ -13,7 +13,9 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 	};
 
 	$scope.start = function() {
-		$scope.status = factory.authenticationStatus;
+		$scope.status = loginFactory.authenticationStatus;
+		$scope.$apply();
+
 		var formData = $('#completeProfileForm').serializeArray();
 
 		var parsedData = {};
