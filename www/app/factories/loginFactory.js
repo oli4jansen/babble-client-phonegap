@@ -65,7 +65,6 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 		factory.authenticationStatus = 'Please wait..';
 		// POST de data naar het API endpoint
 		$http.post(URL + '/user/authenticate', data).success(function(data) {
-			factory.authenticationStatus = 'Start Babbling';
 			if(data.status === 200) {
 				// Status 200 betekent:
 				//   -  gebruiker bestaat en accessToken is geldig en bijgewerkt
@@ -109,6 +108,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 				// Doorsturen naar een scherm om extra info in te voeren
 				$location.path('/completeProfile');
 			}else if(data.status === 500 && data.data !== undefined) {
+				factory.authenticationStatus = 'Try again';
 				navigator.notification.alert(data.data, function(){return;}, 'Woops..');
 			}else{
 				// Dit antwoord kennen we niet van de server, er is iets mis.
