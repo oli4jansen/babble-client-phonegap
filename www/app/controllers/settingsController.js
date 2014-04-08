@@ -25,16 +25,16 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 				alert(err);
 			}else{
 				if(data.status === '200') {
-					alert('Your settings are saved!');
+					navigator.notification.alert('Your settings were successfully saved.', function(){return;}, 'Saved!');
 				}else{
-					alert('The server didn\'t accept your request.');
+					navigator.notification.alert('Our server didn\'t accept your request.', function(){return;}, 'Uhoh..');
 				}
 			}
 		});
 	}
 
 	$scope.deleteAccount = function() {
-		if(confirm("Confirm that you want to delete your account.")) {
+		navigator.notification.confirm("Confirm that you want to delete your account.", function(){
 			loginFactory.deleteAccount(function(err, data){
 				if(!err) {
 					if(data.status !== '200') {
@@ -46,7 +46,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 					alert(err);
 				}
 			});
-		}
+		}, 'Are you sure?');
 	}
 
 });
