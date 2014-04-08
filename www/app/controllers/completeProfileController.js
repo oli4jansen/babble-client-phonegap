@@ -1,7 +1,7 @@
 app.controller("completeProfileController", function($scope, $location, loginFactory){
 
 	$scope.user = {name: 'Loading..'}
-	$scope.status = 'Start Babbling';
+	$scope.status = loginFactory.authenticationStatus;
 
 	$scope.init = function() {
 		$('.header h1').html("Complete profile");
@@ -13,8 +13,6 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 	};
 
 	$scope.start = function() {
-		$scope.status = loginFactory.authenticationStatus;
-		$scope.$apply();
 
 		var formData = $('#completeProfileForm').serializeArray();
 
