@@ -50,7 +50,7 @@
     <gap:splash src="res/screen/android/drawable-xxhdpi/splash.9.png"  gap:platform="android" gap:density="xxhdpi" />
 
     <gap:config-file platform="android" parent="/manifest">
-    	<application android:theme="@android:style/Theme.Holo.Light"></application>
+    	<application android:theme="@android:style/Theme.Holo.Light.NoActionBar "></application>
       <item name="android:windowTranslucentStatus">true</item>
     </gap:config-file>
 

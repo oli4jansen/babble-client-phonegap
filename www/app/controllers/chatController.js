@@ -153,6 +153,11 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	        }
 	    });
 
+			input.focus(function() {
+				var n = $('#content').height();
+				$('.ng-scope').animate({ scrollTop: n }, 100);
+			});
+
 	    // Error laten zien als de verbinding met de server is weggevallen
 	    setInterval(function() {
 	        if (connection.readyState !== 1) {
@@ -165,19 +170,18 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	    // DOM bewerkingsfunctie: message toevoegen
 	    function addMessage(id, author, message, timeOri) {
-	        var className = '';
-	        time = new Date(timeOri);
-	        if(author === myName)
-	            className = 'myMessage';
-	        content.append('<div id="'+id+'" class="chatMessage '+ className +'"" style="opacity: 0;">'
+	    	var className = '';
+	      time = new Date(timeOri);
+	      if(author === myName) className = 'myMessage';
+	      content.append('<div id="'+id+'" class="chatMessage '+ className +'"" style="opacity: 0.1;">'
 	             + '<span>' + message + '<small>'
- 	             + time.getDate() + ' ' + monthNames[time.getMonth()] + ' ' + (time.getHours() < 10 ? '0' + time.getHours() : time.getHours()) + ':'
+ 	            + time.getDate() + ' ' + monthNames[time.getMonth()] + ' ' + (time.getHours() < 10 ? '0' + time.getHours() : time.getHours()) + ':'
 	             + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes())+'</small></span></div>');
 
   			var n = $('#content').height();
-			$('.ng-scope').animate({ scrollTop: n }, 0, function() {
-				$('.chatMessage#'+id).animate({opacity: 1}, 150);
-			});
+				$('.ng-scope').animate({ scrollTop: n }, 0, function() {
+					$('.chatMessage#'+id).animate({opacity: 1}, 150);
+				});
 	    }
 
 	    function refreshDOM() {
