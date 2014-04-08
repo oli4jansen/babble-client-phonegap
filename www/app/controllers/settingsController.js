@@ -34,18 +34,20 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	}
 
 	$scope.deleteAccount = function() {
-		navigator.notification.confirm("Confirm that you want to delete your account.", function(){
-			loginFactory.deleteAccount(function(err, data){
-				if(!err) {
-					if(data.status !== '200') {
-						alert('Something went wrong deleting your account from our database.');
+		navigator.notification.confirm("Confirm that you want to delete your account.", function(index){
+			if(index===1) {
+				loginFactory.deleteAccount(function(err, data){
+					if(!err) {
+						if(data.status !== '200') {
+							alert('Something went wrong deleting your account from our database.');
+						}else{
+							loginFactory.logOut();
+						}
 					}else{
-						loginFactory.logOut();
+						alert(err);
 					}
-				}else{
-					alert(err);
-				}
-			});
+				});
+			}
 		}, 'Are you sure?');
 	}
 
