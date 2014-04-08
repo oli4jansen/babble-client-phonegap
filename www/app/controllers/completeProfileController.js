@@ -13,7 +13,7 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 	};
 
 	$scope.start = function() {
-		$scope.status = 'Please wait..';
+		$scope.status = factory.authenticationStatus;
 		var formData = $('#completeProfileForm').serializeArray();
 
 		var parsedData = {};

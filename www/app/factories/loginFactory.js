@@ -57,11 +57,15 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 	 *	Babble API functions
 	 */
 
+  factory.authenticationStatus = 'Start Babbling';
+
 	// Authenticate een gebruiker bij de API
 	// Verplicht in data: { accessToken: (..) }
 	factory.authenticate = function(data) {
+		factory.authenticationStatus = 'Please wait..';
 		// POST de data naar het API endpoint
 		$http.post(URL + '/user/authenticate', data).success(function(data) {
+			factory.authenticationStatus = 'Start Babbling';
 			if(data.status === 200) {
 				// Status 200 betekent:
 				//   -  gebruiker bestaat en accessToken is geldig en bijgewerkt
