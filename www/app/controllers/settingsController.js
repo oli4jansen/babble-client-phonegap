@@ -42,6 +42,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 							alert('Something went wrong deleting your account from our database.');
 						}else{
 							loginFactory.logOut();
+							location.reload();
 						}
 					}else{
 						alert(err);

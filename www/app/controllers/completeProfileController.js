@@ -32,8 +32,10 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 			}else{
 				if(data.status === '200') {
 					location.reload();
+				}else if(data.status === '500' && data.data !== undefined) {
+					navigator.notification.alert(data.data, function(){return;}, 'Woops..');
 				}else{
-					alert('The server didn\'t accept your request.');
+					navigator.notification.alert('Our server didn\'t accept your request.', function(){return;}, 'Uhoh..');
 				}
 			}
 		});
