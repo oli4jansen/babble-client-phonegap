@@ -63,17 +63,6 @@
 		$(document).ready(function() {
 			// En de telefoon klaar is
 			document.addEventListener('deviceready', function onDeviceReady() {
-
-
-				function alertDismissed(index) {
-				    if(index !== 1) {
-							navigator.notification.alert('Je moet accepteren g.', function(){return;});
-						}
-				}
-
-				navigator.notification.confirm(
-					'Ben jij er klaar voor?', alertDismissed, 'We zijn er klaar voor.', ['JA!', 'Nah']);
-
 				// Start de Angular app
 				angular.bootstrap(document.getElementById("document"), ['Babble']);
 				// En laat de body zien
