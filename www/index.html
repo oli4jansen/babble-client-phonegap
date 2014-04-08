@@ -57,12 +57,25 @@
     <div class="container" ng-view></div>
 </body>
 </html>
-        
+
 	<script>
 		// Als het document klaar is met laden
 		$(document).ready(function() {
 			// En de telefoon klaar is
 			document.addEventListener('deviceready', function onDeviceReady() {
+
+				navigator.notification.beep(2);
+				function alertDismissed() {
+				    navigator.notification.beep(6);
+				}
+
+				navigator.notification.alert(
+				    'Device is ready!',  // message
+				    alertDismissed,         // callback
+				    'Yeah beaches',            // title
+				    'OK!'                  // buttonName
+				);
+
 				// Start de Angular app
 				angular.bootstrap(document.getElementById("document"), ['Babble']);
 				// En laat de body zien

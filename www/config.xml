@@ -37,6 +37,7 @@
     </gap:plugin>
 
     <gap:plugin name="com.ququplay.websocket.websocket" version="0.1.0" />
+    <gap:plugin name="org.apache.cordova.dialogs" version="0.2.6" />
 
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
@@ -48,10 +49,10 @@
     <gap:splash src="res/screen/android/drawable-xhdpi/splash.9.png"  gap:platform="android" gap:density="xhdpi" />
     <gap:splash src="res/screen/android/drawable-xxhdpi/splash.9.png"  gap:platform="android" gap:density="xxhdpi" />
 
-    <gap:config-file platform="android" parent="/manifest">
+<!--    <gap:config-file platform="android" parent="/manifest">
     	<application android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"></application>
       <item name="android:windowTranslucentStatus">true</item>
-    </gap:config-file>
+    </gap:config-file>-->
 
     <access origin="*"/>
 
