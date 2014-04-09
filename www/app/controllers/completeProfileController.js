@@ -1,7 +1,7 @@
 app.controller("completeProfileController", function($scope, $location, loginFactory){
 
 	$scope.user = {name: 'Loading..'}
-	$scope.status = loginFactory.authenticationStatus;
+	$scope.status = 'Start Babbling';
 
 	$scope.init = function() {
 		$('.header h1').html("Complete profile");
@@ -13,6 +13,8 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 	};
 
 	$scope.start = function() {
+
+		$scope.status = 'Please wait..';
 
 		var formData = $('#completeProfileForm').serializeArray();
 
@@ -26,7 +28,14 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 
 		parsedData.accessToken  = loginFactory.accessToken;
 
-		loginFactory.authenticate(parsedData);
+		loginFactory.authenticate(parsedData, function(err) {
+			if(!err) {
+				$scope.status = 'Logging you in..';
+				$location.path( "/feed" );
+			}else{
+				$scope.status = 'Start Babbling';
+			}
+		});
 	};
 
 	$scope.chosenDate = '1985/10/22';

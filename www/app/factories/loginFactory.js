@@ -61,7 +61,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 
 	// Authenticate een gebruiker bij de API
 	// Verplicht in data: { accessToken: (..) }
-	factory.authenticate = function(data) {
+	factory.authenticate = function(data, callback) {
 		factory.authenticationStatus = 'Please wait..';
 		// POST de data naar het API endpoint
 		$http.post(URL + '/user/authenticate', data).success(function(data) {
@@ -82,11 +82,19 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 				// Alle info van de gebruiker ophalen en instellen in de factory zodat deze beschikbaar is voor verschillende controllers
 				factory.getUserInfo(function(err, data) {
 					if(err) {
-						alert(err);
+						if(!callback) {
+							alert(err);
+						}else{
+							callback(err);
+						}
 					}else{
 						factory.userInfo = data;
-						// Shit is geregeld; doorsturen naar de feed.
-						$location.path( "/feed" );
+						// Shit is geregeld; doorsturen naar de feed
+						if(!callback) {
+							$location.path( "/feed" );
+						}else{
+							callback('');
+						}
 					}
 				});
 
@@ -108,15 +116,25 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 				// Doorsturen naar een scherm om extra info in te voeren
 				$location.path('/completeProfile');
 			}else if(data.status === 500 && data.data !== undefined) {
-				factory.authenticationStatus = 'Try again';
-				navigator.notification.alert(data.data, function(){return;}, 'Woops..');
+				if(!callback) {
+					navigator.notification.alert(data.data, function(){return;}, 'Woops..');
+				}else{
+					callback(data.data);
+				}
 			}else{
-				// Dit antwoord kennen we niet van de server, er is iets mis.
-				alert('Something went wrong while authenticating.');
+				if(!callback) {
+					navigator.notification.alert('Something went wrong while authenticating.', function(){return;}, 'Woops..');
+				}else{
+					callback('Something went wrong while authenticating.');
+				}
 			}
 		}).error(function(data){
 			// Verbinding maken met API is mislukt
-			alert('Couldn\'t connect to the API server: '+JSON.stringify(data));
+			if(!callback) {
+				navigator.notification.alert('Couldn\'t connect to the API server.', function(){return;}, 'Woops..');
+			}else{
+				callback('Couldn\'t connect to the API server.');
+			}
 		});
 	};
 
