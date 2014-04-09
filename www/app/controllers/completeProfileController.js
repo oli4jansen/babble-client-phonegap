@@ -33,6 +33,7 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 				$scope.status = 'Logging you in..';
 				$location.path( "/feed" );
 			}else{
+				navigator.notification.alert(err, function(){return;}, 'Woops..');
 				$scope.status = 'Start Babbling';
 			}
 		});
