@@ -91,7 +91,7 @@ app.directive('personCard', function() {
 
 						var vel = obj.velocity();
 						var rot = (vel.x)/10;
-						scope.rotate(obj.$el, rot);
+//						scope.rotate(obj.$el, rot);
 
 						if(obj.pos.x - obj.initialPosition.left > 100) {
 							$('.like-buttons .like').addClass('selected');
@@ -106,18 +106,19 @@ app.directive('personCard', function() {
 					},
 					stop: function(ev, obj){
 						scope.rotate(obj.$el, 0);
-						obj.$el.css('background', 'gray');
+						$('.like-buttons .like').removeClass('selected');
+						$('.like-buttons .dislike').removeClass('selected');
 
 						var vel = obj.velocity();
 
 						if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 100)) {
 							scope.$parent.$parent.like();
 							scope.$apply();
-							obj.$el.fadeOut(100);
+//							obj.$el.fadeOut(100);
 						}else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -100)) {
 							scope.$parent.$parent.dislike();
 							scope.$apply();
-							obj.$el.fadeOut(100);
+//							obj.$el.fadeOut(100);
 						}
 
 					}
