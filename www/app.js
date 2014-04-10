@@ -81,9 +81,9 @@ app.directive('babbleDraggable', function() {
 //					useCSSTranslation: false,
 					cssEaseDuration: 350,
 					revert: true,
-//					shouldPreventDefault: true,
-//					allowDragEventPropagation: false,
-/*					start: function(ev, obj){
+					shouldPreventDefault: true,
+					allowDragEventPropagation: false,
+					start: function(ev, obj){
 						obj.noCenter = false;
 					},
 					drag: function(ev, obj){
@@ -115,7 +115,7 @@ app.directive('babbleDraggable', function() {
 //							this.dislike();
 						}
 
-					}*/
+					}
 				});
 			});
 			scope.$on('$destroy', function() {
