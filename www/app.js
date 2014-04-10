@@ -80,6 +80,7 @@ app.directive('babbleDraggable', function() {
 		},
 		template: '<h2>{{card.name}}, {{card.age}}</h2><p>{{card.description}}</p><span class="half-width"><i class="ion-ios7-navigate-outline"></i> {{card.distance}}</span><span class="half-width"><i class="ion-ios7-people-outline"></i> {{card.mutualFriends.length}} mutual</span>',
 		link: function(scope, element, attrs) {
+			alert(JSON.stringify(scope.card));
 //			scope.$watch(attrs.myDirective, function(value) {
 				// Pep binden aan het element
 				element.pep({
