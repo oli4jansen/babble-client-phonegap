@@ -3,6 +3,7 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
     $scope.status = $sce.trustAsHtml('<div class="loader"><span class="loaderA"></span><span class="loaderMain"></span><span class="loaderB"></span></div>Looking for people');
 
     $scope.$watch('feed', function() {
+      alert('Feed is veranderd');
       $('.card').pep();
     });
 
