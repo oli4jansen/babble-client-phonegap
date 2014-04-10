@@ -20,6 +20,49 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                 alert('Woops:'+JSON.stringify(data));
             });
         }
+
+        $('.card').pep({
+          overlapFunction: false,
+          useCSSTranslation: false,
+          cssEaseDuration: 350,
+          revert: true,
+          shouldPreventDefault: true,
+          allowDragEventPropagation: false,
+          start: function(ev, obj){
+            obj.noCenter = false;
+          },
+          drag: function(ev, obj){
+            console.log(ev);
+
+            var vel = obj.velocity();
+            var rot = (vel.x)/10;
+            rotate(obj.$el, rot);
+
+            if(obj.pos.x - obj.initialPosition.left > 100) {
+              obj.$el.css('background', 'green');
+            }else if(obj.pos.x - obj.initialPosition.left < -100) {
+              obj.$el.css('background', 'red');
+            }else{
+              obj.$el.css('background', 'gray');
+            }
+          },
+          stop: function(ev, obj){
+            rotate(obj.$el, 0);
+            obj.$el.css('background', 'gray');
+
+            var vel = obj.velocity();
+
+            if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 100)) {
+//              alert('Liked');
+              this.like();
+            }else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -100)) {
+//              alert('Disliked');
+              this.dislike();
+            }
+
+          }
+        });
+
     };
 
     $scope.like = function() {
@@ -85,7 +128,7 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
         }
     };
 
-    $scope.handleGesture = function(ev) {
+/*    $scope.handleGesture = function(ev) {
         // disable browser scrolling
         ev.gesture.preventDefault();
         ev.preventDefault();
@@ -135,7 +178,17 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                     }
                     break;
         }
-    };
+    };*/
+
+    $scope.rotate = function rotate($obj, deg){
+      $obj.css({
+          "-webkit-transform": "rotate("+ deg +"deg)",
+             "-moz-transform": "rotate("+ deg +"deg)",
+              "-ms-transform": "rotate("+ deg +"deg)",
+               "-o-transform": "rotate("+ deg +"deg)",
+                  "transform": "rotate("+ deg +"deg)"
+        });
+    }
 
     $scope.$on('$destroy', function iVeBeenDismissed() {
         $('body').css("background-image", "none");
