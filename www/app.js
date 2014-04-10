@@ -81,8 +81,8 @@ app.directive('babbleDraggable', function() {
 //					useCSSTranslation: false,
 					cssEaseDuration: 350,
 					revert: true,
-//					shouldPreventDefault: true,
-//					allowDragEventPropagation: false,
+					shouldPreventDefault: true,
+					allowDragEventPropagation: false,
 					start: function(ev, obj){
 						obj.noCenter = false;
 					},
@@ -91,7 +91,7 @@ app.directive('babbleDraggable', function() {
 
 						var vel = obj.velocity();
 						var rot = (vel.x)/10;
-						rotate(obj.$el, rot);
+//						rotate(obj.$el, rot);
 
 						if(obj.pos.x - obj.initialPosition.left > 100) {
 							obj.$el.css('background', 'green');
