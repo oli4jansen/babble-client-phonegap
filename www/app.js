@@ -74,8 +74,6 @@ app.directive('personCard', function() {
 	return {
     restrict: 'EAC',
 		scope: {
-			like: '&likeFunction',
-			dislike: '&dislikeFunction',
 			card: '=personInfo'
 		},
 		template: '<h2>{{card.name}}, {{card.age}}</h2><p>{{card.description}}</p><span class="half-width"><i class="ion-ios7-navigate-outline"></i> {{card.distance}}</span><span class="half-width"><i class="ion-ios7-people-outline"></i> {{card.mutualFriends.length}} mutual</span>',
