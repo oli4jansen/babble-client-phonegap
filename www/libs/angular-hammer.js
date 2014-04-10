@@ -56,7 +56,7 @@
       return function (scope, element, attr) {
         var args = newScope.$eval(attr[hammerGesture]),
             tapHandler,
-            options = {drag_min_distance: 0},
+            options = {drag_min_distance: 0, prevent_default: true},
             instance;
 
         if (typeof args === 'undefined') {
@@ -68,7 +68,7 @@
         }
 
         instance = hammer(element[0], options);
-        
+
         console.log(element[0]);
 
         instance.on(gesture, function (e) {

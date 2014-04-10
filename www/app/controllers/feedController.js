@@ -22,14 +22,6 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
         }
     };
 
-    function touchHandlerDummy(e) {
-      e.preventDefault();
-      return false;
-    }
-    document.addEventListener("touchstart", touchHandlerDummy, false);
-    document.addEventListener("touchmove", touchHandlerDummy, false);
-    document.addEventListener("touchend", touchHandlerDummy, false);
-
     $scope.like = function() {
         var herId = $scope.feed[0].id;
         feedFactory.postLiked(loginFactory.userId, herId).success(function(data){
@@ -96,6 +88,7 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
     $scope.handleGesture = function(ev) {
         // disable browser scrolling
         ev.gesture.preventDefault();
+        ev.preventDefault();
 
         var border = 50;
 
