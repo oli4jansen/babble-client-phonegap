@@ -68,3 +68,12 @@ var app = angular.module('Babble', ['ngRoute', 'ngAnimate']).config(function($ro
 		}
     });
  });
+
+
+app.directive('babbleDraggable', function() {
+	return function(scope, element, attrs) {
+		scope.$watch(attrs.myDirective, function(value) {
+		    alert(attrs.id)
+		});
+	}
+});

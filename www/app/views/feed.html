@@ -1,7 +1,7 @@
 <div>
 	<div class="cards stack" id="feed">
 		<div id="feedStatus" ng-bind-html="status"></div>
-		<div class="card repeat-animation" id="{{card.id}}" ng-class="{current: $first}" ng-repeat="card in feed | filter: f">
+		<div class="card repeat-animation" id="{{card.id}}" babble-draggable ng-class="{current: $first}" ng-repeat="card in feed | filter: f">
 				<h2>{{card.name}}, {{card.age}}</h2>
 
 				<p>{{card.description}}</p>
