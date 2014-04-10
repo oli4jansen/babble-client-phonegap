@@ -81,9 +81,9 @@ app.directive('babbleDraggable', function() {
 					useCSSTranslation: false,
 					cssEaseDuration: 350,
 					revert: true,
-					shouldPreventDefault: true,
-					allowDragEventPropagation: false,
-					start: function(ev, obj){
+//					shouldPreventDefault: true,
+//					allowDragEventPropagation: false,
+/*					start: function(ev, obj){
 						obj.noCenter = false;
 					},
 					drag: function(ev, obj){
@@ -109,13 +109,13 @@ app.directive('babbleDraggable', function() {
 
 						if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 100)) {
 				//              alert('Liked');
-							this.like();
+//							this.like();
 						}else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -100)) {
 				//              alert('Disliked');
-							this.dislike();
+//							this.dislike();
 						}
 
-					}
+					}*/
 				});
 			});
 			scope.$on('$destroy', function() {
