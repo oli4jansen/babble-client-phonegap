@@ -105,7 +105,7 @@ app.directive('personCard', function() {
 						}
 					},
 					stop: function(ev, obj){
-						scope.rotate(obj.$el, 0);
+//						scope.rotate(obj.$el, 0);
 						$('.like-buttons .like').removeClass('selected');
 						$('.like-buttons .dislike').removeClass('selected');
 
