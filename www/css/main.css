@@ -1,27 +1,27 @@
 @font-face {
 	font-family: "Roboto";
-	src: url("../fonts/Roboto-Regular.ttf") format("opentype");   
+	src: url("../fonts/Roboto-Regular.ttf") format("opentype");
 }
 @font-face {
 	font-family: "Roboto Condensed";
-	src: url("../fonts/RobotoCondensed-Regular.ttf") format("opentype");   
+	src: url("../fonts/RobotoCondensed-Regular.ttf") format("opentype");
 }
 @font-face {
 	font-family: "Roboto Condensed Light";
-	src: url("../fonts/RobotoCondensed-Light.ttf") format("opentype");   
+	src: url("../fonts/RobotoCondensed-Light.ttf") format("opentype");
 }
 
 * {
 	margin: 0;
     padding: 0;
-    
+
     -webkit-font-smoothing: antialiased;
-    
+
     /* The better box model */
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    
+
     /* Fixing iOS/Win8 text fails */
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -351,6 +351,19 @@ body.popup .container {
 			text-decoration: none;
 			color: #4c4c4c;
 		}
+		#feed .card {
+		  animation: animationKeepDOMActive 1s infinite;
+		  -webkit-animation: animationKeepDOMActive 1s infinite;
+			box-shadow: 0 2px 5px rgba(40, 162, 214, 0.5);
+		}
+		@keyframes animationKeepDOMActive {
+		  0%   { opacity: 1; }
+		  100% { opacity: 1; }
+		}
+		@-webkit-keyframes animationKeepDOMActive {
+			0%   { opacity: 1; }
+			100% { opacity: 1; }
+		}
 
 	.container > div > .button-holder {
 		position: fixed;
@@ -489,7 +502,7 @@ body.popup .container {
    			-webkit-transform: rotate(-10deg);
    			background-color: #4956de;
 		}
-		#popup .images .image2 { 
+		#popup .images .image2 {
 			left: 50%;
    			-webkit-transform: rotate(10deg);
    			background-color: #d94c30;

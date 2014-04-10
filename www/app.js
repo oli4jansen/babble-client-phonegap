@@ -76,9 +76,8 @@ app.directive('babbleDraggable', function() {
 		link: function(scope, element, attrs) {
 			scope.$watch(attrs.myDirective, function(value) {
 
-//				console.log(element);
-				alert(element[0].id);
-				element.pep('#'+element[0].id);
+				element.pep();
+
 			});
 			scope.$on('$destroy', function() {
 				alert('DESTROY');
