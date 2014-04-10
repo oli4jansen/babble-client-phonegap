@@ -2,6 +2,10 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
 
     $scope.status = $sce.trustAsHtml('<div class="loader"><span class="loaderA"></span><span class="loaderMain"></span><span class="loaderB"></span></div>Looking for people');
 
+    $scope.$watch('feed', function() {
+      $('.card').pep();
+    });
+
 	// Als de pagina geladen wordt
     $scope.init = function() {
         $('.header h1').html("Babble");
@@ -12,9 +16,6 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                 $scope.status = $sce.trustAsHtml('');
                 if(data.status === '200') {
                     $scope.feed = $scope.parseFeed(data.data);
-                    $scope.feed.forEach(function(item){
-                      $('#'+item.id).pep();
-                    });
                 }else{
                     $scope.status = $sce.trustAsHtml('We couldn\'t find anyone near you.');
                 }
