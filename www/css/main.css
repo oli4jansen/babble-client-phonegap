@@ -356,6 +356,12 @@ body.popup .container {
 		  -webkit-animation: animationKeepDOMActive 1s infinite;
 			box-shadow: 0 2px 15px rgba(40, 162, 214, 0.5);
 		}
+		#feed .card:nth-child(1) {
+			z-index: 9999999999999;
+		}
+		#feed .card:nth-child(2) {
+			z-index: 99999999999;
+		}
 		@keyframes animationKeepDOMActive {
 		  0%   { opacity: 1; }
 		  100% { opacity: 1; }
