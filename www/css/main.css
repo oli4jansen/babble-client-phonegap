@@ -354,7 +354,7 @@ body.popup .container {
 		#feed .card {
 		  animation: animationKeepDOMActive 1s infinite;
 		  -webkit-animation: animationKeepDOMActive 1s infinite;
-			box-shadow: 0 2px 5px rgba(40, 162, 214, 0.5);
+			box-shadow: 0 2px 15px rgba(40, 162, 214, 0.5);
 		}
 		@keyframes animationKeepDOMActive {
 		  0%   { opacity: 1; }

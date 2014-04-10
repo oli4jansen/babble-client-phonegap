@@ -75,12 +75,52 @@ app.directive('babbleDraggable', function() {
     restrict: 'EAC',
 		link: function(scope, element, attrs) {
 			scope.$watch(attrs.myDirective, function(value) {
+				// Pep binden aan het element
+				element.pep({
+					overlapFunction: false,
+					useCSSTranslation: false,
+					cssEaseDuration: 350,
+					revert: true,
+					shouldPreventDefault: true,
+					allowDragEventPropagation: false,
+					start: function(ev, obj){
+						obj.noCenter = false;
+					},
+					drag: function(ev, obj){
+						console.log(ev);
 
-				element.pep();
+						var vel = obj.velocity();
+						var rot = (vel.x)/10;
+						rotate(obj.$el, rot);
 
+						if(obj.pos.x - obj.initialPosition.left > 100) {
+							obj.$el.css('background', 'green');
+						}else if(obj.pos.x - obj.initialPosition.left < -100) {
+							obj.$el.css('background', 'red');
+						}else{
+							obj.$el.css('background', 'gray');
+						}
+					},
+					stop: function(ev, obj){
+						rotate(obj.$el, 0);
+						obj.$el.css('background', 'gray');
+
+						var vel = obj.velocity();
+
+						if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 100)) {
+				//              alert('Liked');
+							this.like();
+						}else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -100)) {
+				//              alert('Disliked');
+							this.dislike();
+						}
+
+					}
+				});
 			});
 			scope.$on('$destroy', function() {
-				alert('DESTROY');
+				// Unbind pep van het element
+				$.pep.unbind(element);
 			});
 		}
 	}
