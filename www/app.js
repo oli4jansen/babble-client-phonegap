@@ -75,8 +75,7 @@ app.directive('babbleDraggable', function() {
     restrict: 'EAC',
 		link: function(scope, element, attrs) {
 			scope.$watch(attrs.myDirective, function(value) {
-				alert(element);
-				alert(JSON.stringify(element));
+
 				console.log(element);
 //				element.pep();
 			});
