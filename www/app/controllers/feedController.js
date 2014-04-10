@@ -12,6 +12,9 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                 $scope.status = $sce.trustAsHtml('');
                 if(data.status === '200') {
                     $scope.feed = $scope.parseFeed(data.data);
+                    $scope.feed.forEach(function(item){
+                      $('#'+item.id).pep();
+                    });
                 }else{
                     $scope.status = $sce.trustAsHtml('We couldn\'t find anyone near you.');
                 }
@@ -21,47 +24,47 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
             });
         }
 
-        $('.card').pep({
-          overlapFunction: false,
-          useCSSTranslation: false,
-          cssEaseDuration: 350,
-          revert: true,
-          shouldPreventDefault: true,
-          allowDragEventPropagation: false,
-          start: function(ev, obj){
-            obj.noCenter = false;
-          },
-          drag: function(ev, obj){
-            console.log(ev);
+/*{
+  overlapFunction: false,
+  useCSSTranslation: false,
+  cssEaseDuration: 350,
+  revert: true,
+  shouldPreventDefault: true,
+  allowDragEventPropagation: false,
+  start: function(ev, obj){
+    obj.noCenter = false;
+  },
+  drag: function(ev, obj){
+    console.log(ev);
 
-            var vel = obj.velocity();
-            var rot = (vel.x)/10;
-            rotate(obj.$el, rot);
+    var vel = obj.velocity();
+    var rot = (vel.x)/10;
+    rotate(obj.$el, rot);
 
-            if(obj.pos.x - obj.initialPosition.left > 100) {
-              obj.$el.css('background', 'green');
-            }else if(obj.pos.x - obj.initialPosition.left < -100) {
-              obj.$el.css('background', 'red');
-            }else{
-              obj.$el.css('background', 'gray');
-            }
-          },
-          stop: function(ev, obj){
-            rotate(obj.$el, 0);
-            obj.$el.css('background', 'gray');
+    if(obj.pos.x - obj.initialPosition.left > 100) {
+      obj.$el.css('background', 'green');
+    }else if(obj.pos.x - obj.initialPosition.left < -100) {
+      obj.$el.css('background', 'red');
+    }else{
+      obj.$el.css('background', 'gray');
+    }
+  },
+  stop: function(ev, obj){
+    rotate(obj.$el, 0);
+    obj.$el.css('background', 'gray');
 
-            var vel = obj.velocity();
+    var vel = obj.velocity();
 
-            if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 100)) {
+    if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 100)) {
 //              alert('Liked');
-              this.like();
-            }else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -100)) {
+      this.like();
+    }else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -100)) {
 //              alert('Disliked');
-              this.dislike();
-            }
+      this.dislike();
+    }
 
-          }
-        });
+  }
+}*/
 
     };
 
