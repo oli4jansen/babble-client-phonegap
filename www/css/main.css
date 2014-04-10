@@ -313,6 +313,10 @@ body.popup .container {
 			background-color: white;
 			box-shadow: none;
 		}
+
+		#feed.cards .card {
+			background-color: #acdff6;
+		}
 		#feed.cards .card:nth-child(2) {
 			margin: 10px 0 15px !important;
 			width: 100%;
