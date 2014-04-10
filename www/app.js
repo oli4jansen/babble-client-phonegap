@@ -75,11 +75,11 @@ app.directive('babbleDraggable', function() {
     restrict: 'EAC',
 		link: function(scope, element, attrs) {
 			scope.$watch(attrs.myDirective, function(value) {
-		  	alert(attrs.id)
-			}
+				alert(attrs.id);
+			});
 			scope.$on('$destroy', function() {
-        alert('DESTROY');
-      });
+				alert('DESTROY');
+			});
 		}
 	}
 });
