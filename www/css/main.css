@@ -313,6 +313,13 @@ body.popup .container {
 			background-color: white;
 			box-shadow: none;
 		}
+		#feed.cards .card:nth-child(2) {
+			margin: 10px 0 15px !important;
+			width: 100%;
+			background-color: white;
+			box-shadow: none !important;
+		}
+
 		.cards .card.current.transparent {
 			background-color: transparent;
 			color: white;
