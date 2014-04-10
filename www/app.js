@@ -73,6 +73,10 @@ var app = angular.module('Babble', ['ngRoute', 'ngAnimate']).config(function($ro
 app.directive('babbleDraggable', function() {
 	return {
     restrict: 'EAC',
+		scope: {
+			like: '&likeFunction',
+			dislike: '&dislikeFunction'
+		},
 		link: function(scope, element, attrs) {
 			scope.$watch(attrs.myDirective, function(value) {
 				// Pep binden aan het element
@@ -107,11 +111,9 @@ app.directive('babbleDraggable', function() {
 						var vel = obj.velocity();
 
 						if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 100)) {
-				//              alert('Liked');
-//							this.like();
+							scope.like();
 						}else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -100)) {
-				//              alert('Disliked');
-//							this.dislike();
+							scope.dislike();
 						}
 
 					}
