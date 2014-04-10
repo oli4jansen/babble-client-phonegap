@@ -81,8 +81,8 @@ app.directive('babbleDraggable', function() {
 					useCSSTranslation: false,
 					cssEaseDuration: 350,
 					revert: true,
-//					shouldPreventDefault: true,
-//					allowDragEventPropagation: false,
+					shouldPreventDefault: true,
+					allowDragEventPropagation: false,
 /*					start: function(ev, obj){
 						obj.noCenter = false;
 					},
