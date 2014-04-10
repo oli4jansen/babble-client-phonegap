@@ -30,6 +30,8 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
             }else if(data.data === 'match'){
                 $('body').addClass('popup');
                 $rootScope.popups.push({name: 'Je moeder', id: herId})
+            }else{
+              alert('response:'+JSON.stringify(data));
             }
         }).error(function(data){
             alert('Failed to like.');

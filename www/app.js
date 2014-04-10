@@ -90,7 +90,7 @@ app.directive('personCard', function() {
 						obj.noCenter = false;
 					},
 					drag: function(ev, obj){
-						console.log(ev);
+//						console.log(ev);
 
 						var vel = obj.velocity();
 						var rot = (vel.x)/10;
@@ -112,8 +112,12 @@ app.directive('personCard', function() {
 
 						if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 100)) {
 							scope.$parent.$parent.like();
+							scope.$apply();
+//							obj.$el.fadeOut(100);
 						}else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -100)) {
 							scope.$parent.$parent.dislike();
+							scope.$apply();
+//							obj.$el.fadeOut(100);
 						}
 
 					}
