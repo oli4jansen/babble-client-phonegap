@@ -1,5 +1,5 @@
 // Angular app aanmaken
-var app = angular.module('Babble', ['ngRoute', 'hammer', 'ngAnimate']).config(function($routeProvider) {
+var app = angular.module('Babble', ['ngRoute', 'ngAnimate']).config(function($routeProvider) {
 
 	// Routes opgeven
 	$routeProvider.when('/', {
