@@ -77,7 +77,6 @@ app.directive('babbleDraggable', function() {
 			scope.$watch(attrs.myDirective, function(value) {
 				// Pep binden aan het element
 				element.pep({
-					overlapFunction: false,
 //					useCSSTranslation: false,
 					cssEaseDuration: 350,
 					revert: true,
@@ -102,7 +101,7 @@ app.directive('babbleDraggable', function() {
 						}
 					},
 					stop: function(ev, obj){
-						rotate(obj.$el, 0);
+//						rotate(obj.$el, 0);
 						obj.$el.css('background', 'gray');
 
 						var vel = obj.velocity();
