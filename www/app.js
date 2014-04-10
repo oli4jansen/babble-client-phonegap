@@ -77,12 +77,12 @@ app.directive('babbleDraggable', function() {
 			scope.$watch(attrs.myDirective, function(value) {
 				// Pep binden aan het element
 				element.pep({
-					overlapFunction: false,
-					useCSSTranslation: false,
-					cssEaseDuration: 350,
+//					overlapFunction: false,
+//					useCSSTranslation: false,
+//					cssEaseDuration: 350,
 					revert: true,
-					shouldPreventDefault: true,
-					allowDragEventPropagation: false,
+//					shouldPreventDefault: true,
+//					allowDragEventPropagation: false,
 /*					start: function(ev, obj){
 						obj.noCenter = false;
 					},
