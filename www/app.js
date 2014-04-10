@@ -78,7 +78,7 @@ app.directive('babbleDraggable', function() {
 				// Pep binden aan het element
 				element.pep({
 					overlapFunction: false,
-					useCSSTranslation: false,
+//					useCSSTranslation: false,
 					cssEaseDuration: 350,
 					revert: true,
 //					shouldPreventDefault: true,
