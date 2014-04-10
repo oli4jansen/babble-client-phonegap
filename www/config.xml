@@ -4,12 +4,12 @@
         xmlns:gap     = "http://phonegap.com/ns/1.0"
         xmlns:android = "http://schemas.android.com/apk/res/android"
         id            = "nl.oli4jansen.babble"
-        version       = "0.0.2">
+        version       = "0.0.3">
 
     <name>Babble</name>
 
     <description>
-        Babble. Tinder meets Omegle. Alleen voor intellectuelen. Jwz.
+        Babble. Tinder zonder foto's. Foto's zichtbaar na 25 chatberichten. Yeah beaches.
     </description>
 
     <author href="http://oli4jansen.nl" email="oli4jansen.nl@gmail.com">
@@ -42,6 +42,8 @@
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
     <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
     <icon src="res/icon/android/icon-96-xhdpi.png"  gap:platform="android"    gap:density="xhdpi" />
+    <icon src="res/icon/android/icon-144-xxhdpi.png"  gap:platform="android"    gap:density="xxhdpi" />
+    <icon src="res/icon/android/icon-192-xxxhdpi.png"  gap:platform="android"    gap:density="xxxhdpi" />
 
     <gap:splash src="res/screen/android/drawable-mdpi/splash.9.png"  gap:platform="android" gap:density="mdpi" />
     <gap:splash src="res/screen/android/drawable-hdpi/splash.9.png"  gap:platform="android" gap:density="hdpi" />
