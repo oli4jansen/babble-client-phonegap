@@ -111,9 +111,9 @@ app.directive('personCard', function() {
 						var vel = obj.velocity();
 
 						if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 100)) {
-							scope.$parent.likeFunction();
+							scope.$parent.$parent.like();
 						}else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -100)) {
-							scope.$parent.dislikeFunction();
+							scope.$parent.$parent.dislike();
 						}
 
 					}
