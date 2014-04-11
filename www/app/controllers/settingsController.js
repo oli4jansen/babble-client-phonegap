@@ -39,10 +39,9 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	}
 
 	$scope.deleteAccount = function() {
+		$scope.deleteButtonStatus = 'Waiting..';
 		navigator.notification.confirm("Confirm that you want to delete your account.", function(index){
 			if(index===1) {
-				$scope.deleteButtonStatus = 'Deleting..';
-
 				loginFactory.deleteAccount(function(err, data){
 					$scope.deleteButtonStatus = 'Delete and sign out';
 
@@ -50,13 +49,15 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 						if(data.status !== '200') {
 							navigator.notification.alert('Something went wrong while deleting your account from our database.', function(){return;}, 'Error');
 						}else{
-							navigator.notification.alert('Your account successfully deleted.', function(){return;}, 'Deleted!');
+							navigator.notification.alert('Your account was successfully deleted.', function(){return;}, 'Deleted!');
 							loginFactory.logOut();
 						}
 					}else{
 						alert(err);
 					}
 				});
+			}else{
+				$scope.deleteButtonStatus = 'Delete and sign out';
 			}
 		}, 'Are you sure?');
 	}
