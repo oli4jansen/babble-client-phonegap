@@ -1,6 +1,8 @@
 app.controller("settingsController", function($scope, $location, $route, $rootScope, loginFactory){
 
-	$scope.user = {name: ''}
+	$scope.user = {name: ''};
+	$scope.updateButtonStatus = 'Update';
+	$scope.deleteButtonStatus = 'Delete and sign out';
 
 	$scope.init = function() {
 		$('.header h1').html("Settings");
@@ -19,8 +21,11 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	};
 
 	$scope.update = function() {
+		$scope.updateButtonStatus = 'Updating..';
+
 		var formData = $('#settingsForm').serializeArray();
 		loginFactory.updateUserInfo(formData, function(err, data) {
+			$scope.updateButtonStatus = 'Update';
 			if(err) {
 				alert(err);
 			}else{
@@ -36,13 +41,17 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	$scope.deleteAccount = function() {
 		navigator.notification.confirm("Confirm that you want to delete your account.", function(index){
 			if(index===1) {
+				$scope.deleteButtonStatus = 'Deleting..';
+
 				loginFactory.deleteAccount(function(err, data){
+					$scope.deleteButtonStatus = 'Delete and sign out';
+
 					if(!err) {
 						if(data.status !== '200') {
-							alert('Something went wrong deleting your account from our database.');
+							navigator.notification.alert('Something went wrong while deleting your account from our database.', function(){return;}, 'Error');
 						}else{
+							navigator.notification.alert('Your account successfully deleted.', function(){return;}, 'Deleted!');
 							loginFactory.logOut();
-							location.reload();
 						}
 					}else{
 						alert(err);
