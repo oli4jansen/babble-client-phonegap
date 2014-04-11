@@ -4,7 +4,7 @@ app.directive('personCard', function() {
     scope: {
       card: '=personInfo'
     },
-    template: '<h2>{{card.name}}, {{card.age}}</h2><p>{{card.id}}</p><p>{{card.description}}</p><span class="half-width"><i class="ion-ios7-navigate-outline"></i> {{card.distance}}</span><span class="half-width"><i class="ion-ios7-people-outline"></i> {{card.mutualFriends.length}} mutual</span>',
+    template: '<h2>{{card.name}}, {{card.age}}</h2><p>{{card.description}}</p><span class="half-width"><i class="ion-ios7-navigate-outline"></i> {{card.distance}}</span><span class="half-width"><i class="ion-ios7-people-outline"></i> {{card.mutualFriends.length}} mutual</span>',
     link: function(scope, element, attrs) {
         // Pep binden aan het element
         element.pep({
@@ -39,11 +39,11 @@ app.directive('personCard', function() {
 
             var vel = obj.velocity();
 
-            if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 75)) {
+            if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 60)) {
               scope.$parent.$parent.like();
               scope.$apply();
 //							obj.$el.fadeOut(100);
-            }else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -75)) {
+            }else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -60)) {
               scope.$parent.$parent.dislike();
               scope.$apply();
 //							obj.$el.fadeOut(100);

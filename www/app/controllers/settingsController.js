@@ -44,6 +44,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 			if(index===1) {
 				loginFactory.deleteAccount(function(err, data){
 					$scope.deleteButtonStatus = 'Delete and sign out';
+					$scope.$apply();
 
 					if(!err) {
 						if(data.status !== '200') {
@@ -58,6 +59,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 				});
 			}else{
 				$scope.deleteButtonStatus = 'Delete and sign out';
+				$scope.$apply();
 			}
 		}, 'Are you sure?');
 	}
