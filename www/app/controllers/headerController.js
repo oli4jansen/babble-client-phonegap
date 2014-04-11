@@ -36,7 +36,7 @@ app.controller("headerController", function($scope, $location, $rootScope, $rout
 			}else{
 				$('.header .menu-item, .header .menu-item-back').fadeOut(0);
 			}
-			if(next.originalPath === '/') {
+			if(next.originalPath === '/' && current.originalPath === '/feed') {
 				navigator.app.exitApp();
 			}
 		});
