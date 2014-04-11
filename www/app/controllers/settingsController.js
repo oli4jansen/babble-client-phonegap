@@ -41,6 +41,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	$scope.deleteAccount = function() {
 		$scope.deleteButtonStatus = 'Waiting..';
 		navigator.notification.confirm("Confirm that you want to delete your account.", function(index){
+			alert('Your answer was:'+index);
 			if(index===1) {
 				$scope.deleteButtonStatus = 'Deleting..';
 				$scope.$apply();
