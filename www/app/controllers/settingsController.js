@@ -38,40 +38,17 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 		});
 	}
 
-/*	$scope.deleteAccountConfirmed = function() {
-		loginFactory.deleteAccount(function(err, data){
-
-			alert('Callback called');
-
-			$scope.deleteButtonStatus = 'Delete and sign out';
-
-			if(!err) {
-				if(data.status !== '200') {
-					navigator.notification.alert('Something went wrong while deleting your account from our database.', function(){return;}, 'Error');
-				}else{
-					navigator.notification.alert('Your account was successfully deleted.', function(){return;}, 'Deleted!');
-					loginFactory.loggedIn = 0;
-					loginFactory.logOut();
-				}
-			}else{
-				alert(err);
-			}
-		});
-	};*/
-
 	$scope.deleteAccount = function() {
 		$scope.deleteButtonStatus = 'Deleting..';
 
 		loginFactory.deleteAccount(function(err, data){
 
-			alert('Callback called');
-
-			$scope.deleteButtonStatus = 'Delete and sign out';
-
 			if(!err) {
 				if(data.status !== '200') {
+					$scope.deleteButtonStatus = 'Delete and sign out';
 					navigator.notification.alert('Something went wrong while deleting your account from our database.', function(){return;}, 'Error');
 				}else{
+					$scope.deleteButtonStatus = 'Deleted';
 					navigator.notification.alert('Your account was successfully deleted.', function(){return;}, 'Deleted!');
 					loginFactory.loggedIn = 0;
 					loginFactory.logOut();
