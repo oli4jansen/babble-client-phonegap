@@ -362,9 +362,11 @@ body.popup .container {
 			text-decoration: none;
 			color: #4c4c4c;
 		}
+		#feed .card.keepAlive {
+			animation: animationKeepDOMActive 1s infinite;
+			-webkit-animation: animationKeepDOMActive 1s infinite;
+		}
 		#feed .card {
-		  animation: animationKeepDOMActive 1s infinite;
-		  -webkit-animation: animationKeepDOMActive 1s infinite;
 			box-shadow: 0 2px 15px rgba(40, 162, 214, 0.5);
 		}
 		#feed .card:nth-child(1) {

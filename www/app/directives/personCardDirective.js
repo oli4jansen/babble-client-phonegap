@@ -9,10 +9,10 @@ app.directive('personCard', function() {
         // Pep binden aan het element
         element.pep({
           cssEaseDuration: 350,
-          cssEaseString: 'cubic-bezier(0.680, -0.550, 0.265, 1.550)',
           revert: true,
           start: function(ev, obj){
             obj.noCenter = false;
+            obj.$el.addClass('keepAlive');
           },
           drag: function(ev, obj){
             if(obj.pos.x - obj.initialPosition.left > 100) {
@@ -26,7 +26,7 @@ app.directive('personCard', function() {
               $('.like-buttons .dislike').removeClass('selected');
             }
           },
-          stop: function(ev, obj){
+          stop: function(ev, obj) {
             $('.like-buttons .like').removeClass('selected');
             $('.like-buttons .dislike').removeClass('selected');
 
@@ -39,21 +39,15 @@ app.directive('personCard', function() {
               scope.$parent.$parent.dislike();
               scope.$apply();
             }
+          },
+          rest: function(ev, obj) {
+            obj.$el.removeClass('keepAlive');
           }
         });
       scope.$on('$destroy', function() {
         // Unbind pep van het element
         $.pep.unbind(element);
       });
-      scope.rotate = function rotate($obj, deg){
-        $obj.css({
-            "-webkit-transform": "rotate("+ deg +"deg)",
-               "-moz-transform": "rotate("+ deg +"deg)",
-                "-ms-transform": "rotate("+ deg +"deg)",
-                 "-o-transform": "rotate("+ deg +"deg)",
-                    "transform": "rotate("+ deg +"deg)"
-          });
-      };
     }
   }
 });
