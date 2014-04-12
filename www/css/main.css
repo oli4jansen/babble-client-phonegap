@@ -431,15 +431,15 @@ body.popup .container {
 
 .container.ng-enter,
 .container.ng-leave {
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease;
+    -webkit-transition: all .3s ease !important;
+    -moz-transition: all .3s ease !important;
+    -o-transition: all .3s ease !important;
+    transition: all .3s ease !important;
 }
-.container.ng-enter { opacity: 0; -webkit-transform: ; }
-.container.ng-enter-active { opacity: 1; }
-.container.ng-leave { opacity: 1; }
-.container.ng-leave-active { opacity: 0; }
+.container.ng-enter { opacity: 0 !important; }
+.container.ng-enter-active { opacity: 1 !important; }
+.container.ng-leave { opacity: 1 !important; }
+.container.ng-leave-active { opacity: 0 !important; }
 
 
 
