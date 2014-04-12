@@ -44,13 +44,11 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 			alert('Your answer was:'+index);
 			if(index===1) {
 				$scope.deleteButtonStatus = 'Deleting..';
-				$scope.$apply();
 				loginFactory.deleteAccount(function(err, data){
 
 					alert('Callback called');
 
 					$scope.deleteButtonStatus = 'Delete and sign out';
-					$scope.$apply();
 
 					if(!err) {
 						if(data.status !== '200') {
