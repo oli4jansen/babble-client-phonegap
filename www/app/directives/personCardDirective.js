@@ -6,15 +6,10 @@ app.directive('personCard', function() {
     },
     template: '<h2>{{card.name}}, {{card.age}}</h2><p>{{card.description}}</p><span class="half-width"><i class="ion-ios7-navigate-outline"></i> {{card.distance}}</span><span class="half-width"><i class="ion-ios7-people-outline"></i> {{card.mutualFriends.length}} mutual</span>',
     link: function(scope, element, attrs) {
-        var revert = true;
-
         // Pep binden aan het element
         element.pep({
           cssEaseDuration: 350,
           revert: true,
-          revertIf: function() {
-            return revert;
-          },
           start: function(ev, obj){
             obj.noCenter = false;
             obj.$el.addClass('keepAlive');
@@ -38,21 +33,15 @@ app.directive('personCard', function() {
             var vel = obj.velocity();
 
             if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 60)) {
-              $('.card').css({'-webkit-perspective': '1000px', '-webkit-backface-visibility': 'hidden', 'transition': 'all 350ms cubic-bezier(0.19, 1, 0.22, 1)', '-webkit-transition': 'all 350ms cubic-bezier(0.19, 1, 0.22, 1)',
-'-webkit-transform': 'matrix(1, 0, 0, 1, 0, 0)'});
-              revert = false;
+              $('.card').animate({top: 0, left: 0}, 0);
 
               scope.$parent.$parent.like();
               scope.$apply();
             }else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -60)) {
-              $('.card').css({'-webkit-perspective': '1000px', '-webkit-backface-visibility': 'hidden', 'transition': 'all 350ms cubic-bezier(0.19, 1, 0.22, 1)', '-webkit-transition': 'all 350ms cubic-bezier(0.19, 1, 0.22, 1)',
-'-webkit-transform': 'matrix(1, 0, 0, 1, 0, 0)'});
-              revert = false;
+              $('.card').animate({top: 0, left: 0}, 0);
 
               scope.$parent.$parent.dislike();
               scope.$apply();
-            }else{
-              revert = true;
             }
           },
           rest: function(ev, obj) {

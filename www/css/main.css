@@ -257,8 +257,8 @@ body.popup .container {
 	}
 		.cards .card {
 			position: absolute;
-			top: 0 !important;
-			left: 0 !important;
+			top: 0;
+			left: 0;
 			padding: 0;
 			background-color: #fff;
 			color: #4c4c4c;
