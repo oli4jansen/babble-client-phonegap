@@ -9,7 +9,7 @@ app.directive('personCard', function() {
         // Pep binden aan het element
         element.pep({
           cssEaseDuration: 350,
-          revert: true,
+//          revert: true,
           start: function(ev, obj){
             obj.noCenter = false;
             obj.$el.addClass('keepAlive');
