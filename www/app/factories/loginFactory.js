@@ -122,6 +122,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 					callback(data.data);
 				}
 			}else{
+				factory.status = $sce.trustAsHtml('Sign in with Facebook <i class="ion-social-facebook-outline"></i>');
 				if(!callback) {
 					navigator.notification.alert('Something went wrong while authenticating.', function(){return;}, 'Woops..');
 				}else{
@@ -129,6 +130,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 				}
 			}
 		}).error(function(data){
+			factory.status = $sce.trustAsHtml('Sign in with Facebook <i class="ion-social-facebook-outline"></i>');
 			// Verbinding maken met API is mislukt
 			if(!callback) {
 				navigator.notification.alert('Couldn\'t connect to the API server.', function(){return;}, 'Woops..');
