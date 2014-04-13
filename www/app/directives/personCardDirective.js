@@ -38,14 +38,14 @@ app.directive('personCard', function() {
             var vel = obj.velocity();
 
             if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 60)) {
-              obj.$el.css({'left': '0', 'top': '0'});
+              obj.$el.css({'left': '0', 'top': '0', '-webkit-transform': 'none', 'transform': 'none'});
 
               revert = false;
 
               scope.$parent.$parent.like();
               scope.$apply();
             }else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -60)) {
-              obj.$el.css({'left': '0', 'top': '0'});
+              obj.$el.css({'left': '0', 'top': '0', '-webkit-transform': 'none', 'transform': 'none'});
 
               revert = false;
 
