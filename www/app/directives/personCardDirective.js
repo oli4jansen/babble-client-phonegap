@@ -33,9 +33,13 @@ app.directive('personCard', function() {
             var vel = obj.velocity();
 
             if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 60)) {
+              obj.$el.css('opacity', '.1');
+
               scope.$parent.$parent.like();
               scope.$apply();
             }else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -60)) {
+              obj.$el.css('opacity', '.1');
+
               scope.$parent.$parent.dislike();
               scope.$apply();
             }
