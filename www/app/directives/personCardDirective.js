@@ -6,10 +6,14 @@ app.directive('personCard', function() {
     },
     template: '<h2>{{card.name}}, {{card.age}}</h2><p>{{card.description}}</p><span class="half-width"><i class="ion-ios7-navigate-outline"></i> {{card.distance}}</span><span class="half-width"><i class="ion-ios7-people-outline"></i> {{card.mutualFriends.length}} mutual</span>',
     link: function(scope, element, attrs) {
+        var revert = true;
+
         // Pep binden aan het element
         element.pep({
           cssEaseDuration: 350,
-//          revert: true,
+          revertIf: function() {
+            return revert;
+          },
           start: function(ev, obj){
             obj.noCenter = false;
             obj.$el.addClass('keepAlive');
@@ -35,16 +39,17 @@ app.directive('personCard', function() {
             if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 60)) {
               obj.$el.css('opacity', '.1');
 
+              revert = false;
+
               scope.$parent.$parent.like();
               scope.$apply();
             }else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -60)) {
               obj.$el.css('opacity', '.1');
 
+              revert = false;
+
               scope.$parent.$parent.dislike();
               scope.$apply();
-            }else{
-              obj.$el.css('left', obj.initialPosition.left+'px');
-              obj.$el.css('top', obj.initialPosition.top+'px');
             }
           },
           rest: function(ev, obj) {
