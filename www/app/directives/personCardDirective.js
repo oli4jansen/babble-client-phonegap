@@ -11,6 +11,7 @@ app.directive('personCard', function() {
         // Pep binden aan het element
         element.pep({
           cssEaseDuration: 350,
+          revert: true,
           revertIf: function() {
             return revert;
           },
@@ -37,14 +38,14 @@ app.directive('personCard', function() {
             var vel = obj.velocity();
 
             if(vel.x > 300 || (obj.pos.x - obj.initialPosition.left > 60)) {
-              obj.$el.css('opacity', '.1');
+              obj.$el.css({'left': '0', 'top': '0'});
 
               revert = false;
 
               scope.$parent.$parent.like();
               scope.$apply();
             }else if(vel.x < -300 || (obj.pos.x - obj.initialPosition.left < -60)) {
-              obj.$el.css('opacity', '.1');
+              obj.$el.css({'left': '0', 'top': '0'});
 
               revert = false;
 
