@@ -447,26 +447,21 @@ body.popup .container {
 
 .repeat-animation.ng-leave {
 	opacity: 1;
-	-webkit-transition: .15s linear all !important;
-	-moz-transition: .15s linear all !important;
-	-o-transition: .15s linear all !important;
-	transition: .15s linear all !important;
+	-webkit-transition: 1s linear all !important;
+	-moz-transition: 1s linear all !important;
+	-o-transition: 1s linear all !important;
+	transition: 1s linear all !important;
 }
-	.repeat-animation.ng-leave .card { -webkit-transform: rotate(0); }
 .repeat-animation.ng-leave.ng-leave-active { opacity: 0; }
-	.repeat-animation.ng-leave.ng-leave-active .card {	-webkit-transform: rotate(-5deg); }
 .repeat-animation.ng-enter {
-	-webkit-transform: rotate(5deg);
 	opacity: 0;
-	-webkit-transition: .15s linear all !important;
-	-moz-transition: .15s linear all !important;
-	-o-transition: .15s linear all !important;
-	transition: .15s linear all !important;
+	-webkit-transition: 1s linear all !important;
+	-moz-transition: 1s linear all !important;
+	-o-transition: 1s linear all !important;
+	transition: 1s linear all !important;
 }
-	.repeat-animation.ng-enter .card { -webkit-transform: rotate(5deg); }
 
 .repeat-animation.ng-enter.ng-leave-active { opacity: 1; }
-	.repeat-animation.ng-enter.ng-leave-active .card { -webkit-transform: rotate(0); }
 
 /*
 	POPUP
