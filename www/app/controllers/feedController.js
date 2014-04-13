@@ -72,9 +72,9 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                 $scope.status = $sce.trustAsHtml('');
                 // Ga elk resultaat langs en push het naar $scope.feed
                 if(data.status === '200') {
-                    $scope.feed = $scope.parseFeed(data.data);
-                    for(var key in data) {
-                        $scope.feed.push(data[key]);
+                    data.data = $scope.parseFeed(data.data);
+                    for(var key in data.data) {
+                        $scope.feed.push(data.data[key]);
                     }
                 }else{
                     $scope.status = $sce.trustAsHtml('We couldn\'t find anyone near you.');

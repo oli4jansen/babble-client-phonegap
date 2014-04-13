@@ -10,6 +10,7 @@ app.directive('personCard', function() {
         element.pep({
           cssEaseDuration: 350,
           revert: true,
+          useCSSTranslation: false,
           start: function(ev, obj){
             obj.noCenter = false;
             obj.$el.addClass('keepAlive');
