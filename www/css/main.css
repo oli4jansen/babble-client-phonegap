@@ -447,21 +447,21 @@ body.popup .container {
 
 .repeat-animation.ng-leave {
 	opacity: 1 !important;
-	-webkit-transition: 1s linear all !important;
-	-moz-transition: 1s linear all !important;
-	-o-transition: 1s linear all !important;
-	transition: 1s linear all !important;
+	-webkit-transition: .5s linear all !important;
+	-moz-transition: .5s linear all !important;
+	-o-transition: .5s linear all !important;
+	transition: .5s linear all !important;
 }
 .repeat-animation.ng-leave.ng-leave-active { opacity: 0 !important; }
 .repeat-animation.ng-enter {
 	opacity: 0 !important;
-	-webkit-transition: 10s linear all !important;
-	-moz-transition: 10s linear all !important;
-	-o-transition: 10s linear all !important;
-	transition: 10s linear all !important;
+	-webkit-transition: .5s linear all !important;
+	-moz-transition: .5s linear all !important;
+	-o-transition: .5s linear all !important;
+	transition: .5s linear all !important;
 }
 
-.repeat-animation.ng-enter.ng-leave-active { opacity: 1 !important; }
+.repeat-animation.ng-enter.ng-enter-active { opacity: 1 !important; }
 
 /*
 	POPUP

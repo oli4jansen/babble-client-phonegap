@@ -42,6 +42,9 @@ app.directive('personCard', function() {
 
               scope.$parent.$parent.dislike();
               scope.$apply();
+            }else{
+              obj.$el.css('left', obj.initialPosition.left+'px');
+              obj.$el.css('top', obj.initialPosition.top+'px');
             }
           },
           rest: function(ev, obj) {
