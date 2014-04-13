@@ -16,10 +16,10 @@ app.directive('personCard', function() {
             obj.$el.addClass('keepAlive');
           },
           drag: function(ev, obj){
-            if(obj.pos.x - obj.initialPosition.left > 100) {
+            if(obj.pos.x - obj.initialPosition.left > 60) {
               $('.like-buttons .like').addClass('selected');
               $('.like-buttons .dislike').removeClass('selected');
-            }else if(obj.pos.x - obj.initialPosition.left < -100) {
+            }else if(obj.pos.x - obj.initialPosition.left < -60) {
               $('.like-buttons .like').removeClass('selected');
               $('.like-buttons .dislike').addClass('selected');
             }else{
