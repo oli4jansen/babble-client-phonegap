@@ -447,18 +447,18 @@ body.popup .container {
 
 .repeat-animation.ng-leave {
 	opacity: 1 !important;
-	-webkit-transition: .5s linear all !important;
-	-moz-transition: .5s linear all !important;
-	-o-transition: .5s linear all !important;
-	transition: .5s linear all !important;
+	-webkit-transition: .25s linear all !important;
+	-moz-transition: .25s linear all !important;
+	-o-transition: .25s linear all !important;
+	transition: .25s linear all !important;
 }
 .repeat-animation.ng-leave.ng-leave-active { opacity: 0 !important; }
 .repeat-animation.ng-enter {
 	opacity: 0 !important;
-	-webkit-transition: .5s linear all !important;
-	-moz-transition: .5s linear all !important;
-	-o-transition: .5s linear all !important;
-	transition: .5s linear all !important;
+	-webkit-transition: .25s linear all !important;
+	-moz-transition: .25s linear all !important;
+	-o-transition: .25s linear all !important;
+	transition: .25s linear all !important;
 }
 
 .repeat-animation.ng-enter.ng-enter-active { opacity: 1 !important; }
