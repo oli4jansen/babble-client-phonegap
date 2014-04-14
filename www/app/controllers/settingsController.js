@@ -39,6 +39,10 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 		);
 	};
 
+	$scope.removePicture = function(index) {
+		alert(index);
+	};
+
 	$scope.selectPictureSuccess = function(imageUrl) {
     if(imageUrl.indexOf('content://') != -1 && imageUrl.indexOf("%3A") != -1){
       photo_split=imageUrl.split("%3A");
