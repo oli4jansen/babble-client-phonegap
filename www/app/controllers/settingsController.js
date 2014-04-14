@@ -20,16 +20,19 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 		});
 	};
 
+	$scope.pictures = [];
+
 	$scope.selectPicture = function() {
 		window.imagePicker.getPictures(
 			function(results) {
 				for (var i = 0; i < results.length; i++) {
-					$('#images').append('<img src="'+results[i]+'">');
+//					$('#images').append('<img src="'+results[i]+'">');
+					$scope.pictures.push({ url: results[i] });
 				}
 			}, function (error) {
 				console.log('Error: ' + error);
 			}, {
-				maximumImagesCount: 4,
+				maximumImagesCount: 1,
 				width: 300
 			}
 		);
