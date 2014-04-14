@@ -22,13 +22,18 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 
 	$scope.selectPicture = function() {
 
-		navigator.camera.getPicture($scope.selectPictureSuccess, $scope.selectPictureFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI, sourceType: source });
+		navigator.camera.getPicture($scope.selectPictureSuccess, $scope.selectPictureFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI, sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM });
 
 	};
 
 	$scope.selectPictureSuccess = function(imageData) {
 		var image = document.getElementById('myImage');
 		image.src = imageData;
+
+		window.plugins.Base64.encodeFile(filePath, function(base64){
+    	console.log('file base64 encoding: ' + base64);
+    });
+
 	};
 
 	$scope.selectPictureFail = function(message) {
