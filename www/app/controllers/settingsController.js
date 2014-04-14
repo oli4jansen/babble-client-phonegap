@@ -53,7 +53,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 		var image = document.getElementById('myImage');
 		image.src = imageUrl;
 
-		var options = new FileUploadOptions();
+/*		var options = new FileUploadOptions();
     options.fileKey="file";
     options.fileName=imageURI.substr(imageUrl.lastIndexOf('/')+1);
     options.mimeType="image/jpeg";
@@ -66,7 +66,21 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
     options.chunkedMode = false;
 
     var ft = new FileTransfer();
-    ft.upload(imageUrl, "http://192.168.10.61:8080/upload.php", win, fail, options);
+    ft.upload(imageUrl, "http://192.168.10.61:8080/upload.php", win, fail, options);*/
+
+		window.imagePicker.getPictures(
+	    function(results) {
+	        for (var i = 0; i < results.length; i++) {
+	            console.log('Image URI: ' + results[i]);
+	        }
+	    }, function (error) {
+	        console.log('Error: ' + error);
+	    }, {
+	        maximumImagesCount: 10,
+	        width: 800
+	    }
+	);
+
 	};
 
 	        function win(r) {

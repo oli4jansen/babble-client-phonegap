@@ -29,6 +29,7 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.camera" version="0.2.4" />
+    <gap:plugin name="org.apache.cordova.file" version="1.0.1" />
     <gap:plugin name="org.apache.cordova.file-transfer" version="0.4.2" />
 
     <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.4.0">
@@ -39,6 +40,8 @@
     <gap:plugin name="com.ququplay.websocket.websocket" version="0.1.0" />
     <gap:plugin name="org.apache.cordova.dialogs" version="0.2.6" />
     <gap:plugin name="com.dileep.plugins.datepicker" version="0.0.1" />
+
+    <gap:plugin name="com.synconset.imagepicker" version="1.0.1" />
 
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
