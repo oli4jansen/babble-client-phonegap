@@ -433,15 +433,15 @@ body.popup .container {
 
 .container.ng-enter,
 .container.ng-leave {
-    -webkit-transition: all .3s ease !important;
-    -moz-transition: all .3s ease !important;
-    -o-transition: all .3s ease !important;
-    transition: all .3s ease !important;
+    -webkit-transition: all .1s ease !important;
+    -moz-transition: all .1s ease !important;
+    -o-transition: all .1s ease !important;
+    transition: all .1s ease !important;
 }
 .container.ng-enter { opacity: 0 !important; }
 .container.ng-enter-active { opacity: 1 !important; }
-.container.ng-leave { opacity: 1 !important; }
-.container.ng-leave-active { opacity: 0 !important; }
+.container.ng-leave { opacity: 1 !important; -webkit-transform: scale(1); transform: scale(1); }
+.container.ng-leave-active { opacity: 0 !important; -webkit-transform: scale(1.5); transform: scale(1.5) }
 
 
 
