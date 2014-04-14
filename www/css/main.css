@@ -438,8 +438,8 @@ body.popup .container {
     -o-transition: all .1s ease !important;
     transition: all .1s ease !important;
 }
-.container.ng-enter { opacity: 0 !important; }
-.container.ng-enter-active { opacity: 1 !important; }
+.container.ng-enter { opacity: 0 !important; -webkit-transform: scale(1.5); transform: scale(1.5); }
+.container.ng-enter-active { opacity: 1 !important; -webkit-transform: scale(1); transform: scale(1); }
 .container.ng-leave { opacity: 1 !important; -webkit-transform: scale(1); transform: scale(1); }
 .container.ng-leave-active { opacity: 0 !important; -webkit-transform: scale(1.5); transform: scale(1.5) }
 
