@@ -447,20 +447,28 @@ body.popup .container {
 	vertical-align: top;
 	background-size: cover;
 	background-position: center;
-	width: 25%;
+	width: 23%;
 	height: 125px;
 	border-radius: 10px;
 	margin: 20px 1% 0;
+	color: white;
+	line-height: 125px;
+	font-size: 35px;
+	text-align: center;
+	font-weight: bold;
+	text-shadow: 0 0 25px rgba(0,0,0,0.85);
 }
 
 .form-section #images > button {
 	border: 3px dashed rgba(0,0,0,0.25);
 	background: transparent;
-	color: rgba(0,0,0,0.25);
+	color: rgba(0,0,0,0.25) !important;
 	font-weight: bold;
 	font-size: 35px;
 	border-radius: 10px;
 	text-align: center;
+	line-height: 24px !important;
+	text-shadow: none !important;
 }
 
 

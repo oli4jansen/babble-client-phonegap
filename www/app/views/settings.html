@@ -1,14 +1,13 @@
 <div ng-init="init()">
-   	<div class="cards relative">
+<!--   	<div class="cards relative">
    		<div class="card current name-card" id="userPicture"><h2 class="loader">{{user.name}}</h2></div>
-   	</div>
+   	</div>-->
 
 	<form action="" method="post" id="settingsForm">
 
     <div class="form-section">
-      <label class="section-header">Pictures</label>
 
-      <div id="images"><div style="background-image:url({{picture.url}})" ng-click="removePicture($index)" ng-repeat="picture in pictures"></div><button ng-click="selectPicture()" ng-class="{'hidden' : pictures.length>3">Upload a picture</button></div>
+      <div id="images"><div style="background-image:url({{picture.url}})" ng-click="removePicture($index)" ng-repeat="picture in pictures">-</div><button ng-click="selectPicture()" ng-class="{'hidden' : pictures.length>3">+</button></div>
 
     </div>
 
