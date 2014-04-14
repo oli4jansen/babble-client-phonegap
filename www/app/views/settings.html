@@ -8,9 +8,9 @@
     <div class="form-section">
       <label class="section-header">Pictures</label>
       <div id="images">
-        <img ng-src="image.url" ng-repeat="picture in pictures">
+        <img ng-src="picture.url" ng-repeat="picture in pictures">
       </div>
-      <label><button ng-click="selectPicture()" ng-disabled="pictures != undefined && pictures.length > 1">Upload a picture</button></label>
+      <label><button ng-click="selectPicture()" ng-disabled="pictures != undefined && pictures.length > 0">Upload a picture</button></label>
     </div>
 
     <div class="form-section">
