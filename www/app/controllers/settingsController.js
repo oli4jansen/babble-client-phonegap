@@ -20,6 +20,21 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 		});
 	};
 
+	$scope.selectPicture = function() {
+
+		navigator.camera.getPicture($scope.selectPictureSuccess, $scope.selectPictureFail, { quality: 50 });
+
+	};
+
+	$scope.selectPictureFail = function(imageData) {
+		var image = document.getElementById('myImage');
+		image.src = "data:image/jpeg;base64," + imageData;
+	};
+
+	$scope.selectPictureFail = function(message) {
+		alert('Failed because: ' + message);
+	};
+
 	$scope.update = function() {
 		$scope.updateButtonStatus = 'Updating..';
 

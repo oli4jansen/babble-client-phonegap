@@ -4,10 +4,18 @@
    	</div>
 
 	<form action="" method="post" id="settingsForm">
-		<div class="form-section">
-			<label class="section-header">Biography</label>
-		    <label><textarea name="description" rows="4" maxlength="140">{{user.description}}</textarea></label>
-		</div>
+
+    <img src="" id="myImage">
+
+    <div class="form-section">
+      <label class="section-header">Pictures</label>
+        <label><button ng-click="selectPicture()">Upload a picture</button></label>
+    </div>
+
+    <div class="form-section">
+      <label class="section-header">Biography</label>
+        <label><textarea name="description" rows="4" maxlength="140">{{user.description}}</textarea></label>
+    </div>
 
 		<div class="form-section">
 			<label class="section-header">Sexual orientation</label>
