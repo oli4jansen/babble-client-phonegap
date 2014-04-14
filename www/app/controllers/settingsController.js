@@ -21,9 +21,18 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	};
 
 	$scope.selectPicture = function() {
-
-		navigator.camera.getPicture($scope.selectPictureSuccess, $scope.selectPictureFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI, sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM });
-
+		window.imagePicker.getPictures(
+			function(results) {
+				for (var i = 0; i < results.length; i++) {
+					$('#images').append('<img src="'+results[i]+'">');
+				}
+			}, function (error) {
+				console.log('Error: ' + error);
+			}, {
+				maximumImagesCount: 4,
+				width: 300
+			}
+		);
 	};
 
 	$scope.selectPictureSuccess = function(imageUrl) {
@@ -67,20 +76,6 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 
     var ft = new FileTransfer();
     ft.upload(imageUrl, "http://192.168.10.61:8080/upload.php", win, fail, options);*/
-
-		window.imagePicker.getPictures(
-	    function(results) {
-	        for (var i = 0; i < results.length; i++) {
-	            console.log('Image URI: ' + results[i]);
-	        }
-	    }, function (error) {
-	        console.log('Error: ' + error);
-	    }, {
-	        maximumImagesCount: 10,
-	        width: 800
-	    }
-	);
-
 	};
 
 	        function win(r) {
