@@ -26,7 +26,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 
 	};
 
-	$scope.selectPictureFail = function(imageData) {
+	$scope.selectPictureSuccess = function(imageData) {
 		var image = document.getElementById('myImage');
 		image.src = "data:image/jpeg;base64," + imageData;
 	};
