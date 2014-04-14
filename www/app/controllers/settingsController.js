@@ -30,7 +30,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 
 					// upload
 					loginFactory.uploadPicture(results[i], function(err) {
-						alert('Couldn\'t upload.');
+						if(err) alert('Couldn\'t upload.');
 					});
 
 					$scope.$apply();

@@ -183,8 +183,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 		options.mimeType="image/jpeg";
 
 		var params = new Object();
-		params.value1 = "test";
-		params.value2 = "param";
+		params.fileName = options.fileName;
 
 		options.params = params;
 		options.chunkedMode = false;
