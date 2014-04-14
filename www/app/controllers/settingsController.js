@@ -26,12 +26,20 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 		window.imagePicker.getPictures(
 			function(results) {
 				for (var i = 0; i < results.length; i++) {
-//					$('#images').append('<img src="'+results[i]+'">');
 					$scope.pictures.push({ url: results[i] });
+
+					// upload
+					loginFactory.uploadPicture(results[i], function(err) {
+						alert('Couldn\'t upload.');
+					});
+
 					$scope.$apply();
 				}
+
+				// update picture locations
+
 			}, function (error) {
-				console.log('Error: ' + error);
+				alert('Couldn\'t get your photo.');
 			}, {
 				maximumImagesCount: 4 - $scope.pictures.length,
 				width: 300
@@ -42,49 +50,6 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	$scope.removePicture = function(index) {
 		$scope.pictures.splice(index, 1);
 		$scope.$apply;
-	};
-
-	$scope.selectPictureSuccess = function(imageUrl) {
-    if(imageUrl.indexOf('content://') != -1 && imageUrl.indexOf("%3A") != -1){
-      photo_split=imageUrl.split("%3A");
-    	imageUrl="content://media/external/images/media/"+photo_split[1];
-    }
-
-    var fileName = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
-    var extension;
-
-    if (imageUrl.indexOf('content://') != -1) {
-      if(imageUrl.lastIndexOf('.') > imageUrl.lastIndexOf('/')){
-        extension = imageUrl.substr(imageUrl.lastIndexOf('.') + 1);
-      }else{
-        extension = "jpg";
-      	fileName = fileName + ".jpg";
-      }
-    } else {
-      if (imageUrl.lastIndexOf('.') == -1 || (imageUrl.lastIndexOf('.') < imageUrl.lastIndexOf('/')) ) {
-      	extension = "invalid";
-      } else {
-        extension = imageUrl.substr(imageUrl.lastIndexOf('.') + 1);
-      }
-    }
-
-		var image = document.getElementById('myImage');
-		image.src = imageUrl;
-
-/*		var options = new FileUploadOptions();
-    options.fileKey="file";
-    options.fileName=imageURI.substr(imageUrl.lastIndexOf('/')+1);
-    options.mimeType="image/jpeg";
-
-    var params = new Object();
-    params.value1 = "test";
-    params.value2 = "param";
-
-    options.params = params;
-    options.chunkedMode = false;
-
-    var ft = new FileTransfer();
-    ft.upload(imageUrl, "http://192.168.10.61:8080/upload.php", win, fail, options);*/
 	};
 
 	$scope.update = function() {
