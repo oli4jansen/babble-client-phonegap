@@ -113,6 +113,9 @@ img { vertical-align: top; }
 .intro-text {
 	padding: 25px 25px 35px !important;
 }
+.hidden {
+	display: none;
+}
 
 textarea, input[type=text], input[type=number], input[type=date] {
 	display: block;

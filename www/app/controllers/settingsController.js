@@ -40,7 +40,8 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	};
 
 	$scope.removePicture = function(index) {
-		alert(index);
+		$scope.pictures.splice(index, 1);
+		$scope.$apply;
 	};
 
 	$scope.selectPictureSuccess = function(imageUrl) {
