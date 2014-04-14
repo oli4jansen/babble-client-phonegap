@@ -22,13 +22,13 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 
 	$scope.selectPicture = function() {
 
-		navigator.camera.getPicture($scope.selectPictureSuccess, $scope.selectPictureFail, { quality: 50 });
+		navigator.camera.getPicture($scope.selectPictureSuccess, $scope.selectPictureFail, { quality: 50, destinationType: destinationType.FILE_URI, sourceType: source });
 
 	};
 
 	$scope.selectPictureSuccess = function(imageData) {
 		var image = document.getElementById('myImage');
-		image.src = "data:image/jpeg;base64," + imageData;
+		image.src = imageData;
 	};
 
 	$scope.selectPictureFail = function(message) {
