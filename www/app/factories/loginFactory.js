@@ -179,7 +179,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 	factory.uploadPicture = function(imageUrl, callback) {
 		var options = new FileUploadOptions();
 		options.fileKey="file";
-		options.fileName=imageURI.substr(imageUrl.lastIndexOf('/')+1);
+		options.fileName=imageUrl.substr(imageUrl.lastIndexOf('/')+1);
 		options.mimeType="image/jpeg";
 
 		var params = new Object();
