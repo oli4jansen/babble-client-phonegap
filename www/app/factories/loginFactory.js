@@ -189,13 +189,16 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 		options.chunkedMode = false;
 
 		var ft = new FileTransfer();
-		ft.upload(imageUrl, "http://192.168.10.61:8080/upload.php", function(r){
-    	console.log("Code = " + r.responseCode);
-      console.log("Response = " + r.response);
-      console.log("Sent = " + r.bytesSent);
-      alert(r.response);
+		ft.upload(imageUrl, URL+"/user/"+factory.userId+"/picture", function(r){
 
-			callback(false);
+      console.log("Response = " + r.response);
+      console.log("Bytes Sent = " + r.bytesSent);
+
+			if(JSON.parse(r.response).status === '200') {
+				callback(false);
+			}else{
+				callback('Something went wrong while uploading your picture.');
+			}
 
 		}, function(err) {
 			callback(err.code);
