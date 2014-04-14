@@ -15,7 +15,6 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 					if(data.likeMen === 1) $('#checkboxMen').attr('checked', 'true');
 					if(data.likeWomen === 1) $('#checkboxWomen').attr('checked', 'true');
 					$scope.pictures.push({ url: data.picture });
-//					$('#userPicture').css('background-image', 'url('+data.picture+')').children('h2').removeClass('loader');
 				}
 			}
 		});
@@ -34,7 +33,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 			}, function (error) {
 				console.log('Error: ' + error);
 			}, {
-				maximumImagesCount: 1,
+				maximumImagesCount: 4 - $scope.pictures.length,
 				width: 300
 			}
 		);

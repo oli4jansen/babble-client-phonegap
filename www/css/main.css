@@ -453,10 +453,10 @@ body.popup .container {
 	margin: 20px 1% 0;
 	color: white;
 	line-height: 125px;
-	font-size: 35px;
+	font-size: 60px;
 	text-align: center;
 	font-weight: bold;
-	text-shadow: 0 0 25px rgba(0,0,0,0.85);
+	text-shadow: 0 2px 15px rgba(0,0,0,0.85);
 }
 
 .form-section #images > button {
@@ -464,7 +464,7 @@ body.popup .container {
 	background: transparent;
 	color: rgba(0,0,0,0.25) !important;
 	font-weight: bold;
-	font-size: 35px;
+	font-size: 40px !important;
 	border-radius: 10px;
 	text-align: center;
 	line-height: 24px !important;
