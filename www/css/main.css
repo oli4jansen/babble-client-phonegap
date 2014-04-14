@@ -438,15 +438,29 @@ body.popup .container {
 	display: none;
 }
 
-.form-section #images > *:nth-child(0),
 .form-section #images > *:nth-child(1),
 .form-section #images > *:nth-child(2),
-.form-section #images > *:nth-child(3) {
+.form-section #images > *:nth-child(3),
+.form-section #images > *:nth-child(4) {
 	display: inline-block;
+	border-radius: 5px;
 	vertical-align: top;
 	background-size: cover;
 	background-position: center;
 	width: 25%;
+	height: 125px;
+	border-radius: 10px;
+	margin: 20px 1% 0;
+}
+
+.form-section #images > button {
+	border: 3px dashed rgba(0,0,0,0.25);
+	background: transparent;
+	color: rgba(0,0,0,0.25);
+	font-weight: bold;
+	font-size: 35px;
+	border-radius: 10px;
+	text-align: center;
 }
 
 
