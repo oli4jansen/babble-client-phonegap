@@ -52,7 +52,33 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 
 		var image = document.getElementById('myImage');
 		image.src = imageUrl;
+
+		var options = new FileUploadOptions();
+    options.fileKey="file";
+    options.fileName=imageURI.substr(imageUrl.lastIndexOf('/')+1);
+    options.mimeType="image/jpeg";
+
+    var params = new Object();
+    params.value1 = "test";
+    params.value2 = "param";
+
+    options.params = params;
+    options.chunkedMode = false;
+
+    var ft = new FileTransfer();
+    ft.upload(imageUrl, "http://192.168.10.61:8080/upload.php", win, fail, options);
 	};
+
+	        function win(r) {
+            console.log("Code = " + r.responseCode);
+            console.log("Response = " + r.response);
+            console.log("Sent = " + r.bytesSent);
+            alert(r.response);
+        }
+
+        function fail(error) {
+            alert("An error has occurred: Code = " = error.code);
+        }
 
 
 	$scope.selectPictureFail = function(message) {
