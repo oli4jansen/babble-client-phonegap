@@ -26,15 +26,34 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 
 	};
 
-	$scope.selectPictureSuccess = function(imageData) {
+	$scope.selectPictureSuccess = function(imageUrl) {
+    if(imageUrl.indexOf('content://') != -1 && imageUrl.indexOf("%3A") != -1){
+      photo_split=imageUrl.split("%3A");
+    	imageUrl="content://media/external/images/media/"+photo_split[1];
+    }
+
+    var fileName = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
+    var extension;
+
+    if (imageUrl.indexOf('content://') != -1) {
+      if(imageUrl.lastIndexOf('.') > imageUrl.lastIndexOf('/')){
+        extension = imageUrl.substr(imageUrl.lastIndexOf('.') + 1);
+      }else{
+        extension = "jpg";
+      	fileName = fileName + ".jpg";
+      }
+    } else {
+      if (imageUrl.lastIndexOf('.') == -1 || (imageUrl.lastIndexOf('.') < imageUrl.lastIndexOf('/')) ) {
+      	extension = "invalid";
+      } else {
+        extension = imageUrl.substr(imageUrl.lastIndexOf('.') + 1);
+      }
+    }
+
 		var image = document.getElementById('myImage');
-		image.src = imageData;
-
-		window.plugins.Base64.encodeFile(filePath, function(base64){
-    	console.log('file base64 encoding: ' + base64);
-    });
-
+		image.src = imageUrl;
 	};
+
 
 	$scope.selectPictureFail = function(message) {
 		alert('Failed because: ' + message);
