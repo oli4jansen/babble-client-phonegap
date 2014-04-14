@@ -22,7 +22,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 
 	$scope.selectPicture = function() {
 
-		navigator.camera.getPicture($scope.selectPictureSuccess, $scope.selectPictureFail, { quality: 50, destinationType: destinationType.FILE_URI, sourceType: source });
+		navigator.camera.getPicture($scope.selectPictureSuccess, $scope.selectPictureFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI, sourceType: source });
 
 	};
 
