@@ -28,6 +28,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 				for (var i = 0; i < results.length; i++) {
 //					$('#images').append('<img src="'+results[i]+'">');
 					$scope.pictures.push({ url: results[i] });
+					$scope.$apply();
 				}
 			}, function (error) {
 				console.log('Error: ' + error);
