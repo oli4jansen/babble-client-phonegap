@@ -434,6 +434,23 @@ body.popup .container {
 	}
 
 
+.form-section #images > * {
+	display: none;
+}
+
+.form-section #images > *:nth-child(0),
+.form-section #images > *:nth-child(1),
+.form-section #images > *:nth-child(2),
+.form-section #images > *:nth-child(3) {
+	display: inline-block;
+	vertical-align: top;
+	background-size: cover;
+	background-position: center;
+	width: 25%;
+}
+
+
+
 .container.ng-enter,
 .container.ng-leave {
     -webkit-transition: all .1s ease !important;
