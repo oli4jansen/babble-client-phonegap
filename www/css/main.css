@@ -438,10 +438,29 @@ body.popup .container {
 	display: none;
 }
 
-.form-section #images > *:nth-child(1),
+.form-section #images > *:nth-child(1) {
+	display: block;
+	border-radius: 5px;
+	vertical-align: top;
+	background-size: cover;
+	background-position: center;
+	background-color: rgba(0,0,0,0.25);
+	width: 98%;
+	height: 250px;
+	border-radius: 10px;
+	margin: 10px 1% 0;
+	color: white;
+	line-height: 250px;
+	font-size: 60px;
+	text-align: center;
+	font-weight: bold;
+	text-shadow: 0 2px 15px rgba(0,0,0,0.25);
+}
+
 .form-section #images > *:nth-child(2),
 .form-section #images > *:nth-child(3),
-.form-section #images > *:nth-child(4) {
+.form-section #images > *:nth-child(4),
+.form-section #images > *:nth-child(5) {
 	display: inline-block;
 	border-radius: 5px;
 	vertical-align: top;
@@ -470,6 +489,7 @@ body.popup .container {
 	text-align: center;
 	line-height: 24px !important;
 	text-shadow: none !important;
+	padding: 0 !important;
 }
 
 .container.ng-enter,
