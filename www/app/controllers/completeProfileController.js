@@ -5,11 +5,9 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 
 	$scope.init = function() {
 		$('.header h1').html("Complete profile");
-		$('body').css("background-image", "none");
 
 		$scope.user = loginFactory.userPartialData;
-
-		$('#userPicture').css('background-image', 'url('+$scope.user.picture+')');
+		$scope.pictures = JSON.parse(loginFactory.userPartialData.pictureList);
 	};
 
 	$scope.start = function() {

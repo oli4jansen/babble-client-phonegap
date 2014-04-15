@@ -1,9 +1,11 @@
 <div ng-init="init()">
-   	<div class="cards relative">
-   		<div class="card current name-card" id="userPicture"><h2>{{user.name}}</h2></div>
-   	</div>
 
 	<form action="" method="post" id="completeProfileForm">
+
+    <div class="form-section">
+      <div id="images"><div style="background-image:url({{picture.url}})" ng-click="removePicture($index)" ng-repeat="picture in pictures">-</div><button ng-click="selectPicture()">+</button></div>
+    </div>
+
 		<div class="form-section">
 			<label class="section-header">Biography</label>
 		    <label><textarea name="description" rows="4" maxlength="140">{{user.description}}</textarea></label>
