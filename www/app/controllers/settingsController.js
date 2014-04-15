@@ -26,25 +26,33 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 		window.imagePicker.getPictures(
 			function(results) {
 				for (var i = 0; i < results.length; i++) {
-					$scope.pictures.push({ url: results[i] });
+
+					var fileNameIndex = results[i].lastIndexOf("/") + 1;
+					var fileName = results[i].substr(fileNameIndex);
+
+					$scope.pictures.push({ url: 'http://www.oli4jansen.nl:81/profile-pictures/'+factory.userId+'-'+fileName });
 
 					// upload
 					loginFactory.uploadPicture(results[i], function(err) {
 						alert('Photo '+i+' of '+results.length+' uploading..');
-						if(err) navigator.notification.alert('We\'re sorry but we couldn\'t upload your pictures.', function(){return;}, 'Couldn\'t upload.');
-						// Als dit de laatste foto was:
-						if(i === results.length) {
-							var picturesMirror = [];
+						if(!err) {
+							// Als dit de laatste foto was:
+							if(i === results.length) {
+								var picturesMirror = [];
 
-							for (var i = 0; i < $scope.pictures.length; i++) {
-								picturesMirror.push({ url: $scope.pictures[i].url });
+								for (var i = 0; i < $scope.pictures.length; i++) {
+									picturesMirror.push({ url: $scope.pictures[i].url });
+								}
+
+								loginFactory.updatePictureList(picturesMirror, function(err, data){
+									if(err) navigator.notification.alert(err, function(){return;}, 'Error!');
+								});
+							}else{
+								alert('Niet de laatste foto.');
 							}
-
-							loginFactory.updatePictureList(picturesMirror, function(err, data){
-								if(err) navigator.notification.alert(err, function(){return;}, 'Error!');
-							});
 						}else{
-							alert('Niet de laatste foto.');
+							console.log(err);
+							navigator.notification.alert('We\'re sorry but we couldn\'t upload your pictures.', function(){return;}, 'Couldn\'t upload.');
 						}
 					});
 
