@@ -42,7 +42,8 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 				alert('Couldn\'t get your photo.');
 			}, {
 				maximumImagesCount: 4 - $scope.pictures.length,
-				width: 300
+				width: 300,
+				height: 400
 			}
 		);
 	};

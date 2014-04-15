@@ -183,6 +183,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 		options.mimeType="image/jpeg";
 
 		var params = new Object();
+		params.accessToken = factory.accessToken;
 		params.fileName = options.fileName;
 
 		options.params = params;
