@@ -447,6 +447,7 @@ body.popup .container {
 	vertical-align: top;
 	background-size: cover;
 	background-position: center;
+	background-color: rgba(0,0,0,0.25);
 	width: 23%;
 	height: 125px;
 	border-radius: 10px;
@@ -456,12 +457,12 @@ body.popup .container {
 	font-size: 60px;
 	text-align: center;
 	font-weight: bold;
-	text-shadow: 0 2px 15px rgba(0,0,0,0.85);
+	text-shadow: 0 2px 15px rgba(0,0,0,0.25);
 }
 
 .form-section #images > button {
 	border: 3px dashed rgba(0,0,0,0.25);
-	background: transparent;
+	background: transparent !important;
 	color: rgba(0,0,0,0.25) !important;
 	font-weight: bold;
 	font-size: 40px !important;
@@ -471,21 +472,17 @@ body.popup .container {
 	text-shadow: none !important;
 }
 
-
-
 .container.ng-enter,
 .container.ng-leave {
-    -webkit-transition: all .1s ease !important;
-    -moz-transition: all .1s ease !important;
-    -o-transition: all .1s ease !important;
-    transition: all .1s ease !important;
+    -webkit-transition: all .1s linear !important;
+    -moz-transition: all .1s linear !important;
+    -o-transition: all .1s linear !important;
+    transition: all .1s linear !important;
 }
-.container.ng-enter { opacity: 0 !important; -webkit-transform: scale(.5); transform: scale(.5); }
-.container.ng-enter-active { opacity: 1 !important; -webkit-transform: scale(1); transform: scale(1); }
-.container.ng-leave { opacity: 1 !important; -webkit-transform: scale(1); transform: scale(1); }
-.container.ng-leave-active { opacity: 0 !important; -webkit-transform: scale(1.5); transform: scale(1.5) }
-
-
+.container.ng-enter { opacity: 0 !important; }
+.container.ng-enter-active { opacity: 1 !important; }
+.container.ng-leave { opacity: 1 !important; }
+.container.ng-leave-active { opacity: 0 !important; -webkit-transform: translate(350px,0); transform: translate(350px,0); }
 
 .repeat-animation.ng-leave {
 	opacity: 1 !important;
