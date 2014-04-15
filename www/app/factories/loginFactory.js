@@ -209,7 +209,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 	// De lijst met foto's updaten
 	factory.updatePictureList = function(data, callback) {
 		try {
-			if(typeof data !== 'object') callback('Your request was invalid.' {});
+			if(typeof data !== 'object') callback('Your request was invalid.', {});
 
 			$http.put(URL + '/user/'+this.userId+'/pictureList', data).success(function(data) {
 				factory.refreshUserInfo();
