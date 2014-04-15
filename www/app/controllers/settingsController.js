@@ -27,10 +27,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 			function(results) {
 				for (var i = 0; i < results.length; i++) {
 
-					var fileNameIndex = results[i].lastIndexOf("/") + 1;
-					var fileName = results[i].substr(fileNameIndex);
-
-					$scope.pictures.push({ url: 'http://www.oli4jansen.nl:81/profile-pictures/'+loginFactory.userId+'-'+fileName });
+					$scope.pictures.push({ url: results[i] });
 
 					// upload
 					loginFactory.uploadPicture(results[i], function(err) {
@@ -41,7 +38,14 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 								var picturesMirror = [];
 
 								for (var j = 0; j < $scope.pictures.length; j++) {
-									picturesMirror.push({ url: $scope.pictures[j].url });
+									if($scope.pictures[j].local) {
+										var fileNameIndex = results[i].lastIndexOf("/") + 1;
+										var fileName = results[i].substr(fileNameIndex);
+
+										picturesMirror.push({ url: 'http://www.oli4jansen.nl:81/profile-pictures/'+loginFactory.userId+'-'+fileName });
+									}else{
+										picturesMirror.push({ url: $scope.pictures[j].url });
+									}
 								}
 
 								loginFactory.updatePictureList(picturesMirror, function(err, data){
