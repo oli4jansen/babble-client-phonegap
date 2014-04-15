@@ -14,7 +14,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 					$scope.user = data;
 					if(data.likeMen === 1) $('#checkboxMen').attr('checked', 'true');
 					if(data.likeWomen === 1) $('#checkboxWomen').attr('checked', 'true');
-					$scope.pictures.push({ url: data.picture });
+					$scope.pictures = JSON.parse(data.pictureList);
 				}
 			}
 		});
@@ -34,7 +34,13 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 						if(err) navigator.notification.alert('We\'re sorry but we couldn\'t upload your pictures.', function(){return;}, 'Couldn\'t upload.');
 						// Als dit de laatste foto was:
 						if(i === results.length) {
-							loginFactory.updatePictureList($scope.pictures, function(err, data){
+							var picturesMirror = [];
+
+							for (var i = 0; i < $scope.pictures.length; i++) {
+								picturesMirror.push({ url: $scope.pictures[i].url });
+							}
+
+							loginFactory.updatePictureList(picturesMirror, function(err, data){
 								if(err) navigator.notification.alert(err, function(){return;}, 'Error!');
 							});
 						}else{
