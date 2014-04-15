@@ -211,7 +211,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 		try {
 			if(!(data instanceof Array)) callback('Your request was invalid.', {});
 
-			$http.put(URL + '/user/'+this.userId+'/pictureList', { pictureList: JSON.stringify(data) }).success(function(data) {
+			$http.put(URL + '/user/'+this.userId+'/pictureList', { accessToken: factory.accessToken, pictureList: JSON.stringify(data) }).success(function(data) {
 				factory.refreshUserInfo();
 				callback(0, data);
 			}).error(function(data){
