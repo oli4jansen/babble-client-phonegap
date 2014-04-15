@@ -30,7 +30,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 					var fileNameIndex = results[i].lastIndexOf("/") + 1;
 					var fileName = results[i].substr(fileNameIndex);
 
-					$scope.pictures.push({ url: 'http://www.oli4jansen.nl:81/profile-pictures/'+factory.userId+'-'+fileName });
+					$scope.pictures.push({ url: 'http://www.oli4jansen.nl:81/profile-pictures/'+loginFactory.userId+'-'+fileName });
 
 					// upload
 					loginFactory.uploadPicture(results[i], function(err) {
@@ -40,8 +40,8 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 							if(i === results.length) {
 								var picturesMirror = [];
 
-								for (var i = 0; i < $scope.pictures.length; i++) {
-									picturesMirror.push({ url: $scope.pictures[i].url });
+								for (var j = 0; j < $scope.pictures.length; ij+) {
+									picturesMirror.push({ url: $scope.pictures[j].url });
 								}
 
 								loginFactory.updatePictureList(picturesMirror, function(err, data){
