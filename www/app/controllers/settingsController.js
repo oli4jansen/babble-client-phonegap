@@ -66,7 +66,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 			}, function (error) {
 				alert('Couldn\'t get your photo.');
 			}, {
-				maximumImagesCount: 4 - $scope.pictures.length,
+				maximumImagesCount: 5 - $scope.pictures.length,
 				width: 300,
 				height: 400
 			}
