@@ -33,9 +33,13 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 						alert('Photo '+i+' of '+results.length+' uploading..');
 						if(err) navigator.notification.alert('We\'re sorry but we couldn\'t upload your pictures.', function(){return;}, 'Couldn\'t upload.');
 						// Als dit de laatste foto was:
-						if(i+1 === results.length) loginFactory.updatePictureList(JSON.stringify($scope.pictures), function(err, data){
-							if(err) navigator.notification.alert(err, function(){return;}, 'Error!');
-						});
+						if(i === results.length) {
+							loginFactory.updatePictureList($scope.pictures, function(err, data){
+								if(err) navigator.notification.alert(err, function(){return;}, 'Error!');
+							});
+						}else{
+							alert('Niet de laatste foto.');
+						}
 					});
 
 					$scope.$apply();
