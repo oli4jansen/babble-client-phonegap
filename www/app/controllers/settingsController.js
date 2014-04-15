@@ -40,7 +40,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 							if(i === results.length) {
 								var picturesMirror = [];
 
-								for (var j = 0; j < $scope.pictures.length; ij+) {
+								for (var j = 0; j < $scope.pictures.length; j++) {
 									picturesMirror.push({ url: $scope.pictures[j].url });
 								}
 
