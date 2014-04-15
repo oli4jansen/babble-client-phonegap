@@ -30,13 +30,15 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 
 					// upload
 					loginFactory.uploadPicture(results[i], function(err) {
-						if(err) alert('Couldn\'t upload.');
+						if(err) navigator.notification.alert('We\'re sorry but we couldn\'t upload your pictures.', function(){return;}, 'Couldn\'t upload.');
+						// Als dit de laatste foto was:
+						if(i+1 === results.length) loginFactory.updatePictureList(results, function(err, data){
+							if(err) navigator.notification.alert(err, function(){return;}, 'Error!');
+						});
 					});
 
 					$scope.$apply();
 				}
-
-				// update picture locations
 
 			}, function (error) {
 				alert('Couldn\'t get your photo.');
