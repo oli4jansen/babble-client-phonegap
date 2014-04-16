@@ -499,10 +499,10 @@ body.popup .container {
     -o-transition: all .1s linear !important;
     transition: all .1s linear !important;
 }
-.container.ng-enter { opacity: 0 !important; }
+.container.ng-enter { opacity: 0.2 !important; }
 .container.ng-enter-active { opacity: 1 !important; }
-.container.ng-leave { opacity: 1 !important; }
-.container.ng-leave-active { opacity: 0 !important; -webkit-transform: translate(350px,0); transform: translate(350px,0); }
+.container.ng-leave { opacity: 1 !important;  -webkit-transform: translate(0px,0px); transform: translate(0px,0px); }
+.container.ng-leave-active { opacity: 0 !important; -webkit-transform: translate(350px,0px); transform: translate(350px,0px); }
 
 .repeat-animation.ng-leave {
 	opacity: 1 !important;
