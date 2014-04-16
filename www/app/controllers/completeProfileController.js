@@ -27,7 +27,8 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 		if(!parsedData.likeMen) parsedData.likeMen = '0';
 		if(!parsedData.likeWomen) parsedData.likeWomen = '0';
 
-		parsedData.accessToken  = loginFactory.accessToken;
+		parsedData.pictureList = $scope.pictures;
+		parsedData.accessToken = loginFactory.accessToken;
 
 		loginFactory.authenticate(parsedData, function(err) {
 			if(!err) {
