@@ -242,7 +242,7 @@ label.checkbox {
 	overflow: auto;
 	z-index: 99;
 	display: block;
-	padding: 50px 15px 0;
+	padding: 60px 15px 0;
 	position: absolute;
 	overflow-x: hidden;
 
@@ -466,7 +466,6 @@ body.popup .container {
 .form-section #images > *:nth-child(4),
 .form-section #images > *:nth-child(5) {
 	display: inline-block;
-	border-radius: 5px;
 	vertical-align: top;
 	background-size: cover;
 	background-position: center;
