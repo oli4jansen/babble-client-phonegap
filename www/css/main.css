@@ -186,7 +186,7 @@ label.checkbox {
 	border-top: 1px solid #ef5435;*/
 	background-color: transparent;
 	color: #fff;
-	text-align: center;
+	text-align: left;
 	padding: 0;
 	line-height: 46px;
 	height: 48px;
@@ -212,20 +212,19 @@ label.checkbox {
 		font-family: "Roboto Condensed";
 		font-size: 18px;
 		font-weight: 300;
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		text-align: center;
+		position: relative;
+		text-align: left;
+		display: inline-block;
+		vertical-align: top;
 		z-index: 0;
 		text-align: left;
 		padding: 0;
-		padding-left: 50px;
 	}
 	.header .menu-item, .header .menu-item-back {
 		display: inline-block;
-		position: absolute;
-		top: 0;
+		display: inline-block;
+		vertical-align: top;
+		position: relative;
 		height: 48px;
 		font-size: 35px;
 		padding: 0 15px;
@@ -233,7 +232,7 @@ label.checkbox {
 		z-index: 999999;
 	}
 	.header .left { left: 0; }
-	.header .right { right: 0; }
+	.header .right { position: absolute; top: 0; right: 0; }
 
 .container {
 	background-color: transparent;
@@ -487,7 +486,6 @@ body.popup .container {
 	color: rgba(0,0,0,0.25) !important;
 	font-weight: bold;
 	font-size: 40px !important;
-	border-radius: 10px;
 	text-align: center;
 	line-height: 24px !important;
 	text-shadow: none !important;
