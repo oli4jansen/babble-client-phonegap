@@ -19,7 +19,12 @@ app.controller("headerController", function($scope, $location, $rootScope, $rout
 
 	$scope.init = function() {
 		$rootScope.$on( "$routeChangeStart", function(event, next, current) {
-			$scope.path = next.originalPath;
+
+			if(next.originalPath !== undefined) {
+				$scope.path = next.originalPath;
+			}else{
+				$scope.path = '/';
+			}
 
 			if(next.originalPath === '/settings' || next.originalPath === '/contacts' || next.originalPath.substring(0, 6) == '/chat/' || next.originalPath.substring(0, 7) == '/match/') {
 				$('.header .menu-item').fadeOut(0, function() {
