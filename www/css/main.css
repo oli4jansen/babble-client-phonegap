@@ -195,13 +195,19 @@ label.checkbox {
 	left: 0;
 	top: 0;
 	z-index: 999999999999999999999999;
-/*	box-shadow: 0 1px 0px 1px rgba(0,0,0,0.1);*/
 
-	box-shadow: inset 0 40px 25px -10px #2798D4;
+	box-shadow: inset 0 -2px 0   #CEE6F3,
+										0  1px 2px rgba(0,0,0,0.1);
+	background: white;
+	color: #2798D4;
 
 	-webkit-transition: .3s;
 	transition: .3s;
 }
+	.header a:hover,
+	.header a:active {
+		background: rgba(0,0,0,0.1);
+	}
 	.header h1 {
 		font-family: "Roboto Condensed";
 		font-size: 18px;
@@ -440,14 +446,12 @@ body.popup .container {
 
 .form-section #images > *:nth-child(1) {
 	display: block;
-	border-radius: 5px;
 	vertical-align: top;
 	background-size: cover;
 	background-position: center;
 	background-color: rgba(0,0,0,0.25);
 	width: 98%;
 	height: 250px;
-	border-radius: 10px;
 	margin: 10px 1% 0;
 	color: white;
 	line-height: 250px;
@@ -469,7 +473,6 @@ body.popup .container {
 	background-color: rgba(0,0,0,0.25);
 	width: 23%;
 	height: 125px;
-	border-radius: 10px;
 	margin: 10px 1% 0;
 	color: white;
 	line-height: 125px;
