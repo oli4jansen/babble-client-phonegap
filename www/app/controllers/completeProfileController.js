@@ -27,7 +27,7 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 		if(!parsedData.likeMen) parsedData.likeMen = '0';
 		if(!parsedData.likeWomen) parsedData.likeWomen = '0';
 
-		parsedData.pictureList = $scope.pictures;
+		parsedData.pictureList = JSON.stringify($scope.pictures);
 		parsedData.accessToken = loginFactory.accessToken;
 
 		loginFactory.authenticate(parsedData, function(err) {
@@ -93,7 +93,7 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 				}
 
 			}, function (error) {
-				alert('Couldn\'t get your photo.');
+				alert('Couldn\'t get your photo.'+error);
 			}, {
 				maximumImagesCount: 5 - $scope.pictures.length,
 				width: 300,
