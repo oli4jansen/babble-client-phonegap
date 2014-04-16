@@ -7,6 +7,9 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 		$('.header h1').html("Complete profile");
 
 		$scope.user = loginFactory.userPartialData;
+
+		console.log(loginFactory.userPartialData);
+
 		$scope.pictures = loginFactory.userPartialData.pictureList;
 	};
 
