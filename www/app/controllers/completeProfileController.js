@@ -3,12 +3,12 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 	$scope.user = {name: 'Loading..'}
 	$scope.status = 'Start Babbling';
 
+	$scope.pictures = [];
+
 	$scope.init = function() {
 		$('.header h1').html("Complete profile");
 
 		$scope.user = loginFactory.userPartialData;
-
-		console.log(loginFactory.userPartialData);
 
 		$scope.pictures = loginFactory.userPartialData.pictureList;
 	};
