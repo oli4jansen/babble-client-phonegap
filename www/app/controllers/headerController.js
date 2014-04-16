@@ -27,19 +27,16 @@ app.controller("headerController", function($scope, $location, $rootScope, $rout
 			}
 
 			if(next.originalPath === '/settings' || next.originalPath === '/contacts' || next.originalPath.substring(0, 6) == '/chat/' || next.originalPath.substring(0, 7) == '/match/') {
-				$('.header .menu-item').fadeOut(0, function() {
-					$('.header .menu-item-back').fadeIn(0);
-				});
+				$('.header .menu-item').css('display', 'none');
+				$('.header .menu-item-back').css('display', 'inline-block');
 			}else if(next.originalPath === '/feed') {
-				$('.header .menu-item-back, .header .menu-item#logo').fadeOut(0, function() {
-					$('.header .menu-item#settingsHandler, .header .menu-item#chatsHandler').fadeIn(0);
-				});
+				$('.header .menu-item-back, .header .menu-item#logo').css('display', 'none');
+				$('.header .menu-item#settingsHandler, .header .menu-item#chatsHandler').css('display', 'inline-block');
 			}else if(next.originalPath === '/' || next.originalPath === '/completeProfile') {
-				$('.header .menu-item, .header .menu-item-back').fadeOut(0, function() {
-					$('.header .menu-item#logo').fadeIn(0);
-				});
+				$('.header .menu-item, .header .menu-item-back').css('display', 'none');
+				$('.header .menu-item#logo').css('display', 'inline-block');
 			}else{
-				$('.header .menu-item, .header .menu-item-back').fadeOut(0);
+				$('.header .menu-item, .header .menu-item-back').css('display', 'none');
 			}
 			if(next.originalPath === '/' && current.originalPath === '/feed') {
 				navigator.app.exitApp();

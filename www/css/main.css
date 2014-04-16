@@ -221,7 +221,7 @@ label.checkbox {
 		padding: 0;
 	}
 	.header .menu-item, .header .menu-item-back {
-		display: inline-block !important;
+		display: inline-block;
 		vertical-align: top;
 		position: relative;
 		height: 48px;
