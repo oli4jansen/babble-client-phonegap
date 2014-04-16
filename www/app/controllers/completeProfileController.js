@@ -10,7 +10,7 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 
 		$scope.user = loginFactory.userPartialData;
 
-		$scope.pictures = loginFactory.userPartialData.pictureList;
+		$scope.pictures = JSON.parse(loginFactory.userPartialData.pictureList);
 	};
 
 	$scope.start = function() {
