@@ -171,6 +171,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 	factory.deleteAccount = function(callback) {
 		$http.delete(URL + '/user/'+this.userId).success(function(data) {
 			callback(false, data);
+			factory.logOut();
 		}).error(function(data){
 			callback('Error connecting to API', {});
 		});

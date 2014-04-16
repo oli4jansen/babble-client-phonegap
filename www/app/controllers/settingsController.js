@@ -108,8 +108,8 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 				}else{
 					$scope.deleteButtonStatus = 'Deleted';
 					navigator.notification.alert('Your account was successfully deleted.', function(){return;}, 'Deleted!');
-					loginFactory.loggedIn = 0;
-					loginFactory.logOut();
+//					loginFactory.loggedIn = 0;
+//					loginFactory.logOut();
 				}
 			}else{
 				alert(err);
