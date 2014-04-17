@@ -204,6 +204,11 @@ label.checkbox {
 	-webkit-transition: .3s;
 	transition: .3s;
 }
+.header.transparent {
+	background: transparent;
+	box-shadow: inset 0 40px 25px -10px #2798D4;
+	color: white;
+}
 	.header a:hover,
 	.header a:active {
 		background: rgba(0,0,0,0.1);

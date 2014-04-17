@@ -29,14 +29,18 @@ app.controller("headerController", function($scope, $location, $rootScope, $rout
 			if(next.originalPath === '/settings' || next.originalPath === '/contacts' || next.originalPath.substring(0, 6) == '/chat/' || next.originalPath.substring(0, 7) == '/match/') {
 				$('.header .menu-item').css('display', 'none');
 				$('.header .menu-item-back').css('display', 'inline-block');
+				$('.header').removeClass('transparent');
 			}else if(next.originalPath === '/feed') {
 				$('.header .menu-item-back, .header .menu-item#logo').css('display', 'none');
 				$('.header .menu-item#settingsHandler, .header .menu-item#chatsHandler').css('display', 'inline-block');
+				$('.header').removeClass('transparent');
 			}else if(next.originalPath === '/' || next.originalPath === '/completeProfile') {
 				$('.header .menu-item, .header .menu-item-back').css('display', 'none');
 				$('.header .menu-item#logo').css('display', 'inline-block');
+				$('.header').addClass('transparent');
 			}else{
 				$('.header .menu-item, .header .menu-item-back').css('display', 'none');
+				$('.header').removeClass('transparent');
 			}
 			if(next.originalPath === '/' && current.originalPath === '/feed') {
 				navigator.app.exitApp();
