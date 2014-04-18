@@ -145,10 +145,10 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	    // Als er op enter gedrukt is: verstuur bericht
 	    $('#submitMessage').click(function(e) {
-	      var msg = $(this).val();
+	      var msg = input.val();
 				if (!msg) return;
 				connection.send(msg);
-				$(this).val('');
+				input.val('');
 	    });
 
 			input.focus(function() {
