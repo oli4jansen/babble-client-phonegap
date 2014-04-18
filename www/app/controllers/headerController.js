@@ -31,12 +31,11 @@ app.controller("headerController", function($scope, $location, $rootScope, $rout
 				$('.header .menu-item-back').css('display', 'inline-block');
 				$('.header').removeClass('transparent');
 			}else if(next.originalPath === '/feed') {
-				$('.header .menu-item-back, .header .menu-item#logo').css('display', 'none');
+				$('.header .menu-item-back').css('display', 'none');
 				$('.header .menu-item#settingsHandler, .header .menu-item#chatsHandler').css('display', 'inline-block');
 				$('.header').removeClass('transparent');
 			}else if(next.originalPath === '/' || next.originalPath === '/completeProfile') {
 				$('.header .menu-item, .header .menu-item-back').css('display', 'none');
-				$('.header .menu-item#logo').css('display', 'inline-block');
 				$('.header').addClass('transparent');
 			}else{
 				$('.header .menu-item, .header .menu-item-back').css('display', 'none');

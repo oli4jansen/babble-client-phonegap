@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
 	font-family: "Roboto Condensed Light";
 	text-align: center;
-	padding: 30px 0 5px;
+	padding: 5px 0;
 	font-size: 48px;
 }
 h2 {
