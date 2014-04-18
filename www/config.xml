@@ -43,12 +43,11 @@
 
     <gap:plugin name="com.synconset.imagepicker" version="1.0.1" />
 
-    <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
-    <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
-    <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
-    <icon src="res/icon/android/icon-96-xhdpi.png"  gap:platform="android"    gap:density="xhdpi" />
-    <icon src="res/icon/android/icon-144-xxhdpi.png"  gap:platform="android"    gap:density="xxhdpi" />
-    <icon src="res/icon/android/icon-192-xxxhdpi.png"  gap:platform="android"    gap:density="xxxhdpi" />
+    <icon src="res/icon/android/drawable-mdpi/ic_launcher.png" gap:platform="android" gap:density="mdpi" />
+    <icon src="res/icon/android/drawable-hdpi/ic_launcher.png" gap:platform="android" gap:density="hdpi" />
+    <icon src="res/icon/android/drawable-xhdpi/ic_launcher.png" gap:platform="android" gap:density="xhdpi" />
+    <icon src="res/icon/android/drawable-xxhdpi/ic_launcher.png" gap:platform="android" gap:density="xxhdpi" />
+    <icon src="res/icon/android/drawable-xxxhdpi/ic_launcher.png" gap:platform="android" gap:density="xxxhdpi" />
 
     <gap:splash src="res/screen/android/drawable-mdpi/splash.9.png" gap:qualifier="mdpi" gap:platform="android" gap:density="mdpi" />
     <gap:splash src="res/screen/android/drawable-hdpi/splash.9.png" gap:qualifier="hdpi" gap:platform="android" gap:density="hdpi" />
