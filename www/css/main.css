@@ -669,8 +669,11 @@ body.popup .container {
                 box-shadow: 0 1px 1px 0px rgba(0,0,0,0.08);
                 line-height: 1.5em;
 								position: relative;
-								border-radius: 5px;
+								border-radius: 5px 5px 5px 0;
             }
+						.myMessage span {
+							border-radius: 5px 5px 0 5px;
+						}
 						.chatMessage span:before {
 							content: "";
 							display: block;
