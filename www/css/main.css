@@ -667,15 +667,50 @@ body.popup .container {
                 color: #4c4c4c;
                 font-size: 1.05em;
                 box-shadow: 0 1px 1px 0px rgba(0,0,0,0.08);
-                line-height: 1.8em;
+                line-height: 1.5em;
             }
+						.chatMessage span:before {
+							content: "";
+							display: block;
+							background: #2798D4;
+							height: 25px;
+							width: 15px;
+							position: absolute;
+							bottom: 0;
+							z-index: 9999999;
+
+							border-radius: 0 15px/25px 0 0;
+							left: -15px;
+						}
+							.myMessage span:before {
+								border-radius: 0 0 0 15px/25px;
+								right: -15px;
+								left: auto;
+							}
+						.chatMessage span:after {
+							content: "";
+							display: block;
+							background: white;
+							height: 25px;
+							width: 15px;
+							position: absolute;
+							right: -15px;
+							bottom: 0;
+							z-index: 9999;
+						}
+							.myMessage span:after {
+								left: -15px;
+								right: auto;
+							}
 	            .chatMessage span small {
-					display: block;
-					color: rgba(0,0,0,0.35);
-				}
-        .myMessage {
-            text-align: right;
-        }
+								display: block;
+								color: rgba(0,0,0,0.35);
+								font-size: .6em;
+								line-height: 2.1em;
+							}
+			        .myMessage {
+			            text-align: right;
+			        }
 
 /*
  *	LOADER
