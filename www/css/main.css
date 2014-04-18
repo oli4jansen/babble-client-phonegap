@@ -147,6 +147,21 @@ textarea, input[type=text], input[type=number], input[type=date] {
 	-webkit-appearance: none;
     -webkit-user-modify: read-write-plaintext-only;
 }
+input.blue, textarea.blue {
+		background: bottom left 	-webkit-linear-gradient(#2798D4, #2798D4) no-repeat,
+				bottom center 	-webkit-linear-gradient(#2798D4, #2798D4) repeat-x,
+				bottom right 	-webkit-linear-gradient(#2798D4, #2798D4) no-repeat;
+	background: bottom left 	-moz-linear-gradient(#2798D4, #2798D4) no-repeat,
+				bottom center 	-moz-linear-gradient(#2798D4, #2798D4) repeat-x,
+				bottom right 	-moz-linear-gradient(#2798D4, #2798D4) no-repeat;
+	background: bottom left 	-o-linear-gradient(#2798D4, #2798D4) no-repeat,
+				bottom center 	-o-linear-gradient(#2798D4, #2798D4) repeat-x,
+				bottom right 	-o-linear-gradient(#2798D4, #2798D4) no-repeat;
+	background: bottom left 	linear-gradient(#2798D4, #2798D4) no-repeat,
+				bottom center 	linear-gradient(#2798D4, #2798D4) repeat-x,
+				bottom right 	linear-gradient(#2798D4, #2798D4) no-repeat;
+	background-size: 1px 5px, 1px 1px, 1px 5px;
+}
 input[type=checkbox] {
 	border: 2px solid #fff;
 	-webkit-appearance: none;
@@ -595,23 +610,34 @@ body.popup .container {
         }
         #inputDiv {
             position: fixed;
-            display: block;
+            display: table;
             width: 100%;
             bottom: 0;
             left: 0;
+						height: 65px;
+						padding: 5px;
+						background-color: white;
         }
         #inputDiv #input {
             border-radius: 0;
             border: 0;
             outline: none;
             margin: 0;
-            padding: 14px 15px;
+            padding: 10px 15px;
+						display: table-cell;
             width: 100%;
             font-size: 1em;
-           	background-color: #fff;
-           	box-shadow: 0 -1px 2px rgba(0,0,0,0.1);
-           	color: #2798D4;
+          	background-color: #fff;
+          	color: #2798D4;
         }
+				#inputDiv a {
+					display: table-cell;
+					vertical-align: top;
+					color: #2798D4;
+					line-height: 25px;
+					padding: 10px;
+					text-align: center;
+				}
         #inputDiv #input::-webkit-input-placeholder {
 			color: #2798D4;
         }

@@ -144,7 +144,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	    };
 
 	    // Als er op enter gedrukt is: verstuur bericht
-	    input.keydown(function(e) {
+	    $('#submitMessage').click(function(e) {
 	        if (e.keyCode === 13) {
 	            var msg = $(this).val();
 	            if (!msg) return;
