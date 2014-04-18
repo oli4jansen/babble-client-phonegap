@@ -666,10 +666,9 @@ body.popup .container {
                 margin-bottom: 2px;
                 color: #4c4c4c;
                 font-size: 1.35em;
-                box-shadow: 0 1px 1px 0px rgba(0,0,0,0.08);
+                box-shadow: 0 2px 1px 0px rgba(0,0,0,0.1);
                 line-height: 1.5em;
 								position: relative;
-								border-radius: 3px;
             }
 						.chatMessage span:after {
 							content: "";
@@ -686,6 +685,7 @@ body.popup .container {
 						}
 							.myMessage span:after {
 								border-left: 5px solid white;
+								border-right: 0;
 								left: auto;
 								right: -5px;
 							}
