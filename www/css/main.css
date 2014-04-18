@@ -169,7 +169,7 @@ label {
 	vertical-align: top;
 }
 label.section-header {
-	font-size: 1.25em;
+	font-size: 1.5em;
 }
 label.checkbox {
 	line-height: 45px;
@@ -181,9 +181,6 @@ label.checkbox {
 }
 
 .header {
-/*	background-color: #d94c30;
-	border-bottom: 1px solid #bc3b20;
-	border-top: 1px solid #ef5435;*/
 	background-color: transparent;
 	color: #fff;
 	text-align: left;

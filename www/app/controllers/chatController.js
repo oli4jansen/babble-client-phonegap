@@ -59,7 +59,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
                 $scope.status = json.data;
 
 	            if(json.data === 'hidden') {
-	                input.removeAttr('disabled').focus();
+	                input.removeAttr('disabled');
 
 	                // Counter instellen
 	                $scope.messageCounter = 26 - json.counter;
