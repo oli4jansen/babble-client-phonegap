@@ -4,7 +4,7 @@
         xmlns:gap     = "http://phonegap.com/ns/1.0"
         xmlns:android = "http://schemas.android.com/apk/res/android"
         id            = "nl.oli4jansen.babble"
-        version       = "0.0.4">
+        version       = "0.0.5">
 
     <name>Babble</name>
 
