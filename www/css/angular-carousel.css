@@ -61,12 +61,8 @@
   transition: opacity 0.2s ease-out;
   font-size: 30px;
   position: absolute;
-  top: 50%;
-  margin-top: -35px;
-  opacity: 0.75;
+  top: 0;
   cursor: pointer; }
-  .rn-carousel-control:hover {
-    opacity: 1; }
   .rn-carousel-control.rn-carousel-control-prev {
     left: 0.5em; }
     .rn-carousel-control.rn-carousel-control-prev:before {
@@ -74,4 +70,17 @@
   .rn-carousel-control.rn-carousel-control-next {
     right: 0.5em; }
     .rn-carousel-control.rn-carousel-control-next:before {
-      content: ">"; }
+      display:inline-block;
+      font-family:"Ionicons";
+      speak:none;
+      font-style:normal;
+      font-weight:normal;
+      font-variant:normal;
+      text-transform:none;
+      text-rendering:auto;
+      line-height:1;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      content: "Next \f154";
+
+   }

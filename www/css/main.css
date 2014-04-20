@@ -255,7 +255,6 @@ body.transparent .header {
 	height: 100%;
 	width: 100%;
 	overflow: auto;
-	z-index: 99;
 	display: block;
 	padding: 60px 15px 0;
 	position: absolute;
