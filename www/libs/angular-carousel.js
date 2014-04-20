@@ -161,7 +161,7 @@ angular.module('angular-carousel')
                     // enable carousel controls
                     if (angular.isDefined(iAttributes.rnCarouselControl)) {
                         var controls = $compile("<div id='carousel-" + carouselId +"-controls' index='indicatorIndex' items='carouselIndicatorArray' rn-carousel-controls class='rn-carousel-controls'></div>")(scope);
-                        container.append(controls);
+                        $('.header').append(controls);
                     }
 
                     scope.carouselBufferIndex = 0;
