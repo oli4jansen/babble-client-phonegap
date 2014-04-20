@@ -210,7 +210,7 @@ p.section-note {
 label.checkbox {
 	line-height: 45px;
 	padding-left: 20px;
-	color: #2798D4;
+	color: #aaa;
 }
 .form-section {
 	margin-bottom: 30px;
@@ -532,7 +532,7 @@ body.popup .container {
 	margin: 15px auto;
 }
 
-.container.ng-enter,
+/*.container.ng-enter,
 .container.ng-leave {
     -webkit-transition: all .1s linear !important;
     -moz-transition: all .1s linear !important;
@@ -543,7 +543,7 @@ body.popup .container {
 .container.ng-enter-active { opacity: 1 !important; }
 .container.ng-leave { opacity: 1 !important;  -webkit-transform: translate(0px,0px); transform: translate(0px,0px); }
 .container.ng-leave-active { opacity: 0 !important; -webkit-transform: translate(350px,0px); transform: translate(350px,0px); }
-
+*/
 .repeat-animation.ng-leave {
 	opacity: 1 !important;
 	-webkit-transition: .25s linear all !important;
