@@ -38,7 +38,7 @@
 /* indicators */
 .rn-carousel-indicator {
   width: 100%;
-  height: 5px;
+  height: 8px;
 
   text-align: center;
   vertical-align: top;
@@ -55,7 +55,7 @@
   margin: 0;
   z-index: 9999999999; }
   .rn-carousel-indicator span {
-    height: 5px;
+    height: 8px;
     background: #2798D4;
     opacity: .5;
     padding: 0;
@@ -74,7 +74,7 @@
   font-size: 35px;
   z-index: 999999999999999;
   position: fixed;
-  top: 25px;
+  top: 0;
   cursor: pointer; }
   .rn-carousel-control.rn-carousel-control-prev {
     left: 10px; }
@@ -107,7 +107,7 @@
     right: 10px; }
     .rn-carousel-control.rn-carousel-control-next:before {
       content: "Next";
-      color: red;
+      color: white;
       font-family: 'Roboto Condensed';
       font-size: 18px;
       font-weight: 300;
@@ -117,7 +117,7 @@
     }
     .rn-carousel-control.rn-carousel-control-next:after {
       display:inline-block;
-      color: red;
+      color: white;
       font-family:"Ionicons";
       speak:none;
       font-style:normal;
