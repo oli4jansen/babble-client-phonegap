@@ -29,25 +29,25 @@
 }
 
 ::-webkit-input-placeholder {
-	color: #fff;
+	color: #2798D4;
 }
 :-moz-placeholder {
-	color: #fff;
+	color: #2798D4;
 }
 ::-moz-placeholder {
-	color: #fff;
+	color: #2798D4;
 }
 :-ms-input-placeholder {
-	color: #fff;
+	color: #2798D4;
 }
 
 html, body {
 	height: 100%;
 	overflow: auto;
 	background-color: #31A2F9;
-	background-color: #2798D4;
+	background-color: #fff;
 	color: #4c4c4c;
-	color: white;
+	color: #2798D4;
 	background-size: cover;
 	background-position: center;
 }
@@ -68,10 +68,10 @@ h2 {
 img { vertical-align: top; }
 
 .btn, button {
-	background-color: #fff;
+	background-color: #2798D4;
 	border: 0;
 	-webkit-appearance: none;
-	color: #4c4c4c;
+	color: #fff;
 	border-radius: 0;
 	padding: 15px 25px;
 	line-height: 24px;
@@ -100,8 +100,9 @@ img { vertical-align: top; }
 		color: white;
 	}
 	.btn.rounded, button.rounded {
-		border-radius: 100px;
+		border-radius: 3px;
 		margin: 5px 0;
+		box-shadow: inset 0 -2px rgba(0,0,0,0.1);
 	}
 .full-width {
 	width: 100%;
@@ -125,23 +126,23 @@ textarea, input[type=text], input[type=number], input[type=date] {
 	font-size: 16px;
 	line-height: 25px;
 
-	color: rgba(255,255,255,0.75);
+	color: #2798D4;
 
 	outline: none;
 	border: none;
 	background-color: transparent;
-	background: bottom left 	-webkit-linear-gradient(#fff, #fff) no-repeat,
-				bottom center 	-webkit-linear-gradient(#fff, #fff) repeat-x,
-				bottom right 	-webkit-linear-gradient(#fff, #fff) no-repeat;
-	background: bottom left 	-moz-linear-gradient(#fff, #fff) no-repeat,
-				bottom center 	-moz-linear-gradient(#fff, #fff) repeat-x,
-				bottom right 	-moz-linear-gradient(#fff, #fff) no-repeat;
-	background: bottom left 	-o-linear-gradient(#fff, #fff) no-repeat,
-				bottom center 	-o-linear-gradient(#fff, #fff) repeat-x,
-				bottom right 	-o-linear-gradient(#fff, #fff) no-repeat;
-	background: bottom left 	linear-gradient(#fff, #fff) no-repeat,
-				bottom center 	linear-gradient(#fff, #fff) repeat-x,
-				bottom right 	linear-gradient(#fff, #fff) no-repeat;
+	background: bottom left 	-webkit-linear-gradient(#2798D4, #2798D4) no-repeat,
+				bottom center 	-webkit-linear-gradient(#2798D4, #2798D4) repeat-x,
+				bottom right 	-webkit-linear-gradient(#2798D4, #2798D4) no-repeat;
+	background: bottom left 	-moz-linear-gradient(#2798D4, #2798D4) no-repeat,
+				bottom center 	-moz-linear-gradient(#2798D4, #2798D4) repeat-x,
+				bottom right 	-moz-linear-gradient(#2798D4, #2798D4) no-repeat;
+	background: bottom left 	-o-linear-gradient(#2798D4, #2798D4) no-repeat,
+				bottom center 	-o-linear-gradient(#2798D4, #2798D4) repeat-x,
+				bottom right 	-o-linear-gradient(#2798D4, #2798D4) no-repeat;
+	background: bottom left 	linear-gradient(#2798D4, #2798D4) no-repeat,
+				bottom center 	linear-gradient(#2798D4, #2798D4) repeat-x,
+				bottom right 	linear-gradient(#2798D4, #2798D4) no-repeat;
 	background-size: 1px 5px, 1px 1px, 1px 5px;
 
 	-webkit-appearance: none;
@@ -163,7 +164,7 @@ input.blue, textarea.blue {
 	background-size: 1px 5px, 1px 1px, 1px 5px;
 }
 input[type=checkbox] {
-	border: 2px solid #fff;
+	border: 2px solid #2798D4;
 	-webkit-appearance: none;
 	width: 15px;
 	height: 15px;
@@ -175,7 +176,7 @@ input[type=checkbox] {
 	border-radius: 10px;
 }
 input[type=checkbox]:checked {
-	background-color: #fff;
+	background-color: #2798D4;
 }
 label {
 	display: block;
@@ -189,7 +190,7 @@ label.section-header {
 label.checkbox {
 	line-height: 45px;
 	padding-left: 20px;
-	color: rgba(255,255,255,0.75);
+	color: #2798D4;
 }
 .form-section {
 	margin-bottom: 30px;
@@ -216,7 +217,7 @@ label.checkbox {
 	-webkit-transition: .3s;
 	transition: .3s;
 }
-.header.transparent {
+body.transparent .header {
 	background: transparent;
 	box-shadow: inset 0 40px 25px -10px #2798D4;
 	color: white;
@@ -263,6 +264,9 @@ label.checkbox {
 
 	-webkit-transition: .3s;
 	transition: .3s;
+}
+body.transparent .container {
+	background-color: #2798D4;
 }
 body.popup .container {
 	-webkit-filter: blur(1px) brightness(.75);
@@ -411,18 +415,15 @@ body.popup .container {
 	.container > div > .button-holder {
 		position: fixed;
 		bottom: 25px;
-		left: 10%;
+		left: 5%;
 		border: 0;
-		height: 60px;
-		width: 80%;
+		width: 90%;
 		z-index: 999999;
-		background-color: rgba(255,255,255,.75);
 		border-radius: 100px;
-		overflow: hidden;
 	}
 		.container > div > .button-holder button {
-			color: #2798D4;
-			width: 50%;
+			width: 48%;
+			margin: 0 1%;
 			height: 60px;
 			-webkit-transition: 0;
 			transition: 0;
@@ -430,21 +431,11 @@ body.popup .container {
 		}
 		.container > div > .button-holder button.dislike.selected,
 		.container > div > .button-holder button.dislike:active {
-			color: white;
-			background-color: #D42727;
+			box-shadow: 0 0 25px #d94c30;
 		}
 		.container > div > .button-holder button.like.selected,
 		.container > div > .button-holder button.like:active {
-			background-color: #27D42E;
-			color: white;
-		}
-		.container > div > .button-holder button:first-child {
-			background: center right linear-gradient(#2798D4, #2798D4) no-repeat;
-			background-size: 1px 60%;
-		}
-		.container > div > .button-holder button:last-child {
-			background: center left linear-gradient(#2798D4, #2798D4) no-repeat;
-			background-size: 1px 60%;
+			box-shadow: 0 0 25px #27D42E;
 		}
 
 	.container img.fullScreen {
@@ -616,7 +607,7 @@ body.popup .container {
             left: 0;
 						height: 65px;
 						padding: 5px;
-						background-color: white;
+						background-color: #fff;
         }
         #inputDiv #input {
             border-radius: 0;
@@ -627,7 +618,7 @@ body.popup .container {
 						display: table-cell;
             width: 100%;
             font-size: 1em;
-          	background-color: #fff;
+          	background-color: transparent;
           	color: #2798D4;
         }
 				#inputDiv a {
@@ -661,10 +652,10 @@ body.popup .container {
                 display: inline-block;
                 width: auto;
                 max-width: 400px !important;
-                background-color: white;
+                background-color: #2798D4;
                 padding: 10px 15px 5px;
                 margin-bottom: 2px;
-                color: #4c4c4c;
+                color: #fff;
                 font-size: 1.35em;
                 box-shadow: 0 2px 1px 0px rgba(0,0,0,0.1);
                 line-height: 1.5em;
@@ -674,7 +665,7 @@ body.popup .container {
 							content: "";
 							display: block;
 							height: 0;
-							border-right: 5px solid white;
+							border-right: 5px solid #2798D4;
 							border-top: 5px solid transparent;
 							border-bottom: 5px solid transparent;
 							width: 0;
@@ -684,20 +675,23 @@ body.popup .container {
 							z-index: 9999;
 						}
 							.myMessage span:after {
-								border-left: 5px solid white;
+								border-left: 5px solid #aaa;
 								border-right: 0;
 								left: auto;
 								right: -5px;
 							}
 	            .chatMessage span small {
 								display: block;
-								color: rgba(0,0,0,0.35);
+								color: rgba(255,255,255,0.35);
 								font-size: .6em;
 								line-height: 2.1em;
 							}
 			        .myMessage {
 			            text-align: right;
 			        }
+					.myMessage span {
+						background: #aaa;
+					}
 
 /*
  *	LOADER
