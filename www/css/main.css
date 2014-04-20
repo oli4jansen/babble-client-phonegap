@@ -213,9 +213,6 @@ label.checkbox {
 										0  1px 2px rgba(0,0,0,0.1);
 	background: white;
 	color: #2798D4;
-
-	-webkit-transition: .3s;
-	transition: .3s;
 }
 body.transparent .header {
 	background: transparent;
@@ -290,7 +287,7 @@ body.popup .container {
 			padding: 0;
 			background-color: #fff;
 			color: #4c4c4c;
-			border-radius: 0;
+			border-radius: 3px;
 			width: 96%;
 			margin: 0 2% !important;
 			z-index: 10;
@@ -465,6 +462,7 @@ body.popup .container {
 	text-align: center;
 	font-weight: bold;
 	text-shadow: 0 2px 15px rgba(0,0,0,0.25);
+	border-radius: 5px;
 }
 
 .form-section #images > *:nth-child(2),
@@ -485,13 +483,15 @@ body.popup .container {
 	text-align: center;
 	font-weight: bold;
 	text-shadow: 0 2px 15px rgba(0,0,0,0.25);
+	border-radius: 5px;
 }
 
 .form-section #images > button {
-	border: 3px dashed rgba(0,0,0,0.25);
+	border: 3px dashed #2798D4;
 	background: transparent !important;
-	color: rgba(0,0,0,0.25) !important;
+	color: #2798D4 !important;
 	font-weight: bold;
+	opacity: .3;
 	font-size: 40px !important;
 	text-align: center;
 	line-height: 24px !important;
