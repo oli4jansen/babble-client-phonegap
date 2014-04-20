@@ -6,9 +6,7 @@
 					<label class="section-header">Add your picture</label>
 		      <div id="images"><div style="background-image:url({{picture.url}})" ng-click="removePicture($index)" ng-repeat="picture in pictures">-</div><button ng-click="selectPicture()">+</button></div>
 		    </div>
-			</li>
-
-			<li>
+			</li><li>
 				<div class="form-section">
 					<label class="section-header" for="birthday">Birthday</label>
 					<label><input type="text" ng-click="pickDate($event)" id="birthday" name="birthday" ng-value="chosenDate"></label>
@@ -23,14 +21,12 @@
 					<label class="section-header">Sexual orientation</label>
 			  	<label class="checkbox">Men<input type="checkbox" id="checkboxMen" name="likeMen" value="1"></label><label class="checkbox">Women<input type="checkbox" id="checkboxWomen" name="likeWomen" value="1"></label>
 			  </div>
-			</li>
-			<li>
+			</li><li>
 				<div class="form-section">
 					<label class="section-header">Biography</label>
 						<label><textarea name="description" rows="4" maxlength="140">{{user.description}}</textarea></label>
 				</div>
-			</li>
-			<li>
+			</li><li>
 				<div class="form-section">
 					<label class="section-header">All done!</label>
 					<button class="full-width rounded green" ng-click="start()">{{status}} <i class="ion-ios7-arrow-right"></i></button>
