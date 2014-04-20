@@ -1,38 +1,36 @@
 <div ng-init="init()">
-
-<ul rn-carousel class="image">
-  <li>slide #1</li>
-  <li>slide #2</li>
-  <li>slide #3</li>
-</ul>
-
 	<form action="" method="post" id="completeProfileForm">
+		<ul rn-carousel class="form-carousel">
+			<li>
+		    <div class="form-section">
+					<label class="section-header">Add your picture</label>
+		      <div id="images"><div style="background-image:url({{picture.url}})" ng-click="removePicture($index)" ng-repeat="picture in pictures">-</div><button ng-click="selectPicture()">+</button></div>
+		    </div>
+			</li>
 
-    <div class="form-section">
-      <div id="images"><div style="background-image:url({{picture.url}})" ng-click="removePicture($index)" ng-repeat="picture in pictures">-</div><button ng-click="selectPicture()">+</button></div>
-    </div>
+			<li>
+				<div class="form-section">
+					<label class="section-header">Biography</label>
+				    <label><textarea name="description" rows="4" maxlength="140">{{user.description}}</textarea></label>
+				</div>
 
-		<div class="form-section">
-			<label class="section-header">Biography</label>
-		    <label><textarea name="description" rows="4" maxlength="140">{{user.description}}</textarea></label>
-		</div>
+				<div class="form-section">
+					<label class="section-header" for="birthday">Birthday</label>
+					<label><input type="text" ng-click="pickDate($event)" id="birthday" name="birthday" ng-value="chosenDate"></label>
+				</div>
 
-		<div class="form-section">
-			<label class="section-header" for="birthday">Birthday</label>
-			<label><input type="text" ng-click="pickDate($event)" id="birthday" name="birthday" ng-value="chosenDate"></label>
-		</div>
+				<div class="form-section">
+					<label class="section-header" for="location">Location</label>
+					<label><input type="text" id="location" name="location" value="{{user.location}}" placeholder="City, State/Province, Country"></label>
+				</div>
 
-		<div class="form-section">
-			<label class="section-header" for="location">Location</label>
-			<label><input type="text" id="location" name="location" value="{{user.location}}" placeholder="City, State/Province, Country"></label>
-		</div>
-
-		<div class="form-section">
-			<label class="section-header">Sexual orientation</label>
-	   	<label class="checkbox">Men<input type="checkbox" id="checkboxMen" name="likeMen" value="1"></label><label class="checkbox">Women<input type="checkbox" id="checkboxWomen" name="likeWomen" value="1"></label>
-	   </div>
-
-   	<button class="full-width rounded green" ng-click="start()">{{status}} <i class="ion-ios7-arrow-right"></i></button>
+				<div class="form-section">
+					<label class="section-header">Sexual orientation</label>
+			  	<label class="checkbox">Men<input type="checkbox" id="checkboxMen" name="likeMen" value="1"></label><label class="checkbox">Women<input type="checkbox" id="checkboxWomen" name="likeWomen" value="1"></label>
+			  </div>
+				<button class="full-width rounded green" ng-click="start()">{{status}} <i class="ion-ios7-arrow-right"></i></button>
+			</li>
+		</ul>
 	</form>
 
 	<div class="form-section">
