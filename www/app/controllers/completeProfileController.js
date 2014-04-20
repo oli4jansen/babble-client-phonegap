@@ -5,7 +5,7 @@ app.controller("completeProfileController", function($scope, $route, $location, 
 
 	$scope.pictures = [];
 
-	$scope.init = function() {
+	$scope.init = function() {		
 		$scope.user = loginFactory.userPartialData;
 
 		$scope.pictures = JSON.parse(loginFactory.userPartialData.pictureList);
