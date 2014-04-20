@@ -29,16 +29,16 @@
 }
 
 ::-webkit-input-placeholder {
-	color: #2798D4;
+	color: #aaa;
 }
 :-moz-placeholder {
-	color: #2798D4;
+	color: #aaa;
 }
 ::-moz-placeholder {
-	color: #2798D4;
+	color: #aaa;
 }
 :-ms-input-placeholder {
-	color: #2798D4;
+	color: #aaa;
 }
 
 html, body {
@@ -131,6 +131,24 @@ textarea, input[type=text], input[type=number], input[type=date] {
 	outline: none;
 	border: none;
 	background-color: transparent;
+	background: bottom left 	-webkit-linear-gradient(#aaa, #aaa) no-repeat,
+				bottom center 	-webkit-linear-gradient(#aaa, #aaa) repeat-x,
+				bottom right 	-webkit-linear-gradient(#aaa, #aaa) no-repeat;
+	background: bottom left 	-moz-linear-gradient(#aaa, #aaa) no-repeat,
+				bottom center 	-moz-linear-gradient(#aaa, #aaa) repeat-x,
+				bottom right 	-moz-linear-gradient(#aaa, #aaa) no-repeat;
+	background: bottom left 	-o-linear-gradient(#aaa, #aaa) no-repeat,
+				bottom center 	-o-linear-gradient(#aaa, #aaa) repeat-x,
+				bottom right 	-o-linear-gradient(#aaa, #aaa) no-repeat;
+	background: bottom left 	linear-gradient(#aaa, #aaa) no-repeat,
+				bottom center 	linear-gradient(#aaa, #aaa) repeat-x,
+				bottom right 	linear-gradient(#aaa, #aaa) no-repeat;
+	background-size: 1px 5px, 1px 1px, 1px 5px;
+
+	-webkit-appearance: none;
+		-webkit-user-modify: read-write-plaintext-only;
+}
+textarea:focus, input[type=text]:focus, input[type=number]:focus, input[type=date]:focus {
 	background: bottom left 	-webkit-linear-gradient(#2798D4, #2798D4) no-repeat,
 				bottom center 	-webkit-linear-gradient(#2798D4, #2798D4) repeat-x,
 				bottom right 	-webkit-linear-gradient(#2798D4, #2798D4) no-repeat;
@@ -143,28 +161,9 @@ textarea, input[type=text], input[type=number], input[type=date] {
 	background: bottom left 	linear-gradient(#2798D4, #2798D4) no-repeat,
 				bottom center 	linear-gradient(#2798D4, #2798D4) repeat-x,
 				bottom right 	linear-gradient(#2798D4, #2798D4) no-repeat;
-	background-size: 1px 5px, 1px 1px, 1px 5px;
-
-	-webkit-appearance: none;
-    -webkit-user-modify: read-write-plaintext-only;
 }
 input.search {
 	margin: 0 0 10px !important;
-}
-input.blue, textarea.blue {
-		background: bottom left 	-webkit-linear-gradient(#2798D4, #2798D4) no-repeat,
-				bottom center 	-webkit-linear-gradient(#2798D4, #2798D4) repeat-x,
-				bottom right 	-webkit-linear-gradient(#2798D4, #2798D4) no-repeat;
-	background: bottom left 	-moz-linear-gradient(#2798D4, #2798D4) no-repeat,
-				bottom center 	-moz-linear-gradient(#2798D4, #2798D4) repeat-x,
-				bottom right 	-moz-linear-gradient(#2798D4, #2798D4) no-repeat;
-	background: bottom left 	-o-linear-gradient(#2798D4, #2798D4) no-repeat,
-				bottom center 	-o-linear-gradient(#2798D4, #2798D4) repeat-x,
-				bottom right 	-o-linear-gradient(#2798D4, #2798D4) no-repeat;
-	background: bottom left 	linear-gradient(#2798D4, #2798D4) no-repeat,
-				bottom center 	linear-gradient(#2798D4, #2798D4) repeat-x,
-				bottom right 	linear-gradient(#2798D4, #2798D4) no-repeat;
-	background-size: 1px 5px, 1px 1px, 1px 5px;
 }
 input[type=checkbox] {
 	border: 2px solid #2798D4;
@@ -212,7 +211,6 @@ label.checkbox {
 	top: 0;
 	z-index: 999999999999999999999999;
 
-	box-shadow: inset 0 -2px 0 rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.1);
 	background: #2798D4;
 	color: white;
 
@@ -364,6 +362,9 @@ body.popup .container {
 			border-top: 0;
 			text-align: left;
 			border-bottom: 1px solid #eee;
+			border-radius: 0;
+			margin: 0 !important;
+			padding: 10px 0;
 		}
 		.cards .card.current.contact:last-child {
 			border-bottom: 0;
@@ -641,17 +642,17 @@ body.popup .container {
 					text-align: center;
 				}
         #inputDiv #input::-webkit-input-placeholder {
-			color: #2798D4;
+					color: #aaa;
         }
         #inputDiv #input:-moz-placeholder {
-			color: #2798D4;
+					color: #aaa;
         }
         #inputDiv #input::-moz-placeholder {
-			color: #2798D4;
+					color: #aaa;
         }
         #inputDiv #input:-ms-input-placeholder {
-			color: #2798D4;
-		}
+					color: #aaa;
+				}
         .chatMessage {
             display: block;
             width: 100%;

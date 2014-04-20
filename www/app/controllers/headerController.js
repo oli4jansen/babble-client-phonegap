@@ -35,6 +35,7 @@ app.controller("headerController", function($scope, $location, $rootScope, $rout
 				$('.header .menu-item#settingsHandler, .header .menu-item#chatsHandler').css('display', 'inline-block');
 				$('body').addClass('transparent');
 			}else if(next.originalPath === '/' || next.originalPath === '/completeProfile') {
+				$('.header h1').html("");
 				$('.header .menu-item, .header .menu-item-back').css('display', 'none');
 				$('body').addClass('transparent');
 			}else{

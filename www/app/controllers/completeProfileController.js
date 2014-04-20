@@ -1,4 +1,4 @@
-app.controller("completeProfileController", function($scope, $location, loginFactory){
+app.controller("completeProfileController", function($scope, $route, $location, loginFactory){
 
 	$scope.user = {name: 'Loading..'}
 	$scope.status = 'Start Babbling';
@@ -6,8 +6,6 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 	$scope.pictures = [];
 
 	$scope.init = function() {
-		$('.header h1').html("Complete profile");
-
 		$scope.user = loginFactory.userPartialData;
 
 		$scope.pictures = JSON.parse(loginFactory.userPartialData.pictureList);
@@ -110,7 +108,9 @@ app.controller("completeProfileController", function($scope, $location, loginFac
 
 	$scope.deleteAccount = function() {
 		if(confirm('Are you sure you want to delete your account and sign out?')){
+			loginFactory.loggedIn = 0;
 			loginFactory.logOut();
+			$route.reload();
 		}
 	}
 
