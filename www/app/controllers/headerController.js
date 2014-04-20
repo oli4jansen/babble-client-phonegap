@@ -33,7 +33,7 @@ app.controller("headerController", function($scope, $location, $rootScope, $rout
 			}else if(next.originalPath === '/feed') {
 				$('.header .menu-item-back').css('display', 'none');
 				$('.header .menu-item#settingsHandler, .header .menu-item#chatsHandler').css('display', 'inline-block');
-				$('body').removeClass('transparent');
+				$('body').addClass('transparent');
 			}else if(next.originalPath === '/' || next.originalPath === '/completeProfile') {
 				$('.header .menu-item, .header .menu-item-back').css('display', 'none');
 				$('body').addClass('transparent');
