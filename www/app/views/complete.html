@@ -4,6 +4,7 @@
 			<li>
 		    <div class="form-section">
 					<label class="section-header">Add your picture</label>
+					<p class="section-note">This will only be visible for matches that you've chatted with.</p>
 		      <div id="images"><div style="background-image:url({{picture.url}})" ng-click="removePicture($index)" ng-repeat="picture in pictures">-</div><button ng-click="selectPicture()">+</button></div>
 		    </div>
 			</li><li>
@@ -27,8 +28,10 @@
 						<label><textarea name="description" rows="4" maxlength="140">{{user.description}}</textarea></label>
 				</div>
 			</li><li>
+				<h1>All done!</h1>
+				<img src="img/logo.png" class="logo">
+
 				<div class="form-section">
-					<label class="section-header">All done!</label>
 					<button class="full-width rounded green" ng-click="start()">{{status}} <i class="ion-ios7-arrow-right"></i></button>
 					<button class="full-width rounded red" ng-click="deleteAccount()">Delete and sign out <i class="ion-ios7-trash-outline"></i></button>
 				</div>

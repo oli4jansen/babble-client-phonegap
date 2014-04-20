@@ -193,6 +193,11 @@ label {
 label.section-header {
 	font-size: 1.5em;
 }
+p.section-note {
+	margin: 10px 10px 20px;
+	font-style: italic;
+	font-size: .8em;
+}
 label.checkbox {
 	line-height: 45px;
 	padding-left: 20px;
@@ -512,6 +517,10 @@ body.popup .container {
 	line-height: 24px !important;
 	text-shadow: none !important;
 	padding: 0 !important;
+}
+
+.logo {
+	margin: 15px auto;
 }
 
 .container.ng-enter,
