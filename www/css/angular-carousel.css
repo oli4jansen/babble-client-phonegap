@@ -57,20 +57,27 @@
 
 /* controls */
 .rn-carousel-control {
-  -webkit-transition: opacity 0.2s ease-out;
-  transition: opacity 0.2s ease-out;
-  font-size: 30px;
-  position: absolute;
+  height: 48px;
+  font-size: 35px;
+  z-index: 999999999999999;
+  position: fixed;
   top: 0;
   cursor: pointer; }
   .rn-carousel-control.rn-carousel-control-prev {
-    left: 0.5em; }
+    left: 10px; }
+    .rn-carousel-control.rn-carousel-control-prev:after {
+      content: "Previous";
+      color: white;
+      font-family: 'Roboto Condensed';
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 46px;
+      padding-left: 10px;
+      vertical-align: top;
+    }
     .rn-carousel-control.rn-carousel-control-prev:before {
-      content: "<"; }
-  .rn-carousel-control.rn-carousel-control-next {
-    right: 0.5em; }
-    .rn-carousel-control.rn-carousel-control-next:before {
       display:inline-block;
+      color: white;
       font-family:"Ionicons";
       speak:none;
       font-style:normal;
@@ -81,6 +88,32 @@
       line-height:1;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      content: "Next \f154";
-
+      content: "\f153";
+     }
+  .rn-carousel-control.rn-carousel-control-next {
+    right: 10px; }
+    .rn-carousel-control.rn-carousel-control-next:before {
+      content: "Next";
+      color: white;
+      font-family: 'Roboto Condensed';
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 46px;
+      padding-right: 10px;
+      vertical-align: top;
+    }
+    .rn-carousel-control.rn-carousel-control-next:after {
+      display:inline-block;
+      color: white;
+      font-family:"Ionicons";
+      speak:none;
+      font-style:normal;
+      font-weight:normal;
+      font-variant:normal;
+      text-transform:none;
+      text-rendering:auto;
+      line-height:1;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      content: "\f154";
    }
