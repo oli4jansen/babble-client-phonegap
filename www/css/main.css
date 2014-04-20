@@ -148,6 +148,9 @@ textarea, input[type=text], input[type=number], input[type=date] {
 	-webkit-appearance: none;
     -webkit-user-modify: read-write-plaintext-only;
 }
+input.search {
+	margin: 0 0 10px !important;
+}
 input.blue, textarea.blue {
 		background: bottom left 	-webkit-linear-gradient(#2798D4, #2798D4) no-repeat,
 				bottom center 	-webkit-linear-gradient(#2798D4, #2798D4) repeat-x,
@@ -359,12 +362,18 @@ body.popup .container {
 			position: relative;
 			margin: 0;
 			border-top: 0;
+			text-align: left;
+			border-bottom: 1px solid #eee;
+		}
+		.cards .card.current.contact:last-child {
+			border-bottom: 0;
 		}
 			.cards .card.current.contact h2 {
-				display: block;
-				padding: 15px 0 15px 25px;
+				display: inline-block;
+				padding: 15px 0 15px 15px;
 				line-height: 30px;
 				text-align: left;
+				width: auto;
 			}
 			.cards .card.current.contact img {
 				height: 50px;
@@ -372,6 +381,7 @@ body.popup .container {
 				display: inline-block;
 				vertical-align: top;
 				float: left;
+				border-radius: 100px;
 			}
 		.cards.stack .card.current {
 			margin: 10px 0 0;
