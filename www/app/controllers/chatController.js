@@ -4,7 +4,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	$scope.herId = $routeParams.userId;
 	$scope.herName = $routeParams.userName;
-	$scope.messageCounter = '?';
+	$scope.messageCounter = 'Connecting to '+herName+'...';
 	$scope.imageURL = 'img/unknown.png';
 
 	$scope.init = function() {
@@ -160,6 +160,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	    setInterval(function() {
 	        if (connection.readyState !== 1) {
 	            input.attr('disabled', 'disabled').val('Connection failed.');
+	            var connection = new WebSocket('ws://'+URL);
 	        }
 	    }, 3000);
 

@@ -684,7 +684,7 @@ body.popup .container {
         .chatMessage {
             display: block;
             width: 100%;
-            padding: 3px 8px;
+            padding: 3px 0;
             color: rgba(0,0,0,0.35);
             font-size: .75em;
         }
@@ -699,33 +699,14 @@ body.popup .container {
                 font-size: 1.35em;
                 box-shadow: 0 2px 1px 0px rgba(0,0,0,0.1);
                 line-height: 1.5em;
-								position: relative;
+				position: relative;
             }
-						.chatMessage span:after {
-							content: "";
-							display: block;
-							height: 0;
-							border-right: 5px solid #2798D4;
-							border-top: 5px solid transparent;
-							border-bottom: 5px solid transparent;
-							width: 0;
-							position: absolute;
-							left: -5px;
-							bottom: 10px;
-							z-index: 9999;
-						}
-							.myMessage span:after {
-								border-left: 5px solid #aaa;
-								border-right: 0;
-								left: auto;
-								right: -5px;
-							}
 	            .chatMessage span small {
-								display: block;
-								color: rgba(255,255,255,0.35);
-								font-size: .6em;
-								line-height: 2.1em;
-							}
+					display: block;
+					color: rgba(255,255,255,0.35);
+					font-size: .6em;
+					line-height: 2.1em;
+				}
 			        .myMessage {
 			            text-align: right;
 			        }
