@@ -67,11 +67,11 @@ angular.module('angular-carousel')
         // internal ids to allow multiple instances
         var carouselId = 0,
             // used to compute the sliding speed
-            timeConstant = 75,
+            timeConstant = 750,
             // in container % how much we need to drag to trigger the slide change
-            moveTreshold = 0.05,
+            moveTreshold = 0.01,
             // in absolute pixels, at which distance the slide stick to the edge on release
-            rubberTreshold = 3;
+            rubberTreshold = 50;
 
         var requestAnimationFrame = $window.requestAnimationFrame || $window.webkitRequestAnimationFrame || $window.mozRequestAnimationFrame;
 
@@ -261,6 +261,8 @@ angular.module('angular-carousel')
                         } else {
                             carousel[0].style[transformProperty] = 'translate3d(' + move + 'px, 0, 0)';
                         }
+
+                        carousel[0].scrollTop(0);
                     }
 
                     function autoScroll() {
