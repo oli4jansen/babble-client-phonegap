@@ -1,7 +1,7 @@
 <div class="matchController" ng-init="init()">
    	<div class="cards relative">
 
-		<ul rn-carousel rn-carousel-indicator rn-carousel-control class="form-carousel">
+		<ul rn-carousel rn-carousel-buffered class="form-carousel">
 			<li ng-repeat="picture in pictures"><img src="{{picture.url}}" width="100%"></li>
 		</ul>
 
