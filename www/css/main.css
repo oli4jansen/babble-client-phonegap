@@ -368,6 +368,12 @@ body.popup .container {
 			background-color: white;
 			box-shadow: none !important;
 		}
+		#feed .card p {
+			display: none;
+		}
+		#feed .card:nth-child(2) p {
+			display: block;
+		}
 
 		.cards .card.current.transparent {
 			background-color: transparent;
