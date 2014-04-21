@@ -692,7 +692,7 @@ body.popup .container {
                 display: inline-block;
                 width: auto;
                 max-width: 400px !important;
-                background-color: #2798D4;
+                background-color: #ccc;
                 padding: 10px 15px 5px;
                 margin-bottom: 2px;
                 color: #fff;
@@ -703,7 +703,7 @@ body.popup .container {
             }
 	            .chatMessage span small {
 					display: block;
-					color: rgba(255,255,255,0.35);
+					color: rgba(255,255,255,0.45);
 					font-size: .6em;
 					line-height: 2.1em;
 				}
@@ -711,7 +711,7 @@ body.popup .container {
 			            text-align: right;
 			        }
 					.myMessage span {
-						background: #aaa;
+		                background-color: #2798D4;
 					}
 
 /*

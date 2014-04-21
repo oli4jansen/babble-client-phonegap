@@ -15,7 +15,6 @@ app.controller("matchController", function($scope, $rootScope, $routeParams, log
 				$scope.$apply();
 
 				$('.header h1').html(data.name);
-//				$('#userPicture').css('background-image', 'url('+data.picture+')');
 			}
 		});
 	};

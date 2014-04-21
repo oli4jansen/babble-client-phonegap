@@ -1,5 +1,10 @@
 <div class="matchController" ng-init="init()">
    	<div class="cards relative">
+
+		<ul rn-carousel rn-carousel-indicator rn-carousel-control class="form-carousel">
+			<li ng-repeat="picture in user.pictureList"><img src="{{picture.url}}" width="100%"></li>
+		</ul>
+
 	   	<div class="card current name-card" id="userPicture"><img ng-src="{{user.picture}}" width="100%"></div>
 
 		<div class="card current">
