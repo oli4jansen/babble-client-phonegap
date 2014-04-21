@@ -12,7 +12,7 @@ app.controller("matchController", function($scope, $rootScope, $routeParams, log
 					data.picture = 'img/unknown.png';
 				}
 				$scope.user = data;
-				$scope.pictures = data.pictureList;
+				$scope.pictures = JSON.parse(data.pictureList);
 
 				$('.header h1').html(data.name);
 			}
