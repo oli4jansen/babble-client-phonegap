@@ -262,7 +262,7 @@ angular.module('angular-carousel')
                             carousel[0].style[transformProperty] = 'translate3d(' + move + 'px, 0, 0)';
                         }
 
-                        carousel[0].scrollTop(0);
+                        window.scrollTo(0,0);
                     }
 
                     function autoScroll() {
