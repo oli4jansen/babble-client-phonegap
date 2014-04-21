@@ -31,6 +31,7 @@ app.controller("completeProfileController", function($scope, $route, $location, 
 		loginFactory.authenticate(parsedData, function(err) {
 			if(!err) {
 				$scope.status = 'Logging you in..';
+				$('.header .rn-carousel-controls').remove();
 				$location.path( "/feed" );
 			}else{
 				navigator.notification.alert(err, function(){return;}, 'Woops..');
