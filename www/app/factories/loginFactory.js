@@ -277,10 +277,6 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 	FB.Event.subscribe('auth.login', function(response) {
 		factory.status = $sce.trustAsHtml('<div class="loader"><span class="loaderA"></span><span class="loaderMain"></span><span class="loaderB"></span></div>');
 
-		if(response.authResponse.accessToken === undefined || response.authResponse.accessToken === '') {
-			factory.status = $sce.trustAsHtml('Sign in with Facebook <i class="ion-social-facebook-outline"></i>');
-		}
-
 		// AccessToken instellen
 		factory.accessToken = response.authResponse.accessToken;
 

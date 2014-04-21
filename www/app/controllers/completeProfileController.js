@@ -110,7 +110,8 @@ app.controller("completeProfileController", function($scope, $route, $location, 
 		if(confirm('Are you sure you want to delete your account and sign out?')){
 			loginFactory.loggedIn = 0;
 			loginFactory.logOut();
-			$route.reload();
+//			$route.reload();
+			location.reload();
 		}
 	}
 
