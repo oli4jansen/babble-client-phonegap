@@ -4,7 +4,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	$scope.herId = $routeParams.userId;
 	$scope.herName = $routeParams.userName;
-	$scope.messageCounter = 'Connecting to '+herName+'...';
+	$scope.messageCounter = 'Connecting to '+$scope.herName+'...';
 	$scope.imageURL = 'img/unknown.png';
 
 	$scope.init = function() {
