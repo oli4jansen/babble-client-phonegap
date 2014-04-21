@@ -27,7 +27,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 			function(results) {
 				for (var i = 0; i < results.length; i++) {
 
-					$scope.pictures.push({ url: results[i] });
+					$scope.pictures.push({ url: results[i], local: results[i] });
 
 					// upload
 					loginFactory.uploadPicture(results[i], function(err) {
