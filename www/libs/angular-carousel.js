@@ -67,7 +67,7 @@ angular.module('angular-carousel')
         // internal ids to allow multiple instances
         var carouselId = 0,
             // used to compute the sliding speed
-            timeConstant = 750,
+            timeConstant = 0,
             // in container % how much we need to drag to trigger the slide change
             moveTreshold = 0.01,
             // in absolute pixels, at which distance the slide stick to the edge on release
@@ -261,8 +261,6 @@ angular.module('angular-carousel')
                         } else {
                             carousel[0].style[transformProperty] = 'translate3d(' + move + 'px, 0, 0)';
                         }
-
-                        window.scrollTo(0,0);
                     }
 
                     function autoScroll() {
