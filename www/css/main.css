@@ -325,6 +325,7 @@ body.popup .container {
 		}
 			.cards .card p {
 				padding: 25px 25px 25px;
+				word-break: break-word;
 			}
 				.cards .card.name-card {
 					background-color: #999 !important;
