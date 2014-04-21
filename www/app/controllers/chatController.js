@@ -158,9 +158,9 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	    // Error laten zien als de verbinding met de server is weggevallen
 	    setInterval(function() {
-	        if (connection.readyState !== 1) {
+	        if (connection !== undefined || connection.readyState !== 1) {
 	            input.attr('disabled', 'disabled').val('Connection failed.');
-	            var connection = new WebSocket('ws://'+URL);
+//	            var connection = new WebSocket('ws://'+URL);
 	        }
 	    }, 3000);
 
