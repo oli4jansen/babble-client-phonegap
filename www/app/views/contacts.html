@@ -3,7 +3,7 @@
 		<input type="text" class="search" ng-model="search" placeholder="Search {{matches.length}} matches">
 		
 		<div ng-click="startChat(match.id, match.name)" class="card my-repeat-animation current contact" ng-repeat="match in matches | filter:search">
-			<div class="img" ng-style="background: url({{match.picture}})"></div><h2>{{match.name}}</h2>
+			<div class="img" ng-style="match.pictureStyle"></div><h2>{{match.name}}</h2>
 		</div>
 	</div>
 </div>
