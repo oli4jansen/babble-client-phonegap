@@ -177,14 +177,17 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 		});
 	};
 
-	factory.uploadPicture = function(imageUrl, callback) {
+	factory.uploadPicture = function(imageUrl, accessToken, callback) {
+		alert('AT2:' + factory.accessToken);
+		alert('AT3:' + accessToken);
+
 		var options = new FileUploadOptions();
 		options.fileKey="file";
 		options.fileName=imageUrl.substr(imageUrl.lastIndexOf('/')+1);
 		options.mimeType="image/jpeg";
 
 		var params = new Object();
-		params.accessToken = factory.accessToken;
+		params.accessToken = accessToken;
 		params.fileName = options.fileName;
 
 		options.params = params;
@@ -193,8 +196,8 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 		var ft = new FileTransfer();
 		ft.upload(imageUrl, URL+"/user/"+factory.userId+"/picture", function(r){
 
-      console.log("Response = " + r.response);
-      console.log("Bytes Sent = " + r.bytesSent);
+			console.log("Response = " + r.response);
+			console.log("Bytes Sent = " + r.bytesSent);
 
 			if(JSON.parse(r.response).status === '200') {
 				callback(false);
