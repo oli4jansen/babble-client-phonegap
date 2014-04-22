@@ -5,7 +5,6 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	$scope.deleteButtonStatus = 'Delete and sign out';
 	$scope.pictures = [];
 	$scope.uploadStatus = '+';
-	$scope.pictureListChanged = false;
 
 	$scope.init = function() {
 		$('.header h1').html("Settings");
@@ -33,7 +32,6 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 			loginFactory.uploadPicture(data, function(err, result) {
 				$scope.uploadStatus = '+';
 				if(!err) {
-					$scope.pictureListChanged = true;
 					$scope.pictures.push({ url: JSON.parse(result.response).location });
 					$scope.$apply();
 					
@@ -98,12 +96,10 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 		});
 	};
 
-	$scope.$on('$destroy', function() {
-		if($scope.pictureListChanged) {
-			loginFactory.updatePictureList($scope.pictureList, function(err, data) {
-				if(err) alert('Pictures are note updated.');
-			});
-		}
+	$scope.$watch('pictureList', function() {
+		loginFactory.updatePictureList($scope.pictureList, function(err, data) {
+			if(err) alert('Pictures are note updated.');
+		});
 	});
 
 });
