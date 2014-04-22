@@ -52,9 +52,9 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	};
 
 	$scope.removePicture = function(index) {
-		$scope.updatePictureList();
 		$scope.pictures.splice(index, 1);
 		$scope.$apply;
+		$scope.updatePictureList();
 	};
 
 	$scope.update = function() {
