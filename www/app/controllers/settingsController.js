@@ -4,6 +4,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	$scope.updateButtonStatus = 'Update';
 	$scope.deleteButtonStatus = 'Delete and sign out';
 	$scope.pictures = [];
+	$scope.pictureListInit = false;
 	$scope.uploadStatus = '+';
 
 	$scope.init = function() {
@@ -17,6 +18,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 					if(data.likeMen === 1) $('#checkboxMen').attr('checked', 'true');
 					if(data.likeWomen === 1) $('#checkboxWomen').attr('checked', 'true');
 					$scope.pictures = JSON.parse(data.pictureList);
+					$scope.pictureListInit = true;
 				}
 			}
 		});
@@ -97,9 +99,11 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	};
 
 	$scope.$watch('pictureList', function() {
-		loginFactory.updatePictureList($scope.pictureList, function(err, data) {
-			if(err) alert('Pictures are note updated.');
-		});
+		if($scope.pictureListInit === true) {
+			loginFactory.updatePictureList($scope.pictureList, function(err, data) {
+				if(err) alert('Pictures are note updated.');
+			});
+		}
 	});
 
 });
