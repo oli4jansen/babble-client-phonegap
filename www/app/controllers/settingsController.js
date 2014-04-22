@@ -35,10 +35,8 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 				$scope.uploadStatus = '+';
 				if(!err) {
 					$scope.pictures.push({ url: JSON.parse(result.response).location });
+					$scope.updatePictureList();
 					$scope.$apply();
-					
-					console.log($scope.pictures);
-
 				}else{
 					$scope.$apply();
 					navigator.notification.alert('We\'re sorry but we couldn\'t upload your pictures.', function(){return;}, 'Couldn\'t upload.');
@@ -54,6 +52,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	};
 
 	$scope.removePicture = function(index) {
+		$scope.updatePictureList();
 		$scope.pictures.splice(index, 1);
 		$scope.$apply;
 	};
@@ -98,12 +97,10 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 		});
 	};
 
-	$scope.$watch('pictureList', function() {
-		if($scope.pictureListInit === true) {
-			loginFactory.updatePictureList($scope.pictureList, function(err, data) {
-				if(err) alert('Pictures are note updated.');
-			});
-		}
-	});
+	$scope.updatePictureList = function() {
+		loginFactory.updatePictureList($scope.pictures, function(err, data) {
+			if(err) alert('Pictures are note updated.');
+		});
+	};
 
 });
