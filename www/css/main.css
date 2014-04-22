@@ -543,16 +543,16 @@ body.popup .container {
 
 .container.ng-enter,
 .container.ng-leave {
-    -webkit-transition: all 0s linear !important;
-    -moz-transition: all 0s linear !important;
-    -o-transition: all 0s linear !important;
-    transition: all 0s linear !important;
-}/*
+    -webkit-transition: all .25s linear !important;
+    -moz-transition: all .25s linear !important;
+    -o-transition: all .25s linear !important;
+    transition: all .25s linear !important;
+}
 .container.ng-enter { opacity: 0.2 !important; }
 .container.ng-enter-active { opacity: 1 !important; }
-.container.ng-leave { opacity: 1 !important;  -webkit-transform: translate(0px,0px); transform: translate(0px,0px); }
-.container.ng-leave-active { opacity: 0 !important; -webkit-transform: translate(350px,0px); transform: translate(350px,0px); }
-*/
+.container.ng-leave { opacity: 1 !important; }
+.container.ng-leave-active { opacity: 0 !important; }
+
 .repeat-animation.ng-leave {
 	opacity: 1 !important;
 	-webkit-transition: .25s linear all !important;
@@ -695,7 +695,7 @@ body.popup .container {
                 display: inline-block;
                 width: auto;
                 max-width: 400px !important;
-                background-color: #ccc;
+                background-color: #aaa;
                 padding: 10px 15px 5px;
                 margin-bottom: 2px;
                 color: #fff;
