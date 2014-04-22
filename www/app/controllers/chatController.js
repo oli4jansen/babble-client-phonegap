@@ -135,6 +135,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	                $scope.messageCounter = 'Only '+$scope.messageCounter+' messages left.';
 		        	$scope.$apply();
 		        } else if(json.counter === 26 && $scope.status === 'hidden') {
+	                $scope.messageCounter = '';
 		        	alert('You can see '+$scope.herName+'\'s pictures!');
 		        }
 
