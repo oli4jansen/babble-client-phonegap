@@ -23,7 +23,8 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	$scope.pictures = [];
 
 	$scope.selectPicture = function() {
-		window.imagePicker.getPictures(
+		console.log(loginFactory.accessToken);
+/*		window.imagePicker.getPictures(
 			function(results) {
 				for (var i = 0; i < results.length; i++) {
 
@@ -70,7 +71,51 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 				width: 300,
 				height: 400
 			}
-		);
+		);*/
+		navigator.camera.getPicture(function(data){
+			alert(data);
+			
+
+			alert('Start uploading');
+			
+			loginFactory.uploadPicture(data, loginFactory.accessToken, function(err) {
+				if(!err) {
+					alert('Upload done.');
+
+					// Als dit de laatste foto was:
+/*					if(i === results.length) {
+						var picturesMirror = [];
+
+						for (var j = 0; j < $scope.pictures.length; j++) {
+							if($scope.pictures[j].local) {
+								var fileNameIndex = results[i].lastIndexOf("/") + 1;
+								var fileName = results[i].substr(fileNameIndex);
+								picturesMirror.push({ url: 'http://www.oli4jansen.nl:81/profile-pictures/'+loginFactory.userId+'-'+fileName });
+							}else{
+								picturesMirror.push({ url: $scope.pictures[j].url });
+							}
+						}
+
+						loginFactory.updatePictureList(picturesMirror, function(err, data){
+							if(err) navigator.notification.alert(err, function(){return;}, 'Error!');
+						});
+					}else{
+						alert('Niet de laatste foto.');
+					}*/
+				}else{
+					alert('error: '+err);
+					navigator.notification.alert('We\'re sorry but we couldn\'t upload your pictures.', function(){return;}, 'Couldn\'t upload.');
+				}
+			});
+			
+			
+		}, function(error){
+			alert(error);
+		}, {
+			quality: 50,
+			destinationType: Camera.DestinationType.DATA_URL,
+			sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+		});
 	};
 
 	$scope.removePicture = function(index) {
