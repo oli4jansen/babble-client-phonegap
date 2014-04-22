@@ -109,7 +109,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 			alert(error);
 		}, {
 			quality: 50,
-			destinationType: Camera.DestinationType.DATA_URL,
+			destinationType: Camera.DestinationType.FILE_URI,
 			sourceType: Camera.PictureSourceType.PHOTOLIBRARY
 		});
 	};
