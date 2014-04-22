@@ -403,6 +403,8 @@ body.popup .container {
 			.cards .card.current.contact .img {
 				height: 50px;
 				width: 50px;
+				background-size: cover;
+				background-position: center;
 				margin: 5px 0;
 				box-shadow: inset 0 10px 10px rgba(0,0,0,0.15);
 				display: inline-block;
