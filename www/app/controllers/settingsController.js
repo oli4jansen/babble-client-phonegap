@@ -5,6 +5,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	$scope.deleteButtonStatus = 'Delete and sign out';
 	$scope.pictures = [];
 	$scope.uploadStatus = '+';
+	$scope.pictureListChanged = false;
 
 	$scope.init = function() {
 		$('.header h1').html("Settings");
@@ -27,14 +28,19 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 		navigator.camera.getPicture(function(data){
 
 			$scope.uploadStatus = '..';
+			$scope.$apply();
 
 			loginFactory.uploadPicture(data, function(err, result) {
+				$scope.uploadStatus = '+';
 				if(!err) {
-					$scope.uploadStatus = '+';
-
-					$scope.pictures.push({ url: result.response.location });
+					$scope.pictureListChanged = true;
+					$scope.pictures.push({ url: JSON.parse(result.response).location });
+					$scope.$apply();
+					
+					console.log($scope.pictures);
 
 				}else{
+					$scope.$apply();
 					navigator.notification.alert('We\'re sorry but we couldn\'t upload your pictures.', function(){return;}, 'Couldn\'t upload.');
 				}
 			});
@@ -68,7 +74,7 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 				}
 			}
 		});
-	}
+	};
 
 	$scope.deleteAccount = function() {
 		$scope.deleteButtonStatus = 'Deleting..';
@@ -90,6 +96,14 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 				alert(err);
 			}
 		});
-	}
+	};
+
+	$scope.$on('$destroy', function() {
+		if($scope.pictureListChanged) {
+			loginFactory.updatePictureList($scope.pictureList, function(err, data) {
+				if(err) alert('Pictures are note updated.');
+			});
+		}
+	});
 
 });
