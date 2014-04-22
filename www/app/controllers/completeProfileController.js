@@ -4,6 +4,7 @@ app.controller("completeProfileController", function($scope, $route, $location, 
 	$scope.status = 'Start Babbling';
 
 	$scope.pictures = [];
+	$scope.uploadStatus = '+';
 
 	$scope.init = function() {		
 		$scope.user = loginFactory.userPartialData;
@@ -52,66 +53,48 @@ app.controller("completeProfileController", function($scope, $route, $location, 
 
 
 	$scope.selectPicture = function() {
-		window.imagePicker.getPictures(
-			function(results) {
-				for (var i = 0; i < results.length; i++) {
+		console.log(loginFactory.accessToken);
+		navigator.camera.getPicture(function(data){
 
-					$scope.pictures.push({ url: results[i] });
+			$scope.uploadStatus = '..';
+			$scope.$apply();
 
-					// upload
-					loginFactory.uploadPicture(results[i], function(err) {
-						if(!err) {
-							// Als dit de laatste foto was:
-							if(i === results.length) {
-								var picturesMirror = [];
-
-								for (var j = 0; j < $scope.pictures.length; j++) {
-									if($scope.pictures[j].local) {
-										var fileNameIndex = results[i].lastIndexOf("/") + 1;
-										var fileName = results[i].substr(fileNameIndex);
-
-										picturesMirror.push({ url: 'http://www.oli4jansen.nl:81/profile-pictures/'+loginFactory.userId+'-'+fileName });
-									}else{
-										picturesMirror.push({ url: $scope.pictures[j].url });
-									}
-								}
-
-								loginFactory.updatePictureList(picturesMirror, function(err, data){
-									if(err) navigator.notification.alert(err, function(){return;}, 'Error!');
-								});
-							}else{
-								alert('Niet de laatste foto.');
-							}
-						}else{
-							console.log(err);
-							navigator.notification.alert('We\'re sorry but we couldn\'t upload your pictures.', function(){return;}, 'Couldn\'t upload.');
-						}
-					});
-
+			loginFactory.uploadPicture(data, function(err, result) {
+				$scope.uploadStatus = '+';
+				if(!err) {
+					$scope.pictures.push({ url: JSON.parse(result.response).location });
+					$scope.updatePictureList();
 					$scope.$apply();
+				}else{
+					$scope.$apply();
+					navigator.notification.alert('We\'re sorry but we couldn\'t upload your pictures.', function(){return;}, 'Couldn\'t upload.');
 				}
-
-			}, function (error) {
-				alert('Couldn\'t get your photo.'+error);
-			}, {
-				maximumImagesCount: 5 - $scope.pictures.length,
-				width: 300,
-				height: 400
-			}
-		);
+			});
+		}, function(error){
+			alert(error);
+		}, {
+			quality: 50,
+			destinationType: Camera.DestinationType.FILE_URI,
+			sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+		});
 	};
 
 	$scope.removePicture = function(index) {
 		$scope.pictures.splice(index, 1);
 		$scope.$apply;
+		$scope.updatePictureList();
 	};
 
+	$scope.updatePictureList = function() {
+		loginFactory.updatePictureList($scope.pictures, function(err, data) {
+			if(err) alert('Pictures are note updated.');
+		});
+	};
 
 	$scope.deleteAccount = function() {
 		if(confirm('Are you sure you want to delete your account and sign out?')){
 			loginFactory.loggedIn = 0;
 			loginFactory.logOut();
-//			$route.reload();
 			location.reload();
 		}
 	}

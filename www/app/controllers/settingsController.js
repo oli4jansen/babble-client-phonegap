@@ -4,7 +4,6 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	$scope.updateButtonStatus = 'Update';
 	$scope.deleteButtonStatus = 'Delete and sign out';
 	$scope.pictures = [];
-	$scope.pictureListInit = false;
 	$scope.uploadStatus = '+';
 
 	$scope.init = function() {
