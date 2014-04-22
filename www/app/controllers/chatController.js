@@ -145,22 +145,22 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	    // Als er op enter gedrukt is: verstuur bericht
 	    $('#submitMessage').click(function(e) {
-	      var msg = input.val();
-				if (!msg) return;
-				connection.send(msg);
-				input.val('');
+	    	var msg = input.val();
+			if (!msg) return;
+			connection.send(msg);
+			input.val('');
+			input.focus();
 	    });
 
-			input.focus(function() {
-				var n = $('#content').height();
-				$('.ng-scope').animate({ scrollTop: n }, 100);
-			});
+		input.focus(function() {
+			var n = $('#content').height();
+			$('.ng-scope').animate({ scrollTop: n }, 100);
+		});
 
 	    // Error laten zien als de verbinding met de server is weggevallen
 	    setInterval(function() {
 	        if (connection === undefined || connection.readyState !== 1) {
 	            input.attr('disabled', 'disabled').val('Connection failed.');
-//	            var connection = new WebSocket('ws://'+URL);
 	        }
 	    }, 3000);
 

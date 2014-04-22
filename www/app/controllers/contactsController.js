@@ -10,6 +10,8 @@ app.controller("contactsController", function($scope, $location, loginFactory){
 			data.forEach(function(item) {
 				if(item.action < 26) {
 					item.picture = 'img/unknown.png';
+				}else{
+					item.picture = JSON.parse(item.pictureList)[0].url;
 				}
 			});
 			$scope.matches = data;
