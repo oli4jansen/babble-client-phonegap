@@ -191,7 +191,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 		params.fileName = options.fileName;
 
 		options.params = params;
-		options.chunkedMode = false;
+//		options.chunkedMode = false;
 
 		var ft = new FileTransfer();
 		ft.upload(imageUrl, URL+"/user/"+factory.userId+"/picture", function(r){
