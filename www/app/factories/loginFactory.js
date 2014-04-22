@@ -178,9 +178,9 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 	};
 
 	factory.uploadPicture = function(imageUrl, callback) {
-		if (imageURI.substring(0,21) === "content://com.android") {
-			photo_split = imageURI.split("%3A");
-			imageURI    = "content://media/external/images/media/"+photo_split[1];
+		if (imageUrl.substring(0,21) === "content://com.android") {
+			photo_split = imageUrl.split("%3A");
+			imageUrl    = "content://media/external/images/media/"+photo_split[1];
 		}
 
 		console.log(imageUrl);
