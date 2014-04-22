@@ -9,9 +9,9 @@ app.controller("contactsController", function($scope, $location, loginFactory){
 
 			data.forEach(function(item) {
 				if(item.action < 26) {
-					item.pictureStyle = { background: 'url("img/unknown.png") cover center' };
+					item.pictureStyle = { backgroundImage: 'url("img/unknown.png")', backgroundSize: 'cover', backgroundPosition: 'center' };
 				}else{
-					item.pictureStyle = { background: 'url("'+JSON.parse(item.pictureList)[0].url+'") cover center' };
+					item.pictureStyle = { backgroundImage: 'url("'+JSON.parse(item.pictureList)[0].url+'")', backgroundSize: 'cover', backgroundPosition: 'center' };
 				}
 			});
 			$scope.matches = data;
