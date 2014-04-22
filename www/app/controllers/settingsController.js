@@ -73,16 +73,14 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 			}
 		);*/
 		navigator.camera.getPicture(function(data){
-			alert(data);
-			
-
 			alert('Start uploading');
 			
-			loginFactory.uploadPicture(data, loginFactory.accessToken, function(err) {
+			loginFactory.uploadPicture(data, function(err, result) {
 				if(!err) {
 					alert('Upload done.');
 
-					// Als dit de laatste foto was:
+					console.log(result);
+
 /*					if(i === results.length) {
 						var picturesMirror = [];
 
@@ -107,8 +105,6 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 					navigator.notification.alert('We\'re sorry but we couldn\'t upload your pictures.', function(){return;}, 'Couldn\'t upload.');
 				}
 			});
-			
-			
 		}, function(error){
 			alert(error);
 		}, {

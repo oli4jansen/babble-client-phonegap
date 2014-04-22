@@ -177,20 +177,24 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 		});
 	};
 
-	factory.uploadPicture = function(imageUrl, accessToken, callback) {
-		alert('imageUrl:' + imageUrl);
+	factory.uploadPicture = function(imageUrl, callback) {
+		if (imageURI.substring(0,21) === "content://com.android") {
+			photo_split = imageURI.split("%3A");
+			imageURI    = "content://media/external/images/media/"+photo_split[1];
+		}
 
-		var options = new FileUploadOptions();
-		options.fileKey="file";
-		options.fileName=imageUrl.substr(imageUrl.lastIndexOf('/')+1);
-		options.mimeType="image/jpeg";
+		console.log(imageUrl);
 
-		var params = new Object();
-		params.accessToken = accessToken;
-		params.fileName = options.fileName;
+		var options         = new FileUploadOptions();
 
-		options.params = params;
+		options.fileKey     = "file";
+		options.mimeType    = "image/jpeg";
+		options.fileName    = imageUrl.substr(imageUrl.lastIndexOf('/')+1);
 		options.chunkedMode = false;
+		options.params      = {
+								accessToken: factory.accessToken,
+								fileName: options.fileName
+							  };
 
 		var ft = new FileTransfer();
 		ft.upload(imageUrl, URL+"/user/"+factory.userId+"/picture", function(r){
@@ -199,9 +203,9 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 			console.log("Bytes Sent = " + r.bytesSent);
 
 			if(JSON.parse(r.response).status === '200') {
-				callback(false);
+				callback(false, r);
 			}else{
-				callback('Something went wrong while uploading your picture.');
+				callback('Something went wrong while uploading your picture.', r);
 			}
 
 		}, function(err) {
