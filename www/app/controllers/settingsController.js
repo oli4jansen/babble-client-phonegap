@@ -3,6 +3,8 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 	$scope.user = {name: ''};
 	$scope.updateButtonStatus = 'Update';
 	$scope.deleteButtonStatus = 'Delete and sign out';
+	$scope.pictures = [];
+	$scope.uploadStatus = '+';
 
 	$scope.init = function() {
 		$('.header h1').html("Settings");
@@ -20,88 +22,19 @@ app.controller("settingsController", function($scope, $location, $route, $rootSc
 		});
 	};
 
-	$scope.pictures = [];
-
 	$scope.selectPicture = function() {
 		console.log(loginFactory.accessToken);
-/*		window.imagePicker.getPictures(
-			function(results) {
-				for (var i = 0; i < results.length; i++) {
-
-					$scope.pictures.push({ url: results[i], local: results[i] });
-
-					// upload
-					loginFactory.uploadPicture(results[i], function(err) {
-						alert('Photo '+i+' of '+results.length+' uploading..');
-						if(!err) {
-							// Als dit de laatste foto was:
-							if(i === results.length) {
-								var picturesMirror = [];
-
-								for (var j = 0; j < $scope.pictures.length; j++) {
-									if($scope.pictures[j].local) {
-										var fileNameIndex = results[i].lastIndexOf("/") + 1;
-										var fileName = results[i].substr(fileNameIndex);
-
-										picturesMirror.push({ url: 'http://www.oli4jansen.nl:81/profile-pictures/'+loginFactory.userId+'-'+fileName });
-									}else{
-										picturesMirror.push({ url: $scope.pictures[j].url });
-									}
-								}
-
-								loginFactory.updatePictureList(picturesMirror, function(err, data){
-									if(err) navigator.notification.alert(err, function(){return;}, 'Error!');
-								});
-							}else{
-								alert('Niet de laatste foto.');
-							}
-						}else{
-							console.log(err);
-							navigator.notification.alert('We\'re sorry but we couldn\'t upload your pictures.', function(){return;}, 'Couldn\'t upload.');
-						}
-					});
-
-					$scope.$apply();
-				}
-
-			}, function (error) {
-				alert('Couldn\'t get your photo.');
-			}, {
-				maximumImagesCount: 5 - $scope.pictures.length,
-				width: 300,
-				height: 400
-			}
-		);*/
 		navigator.camera.getPicture(function(data){
-			alert('Start uploading');
-			
+
+			$scope.uploadStatus = '..';
+
 			loginFactory.uploadPicture(data, function(err, result) {
 				if(!err) {
-					alert('Upload done.');
+					$scope.uploadStatus = '+';
 
-					console.log(result);
+					$scope.pictures.push({ url: result.response.location });
 
-/*					if(i === results.length) {
-						var picturesMirror = [];
-
-						for (var j = 0; j < $scope.pictures.length; j++) {
-							if($scope.pictures[j].local) {
-								var fileNameIndex = results[i].lastIndexOf("/") + 1;
-								var fileName = results[i].substr(fileNameIndex);
-								picturesMirror.push({ url: 'http://www.oli4jansen.nl:81/profile-pictures/'+loginFactory.userId+'-'+fileName });
-							}else{
-								picturesMirror.push({ url: $scope.pictures[j].url });
-							}
-						}
-
-						loginFactory.updatePictureList(picturesMirror, function(err, data){
-							if(err) navigator.notification.alert(err, function(){return;}, 'Error!');
-						});
-					}else{
-						alert('Niet de laatste foto.');
-					}*/
 				}else{
-					alert('error: '+err);
 					navigator.notification.alert('We\'re sorry but we couldn\'t upload your pictures.', function(){return;}, 'Couldn\'t upload.');
 				}
 			});
