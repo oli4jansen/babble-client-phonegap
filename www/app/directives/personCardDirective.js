@@ -58,7 +58,7 @@ app.directive('personCard', function() {
     controller: function($scope, $element) {
       $scope.opened = false;
 
-      element.find('a').on('touchstart mousedown MSPointerDown', function(e){
+      $element.find('a').on('touchstart mousedown MSPointerDown', function(e){
         $scope.opened = !$scope.opened;
         $scope.$apply();
       });
