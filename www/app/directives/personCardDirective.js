@@ -49,11 +49,6 @@ app.directive('personCard', function() {
             obj.$el.removeClass('keepAlive');
           }
       });
-        
-      element.find('a').on('touchstart mousedown MSPointerDown', function(e){
-        alert('Showing more.');
-        scope.toggle();
-      });
 
       scope.$on('$destroy', function() {
         // Unbind pep van het element
@@ -62,9 +57,11 @@ app.directive('personCard', function() {
     },
     controller: function($scope, $element) {
       $scope.opened = false;
-      return $scope.toggle = function() {
-        return $scope.opened = !$scope.opened;
-      };
+
+      element.find('a').on('touchstart mousedown MSPointerDown', function(e){
+        $scope.opened = !$scope.opened;
+        $scope.$apply();
+      });
     }
   }
 });

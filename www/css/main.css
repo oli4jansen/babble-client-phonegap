@@ -858,10 +858,10 @@ body.popup .container {
 .btn-more:after {
 	content: "More..";
 	background: white;
-	position: absolute;
+	display: block;
 	bottom: 17px;
-	left: 50%;
-	margin-left: -40px;
+	margin-top: -19px !important;
+	margin: auto;
 	color: #666;
 	width: 80px;
 	text-transform: uppercase;
@@ -871,13 +871,13 @@ body.popup .container {
 .collapsible > section {
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.7s ease-in-out;
+  transition: max-height 0.2s ease-in-out;
 }
 .collapsible > section > p {
   margin: 0;
   padding: 5px;
 }
 .collapsible > section.opened {
-  transition: max-height 0.9s ease-in-out;
+  transition: max-height 0.2s ease-in-out;
   max-height: 100px;
 }
