@@ -868,9 +868,6 @@ body.popup .container {
 	font-size: .8em;
 }
 
-.collapsible {
-  border: 1px solid gray;
-}
 .collapsible > section {
   overflow: hidden;
   max-height: 0;
@@ -883,11 +880,4 @@ body.popup .container {
 .collapsible > section.opened {
   transition: max-height 0.9s ease-in-out;
   max-height: 100px;
-}
-.collapsible > header {
-  border-bottom: 1px solid green;
-  cursor: pointer;
-}
-.collapsible > header h4 {
-  margin: 0;
 }

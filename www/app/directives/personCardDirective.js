@@ -52,6 +52,7 @@ app.directive('personCard', function() {
         
       element.find('a').on('touchstart mousedown MSPointerDown', function(e){
         alert('Showing more.');
+        scope.toggle();
       });
 
       scope.$on('$destroy', function() {
