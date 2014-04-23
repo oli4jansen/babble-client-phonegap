@@ -4,7 +4,7 @@ app.directive('personCard', function() {
     scope: {
       card: '=personInfo'
     },
-    template: '<h2>{{card.name}}, {{card.age}}</h2><p>{{card.description}}</p><span class="half-width"><i class="ion-ios7-navigate-outline"></i> {{card.distance}}</span><span class="half-width"><i class="ion-ios7-people-outline"></i> {{card.mutualFriends.length}} mutual</span><a class="btn-more"></a><div class="collapsible"><section ng-class="{opened: opened}">Hallo</section></div>',
+    template: '<h2>{{card.name}}, {{card.age}}</h2><p>{{card.description}}</p><span class="half-width"><i class="ion-ios7-navigate-outline"></i> {{card.distance}}</span><span class="half-width"><i class="ion-ios7-people-outline"></i> {{card.mutualFriends.length}} mutual</span>',
     link: function(scope, element, attrs) {
       // Pep binden aan het element
       element.pep({
@@ -53,14 +53,6 @@ app.directive('personCard', function() {
       scope.$on('$destroy', function() {
         // Unbind pep van het element
         $.pep.unbind(element);
-      });
-    },
-    controller: function($scope, $element) {
-      $scope.opened = false;
-
-      $element.find('a').on('touchstart mousedown MSPointerDown', function(e){
-        $scope.opened = !$scope.opened;
-        $scope.$apply();
       });
     }
   }
