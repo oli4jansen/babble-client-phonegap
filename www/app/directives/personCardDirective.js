@@ -4,7 +4,7 @@ app.directive('personCard', function() {
     scope: {
       card: '=personInfo'
     },
-    template: '<h2>{{card.name}}, {{card.age}}</h2><p>{{card.description}}</p><span class="half-width"><i class="ion-ios7-navigate-outline"></i> {{card.distance}}</span><span class="half-width"><i class="ion-ios7-people-outline"></i> {{card.mutualFriends.length}} mutual</span><a>More..</a>',
+    template: '<h2>{{card.name}}, {{card.age}}</h2><p>{{card.description}}</p><span class="half-width"><i class="ion-ios7-navigate-outline"></i> {{card.distance}}</span><span class="half-width"><i class="ion-ios7-people-outline"></i> {{card.mutualFriends.length}} mutual</span><a class="btn-more"></a><div class="collapsible"><section ng-class="{opened: opened}">Hallo</section></div>',
     link: function(scope, element, attrs) {
       // Pep binden aan het element
       element.pep({
@@ -58,6 +58,12 @@ app.directive('personCard', function() {
         // Unbind pep van het element
         $.pep.unbind(element);
       });
+    },
+    controller: function($scope, $element) {
+      $scope.opened = false;
+      return $scope.toggle = function() {
+        return $scope.opened = !$scope.opened;
+      };
     }
   }
 });
