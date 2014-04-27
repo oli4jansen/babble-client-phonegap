@@ -14,7 +14,7 @@ app.factory('cacheFactory', function($location, $window, $sce, $q, $http) {
 		// Altijd weer nieuwe data ophalen
 		$http.get(url).success(function(data) {
 
-			if(JSON.parse(localStorage.getItem(url)) !== data || now - JSON.parse(localStorage.getItem(url)).timestamp < 3600000) ) {
+			if(JSON.parse(localStorage.getItem(url)) !== data || now - JSON.parse(localStorage.getItem(url)).timestamp < 3600000) {
 				success(data);
 			}
 			localStorage.setItem(url, JSON.stringify({ data: data, timestamp: now }));
