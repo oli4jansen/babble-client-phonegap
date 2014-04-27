@@ -5,6 +5,7 @@ app.factory('cacheFactory', function($location, $window, $sce, $q, $http) {
 
 	factory.get = function(url, success, error) {
 		var now = new Date().getTime();
+		var cacheFilled = false;
 
 		// Als er data te vinden is in cache > success functie aanroepen
 		if(localStorage.getItem(url) !== undefined && localStorage.getItem(url) !== null) {
@@ -14,7 +15,7 @@ app.factory('cacheFactory', function($location, $window, $sce, $q, $http) {
 		// Altijd weer nieuwe data ophalen
 		$http.get(url).success(function(data) {
 
-			if((JSON.parse(localStorage.getItem(url)).data !== data) || (now - JSON.parse(localStorage.getItem(url)).timestamp) < 3600000) {
+			if(cacheFilled && ((JSON.parse(localStorage.getItem(url)).data !== data) || (now - JSON.parse(localStorage.getItem(url)).timestamp) < 3600000)) {
 				success(data);
 			}
 			localStorage.setItem(url, JSON.stringify({ data: data, timestamp: now }));
