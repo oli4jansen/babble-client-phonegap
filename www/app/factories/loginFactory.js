@@ -150,12 +150,11 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 	};*/
 
 	factory.getUserInfo = function(callback) {
-		cacheFactory.get(URL + '/user/'+this.userId).then(function(greeting) {
-			alert('Success: ' + greeting);
-		}, function(reason) {
-			alert('Failed: ' + reason);
-		}, function(update) {
-			alert('Got notification: ' + update);
+		cacheFactory.get(URL + '/user/'+this.userId).then(function(data) {
+			alert('Success: ' + data);
+			callback(false, data.data[0]);
+		}, function(error) {
+			alert('Error connecting to API', {});
 		});
 	}
 

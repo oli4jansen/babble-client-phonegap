@@ -1,4 +1,4 @@
-app.factory('cacheFactory', function($location, $window, $sce, $q) {
+app.factory('cacheFactory', function($location, $window, $sce, $q, $http) {
 
 	// Deze factory is een object
 	var factory = {};
@@ -6,8 +6,11 @@ app.factory('cacheFactory', function($location, $window, $sce, $q) {
 	factory.get = function(url) {
 		var deferred = $q.defer();
 
-		deferred.notify('About to greet Olivier.');
-		deferred.resolve('Hello, Olivier!');
+		$http.get(url).success(function(data) {
+			deferred.resolve(data);
+		}).error(function(data){
+			deferred.reject(data);
+		});
 
 		return deferred.promise;
 	};
