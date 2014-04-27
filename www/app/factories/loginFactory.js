@@ -1,4 +1,4 @@
-app.factory('loginFactory', function($http, $location, $window, $sce) {
+app.factory('loginFactory', function($http, $location, $window, $sce, cacheFactory) {
 
 	// API URL
 	var URL = 'http://www.oli4jansen.nl:81';
