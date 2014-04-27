@@ -8,7 +8,7 @@ app.factory('cacheFactory', function($location, $window, $sce, $q, $http) {
 
 		// Als er data te vinden is in cache > success functie aanroepen
 		if(localStorage.getItem(url) !== undefined && localStorage.getItem(url) !== null) {
-			success(JSON.parse(localStorage.getItem(url).data));
+			success(JSON.parse(localStorage.getItem(url)).data);
 		}
 
 		// Altijd weer nieuwe data ophalen
