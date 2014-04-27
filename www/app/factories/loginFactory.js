@@ -141,13 +141,23 @@ app.factory('loginFactory', function($http, $location, $window, $sce) {
 	};
 
 	// Gebruikers info ophalen bij de API
-	factory.getUserInfo = function(callback) {
-		$http.get(URL + '/user/'+this.userId).success(function(data) {
+	/*factory.getUserInfo = function(callback) {
+		cacheFactory.get(URL + '/user/'+this.userId).success(function(data) {
 			callback(false, data.data[0]);
 		}).error(function(data){
 			callback('Error connecting to API', {});
 		});
-	};
+	};*/
+
+	factory.getUserInfo = function(callback) {
+		cacheFactory.get(URL + '/user/'+this.userId).then(function(greeting) {
+			alert('Success: ' + greeting);
+		}, function(reason) {
+			alert('Failed: ' + reason);
+		}, function(update) {
+			alert('Got notification: ' + update);
+		});
+	}
 
 	// Informatie over een match tussen 2 personen ophalen
 	factory.getMatchInfo = function(matchId, callback) {

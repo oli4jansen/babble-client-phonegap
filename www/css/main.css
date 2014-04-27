@@ -306,7 +306,7 @@ body.popup .container {
 			padding: 0;
 			background-color: #fff;
 			color: #4c4c4c;
-			border-radius: 3px;
+			border-radius: 10px;
 			width: 96%;
 			margin: 0 2% !important;
 			z-index: 10;
@@ -457,8 +457,8 @@ body.popup .container {
 		border-radius: 100px;
 	}
 		.container > div > .button-holder button {
-			width: 48%;
-			margin: 0 1%;
+			width: 44%;
+			margin: 0 3%;
 			height: 60px;
 			-webkit-transition: 0;
 			transition: 0;
