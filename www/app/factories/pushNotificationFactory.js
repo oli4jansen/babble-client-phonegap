@@ -1,4 +1,4 @@
-app.factory('pushNotificationFactory', function($location, $window, $sce, $http) {
+app.factory('pushNotificationFactory', function($location, $window, $sce, $http, loginFactory) {
 
 	// Deze factory is een object
 	var factory = {};
@@ -21,23 +21,18 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http)
 	};
 
 	factory.success = function(data) {
-		alert('Success:' + data);
+//		alert('Success:' + data);
 	};
 
 	factory.error = function(data) {
-		alert('error:' + data);
+//		alert('error:' + data);
 	};
 
 	window.onNotificationGCM = function(e) {
-		alert('EVENT -> RECEIVED:' + e.event);
-
-		console.log(e);
-
 		switch( e.event ) {
 			case 'registered':
 				if ( e.regid.length > 0 ) {
-					alert('Reg ID:' + e.regid);
-					console.log('Reg ID:' + e.regid);
+					loginFactory.setRegID(e.regid);
 				}
 				break;
 
@@ -45,7 +40,11 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http)
 				if ( e.foreground ) {
 					alert('Inline notification');
 				} else if ( e.coldstart ) {
-	                alert('Coldstart notification');
+	                if(e.payload.type !== undefined) {
+	                	if(e.payload.type === 'chat' && e.payload.herId !== undefined && e.payload.herName !== undefined) {
+	                		$location.path('/chat/'+e.payload.herId+'/'+e.payload.herName);
+	                	}
+	                }
 	            } else {
 					alert('Background notification');
 	            }

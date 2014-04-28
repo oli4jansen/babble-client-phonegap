@@ -22,6 +22,9 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 	// Facebook access token
 	factory.accessToken;
 
+	// GCM Registration ID
+	factory.GCMRegIDList = [];
+
 	// UserID en info
 	factory.userId;
 	factory.userInfo = [];
@@ -88,7 +91,9 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 							callback(err);
 						}
 					}else{
-						factory.userInfo = data;
+						factory.userInfo 	 = data;
+						factory.GCMRegIDList = data.GCMRegIDList;
+
 						// Shit is geregeld; doorsturen naar de feed
 						if(!callback) {
 							$location.path( "/feed" );
@@ -138,6 +143,19 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 				callback('Couldn\'t connect to the API server.');
 			}
 		});
+	};
+
+	factory.setRegID = function(newRegID) {
+		if(factory.GCMRegIDList.indexOf(newRegID) == -1) {
+			factory.GCMRegIDList.push(newRegID);
+
+			$http.post(URL + '/user/regid', { accessToken: factory.accessToken, regIdList: JSON.stringify(factory.GCMRegIDList) }).success(function(data) {
+				console.log(data);
+			}).error(function(data){
+				alert('Failed to register for push notifications.');
+				console.log(data);
+			});
+		}
 	};
 
 	// Gebruiker info ophalen bij de API
