@@ -28,7 +28,7 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http)
 		alert('error:' + data);
 	};
 
-	factory.onNotificationGCM = function(e) {
+	window.onNotificationGCM = function(e) {
 		alert('EVENT -> RECEIVED:' + e.event);
 
 		switch( e.event ) {
