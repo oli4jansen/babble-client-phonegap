@@ -103,7 +103,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 
 
 						factory.userInfo 	 = data;
-						if(factory.GCMRegIDList === '' || factory.GCMRegIDList === undefined || factory.GCMRegIDList === null) {
+						if(factory.GCMRegIDList == '' || factory.GCMRegIDList == undefined || factory.GCMRegIDList == null) {
 							factory.GCMRegIDList = [];
 						}else{
 							factory.GCMRegIDList = JSON.parse(data.GCMRegIDList);
