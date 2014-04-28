@@ -68,6 +68,10 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 	// Authenticate een gebruiker bij de API
 	// Verplicht in data: { accessToken: (..) }
 	factory.authenticate = function(data, callback) {
+
+		console.log('Start authentication');
+
+
 		factory.authenticationStatus = 'Please wait..';
 		// POST de data naar het API endpoint
 		$http.post(URL + '/user/authenticate', data).success(function(data) {
@@ -94,6 +98,10 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 							callback(err);
 						}
 					}else{
+
+						console.log('Got userData');
+
+
 						factory.userInfo 	 = data;
 						factory.GCMRegIDList = JSON.parse(data.GCMRegIDList);
 						if(factory.GCMRegIDList === '' || factory.GCMRegIDList === undefined || factory.GCMRegIDList === null) {
@@ -104,6 +112,9 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 							factory.GCMRegIDList.push(factory.GCMRegIDCurrent);
 							factory.pushRegIDList();
 						}
+
+						console.log('Updated list:');
+						console.log(factory.GCMRegIDList);
 
 						// Shit is geregeld; doorsturen naar de feed
 						if(!callback) {
@@ -157,6 +168,11 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 	};
 
 	factory.pushRegIDList = function(newRegID) {
+
+		console.log('Pushing new list to DB:');
+		console.log(factory.GCMRegIDList);
+
+
 		$http.post(URL + '/user/'+factory.userId+'/regid', { accessToken: factory.accessToken, regIdList: JSON.stringify(factory.GCMRegIDList) }).success(function(data) {
 			console.log(data);
 		}).error(function(data){
