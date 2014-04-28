@@ -8,7 +8,7 @@ app.factory('cacheFactory', function($location, $window, $sce, $q, $http) {
 
 		// Als er data te vinden is in cache > success functie aanroepen
 		if(factory.getFromCache(url)) {
-			success(factory.getFromCache(url).data);
+			success(factory.getFromCache(url));
 		}
 
 		// Altijd weer nieuwe data ophalen
@@ -23,8 +23,8 @@ app.factory('cacheFactory', function($location, $window, $sce, $q, $http) {
 	};
 
 	factory.getFromCache = function(key) {
-		if(localStorage.getItem(key) !== undefined && localStorage.getItem(key) !== null) {
-			return JSON.parse(localStorage.getItem(key));
+		if(localStorage.getItem(key) !== undefined && localStorage.getItem(key) !== null && localStorage.getItem(key) !== 'null') {
+			return JSON.parse(localStorage.getItem(key)).data;
 		}else{
 			return false;
 		}
@@ -40,7 +40,7 @@ app.factory('cacheFactory', function($location, $window, $sce, $q, $http) {
 	};
 
 	factory.putInCache = function(key, data) {
-		localStorage.setItem(key, data);
+		localStorage.setItem(key, JSON.stringify(data));
 	};
 
 	return factory;
