@@ -93,6 +93,9 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 					}else{
 						factory.userInfo 	 = data;
 						factory.GCMRegIDList = data.GCMRegIDList;
+						if(factory.GCMRegIDList === '' || factory.GCMRegIDList === undefined || factory.GCMRegIDList === null) {
+							factory.GCMRegIDList = [];
+						}
 
 						// Shit is geregeld; doorsturen naar de feed
 						if(!callback) {
@@ -146,7 +149,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 	};
 
 	factory.setRegID = function(newRegID) {
-		if(factory.GCMRegIDList.indexOf(newRegID) == -1) {
+		if(factory.GCMRegIDList.indexOf(newRegID) === -1) {
 			factory.GCMRegIDList.push(newRegID);
 
 			$http.post(URL + '/user/regid', { accessToken: factory.accessToken, regIdList: JSON.stringify(factory.GCMRegIDList) }).success(function(data) {
