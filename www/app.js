@@ -55,7 +55,7 @@ var app = angular.module('Babble', ['ngRoute', 'ngAnimate', 'angular-carousel'])
 		redirectTo: '/'
 	});
 
-}).run( function($rootScope, $location, loginFactory) {
+}).run( function($rootScope, $location, loginFactory, pushNotificationFactory) {
 	// 300ms delay op mobiel weghalen
 	FastClick.attach(document.body);
 
