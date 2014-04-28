@@ -23,6 +23,9 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 	factory.accessToken;
 
 	// GCM Registration ID
+	factory.GCMRegIDCurrent;
+
+	// GCM Registration ID list from DB
 	factory.GCMRegIDList = [];
 
 	// UserID en info
@@ -97,6 +100,11 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 							factory.GCMRegIDList = [];
 						}
 
+						if(factory.GCMRegIDList.indexOf(factory.GCMRegIDCurrent) === -1) {
+							factory.GCMRegIDList.push(factory.GCMRegIDCurrent);
+							factory.pushRegIDList();
+						}
+
 						// Shit is geregeld; doorsturen naar de feed
 						if(!callback) {
 							$location.path( "/feed" );
@@ -148,19 +156,13 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 		});
 	};
 
-	factory.setRegID = function(newRegID) {
-		if(factory.GCMRegIDList.indexOf(newRegID) === -1) {
-			factory.GCMRegIDList.push(newRegID);
-
-			console.log({ accessToken: factory.accessToken, regIdList: JSON.stringify(factory.GCMRegIDList) });
-
-			$http.post(URL + '/user/'+factory.userId+'/regid', { accessToken: factory.accessToken, regIdList: JSON.stringify(factory.GCMRegIDList) }).success(function(data) {
-				console.log(data);
-			}).error(function(data){
-				alert('Failed to register for push notifications.');
-				console.log(data);
-			});
-		}
+	factory.pushRegIDList = function(newRegID) {
+		$http.post(URL + '/user/'+factory.userId+'/regid', { accessToken: factory.accessToken, regIdList: JSON.stringify(factory.GCMRegIDList) }).success(function(data) {
+			console.log(data);
+		}).error(function(data){
+			alert('Failed to register for push notifications.');
+			console.log(data);
+		});
 	};
 
 	// Gebruiker info ophalen bij de API

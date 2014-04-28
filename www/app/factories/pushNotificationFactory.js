@@ -32,7 +32,7 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 		switch( e.event ) {
 			case 'registered':
 				if ( e.regid.length > 0 ) {
-					loginFactory.setRegID(e.regid);
+					loginFactory.GCMRegIDCurrent = e.regid;
 				}
 				break;
 
