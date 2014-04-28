@@ -99,14 +99,16 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 						}
 					}else{
 
-						console.log('Got userData');
+						console.log('Got userData: ' + data);
 
 
 						factory.userInfo 	 = data;
-						if(factory.GCMRegIDList == '' || factory.GCMRegIDList == undefined || factory.GCMRegIDList == null) {
-							factory.GCMRegIDList = [];
-						}else{
+
+						try {
 							factory.GCMRegIDList = JSON.parse(data.GCMRegIDList);
+						} catch(e) {
+							console.log(e);
+							factory.GCMRegIDList = [];
 						}
 
 						if(factory.GCMRegIDList.indexOf(factory.GCMRegIDCurrent) === -1) {
