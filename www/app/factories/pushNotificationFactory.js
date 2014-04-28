@@ -10,9 +10,10 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http)
 		{
 		    pushService.register(
 		        factory.success,
-		        factory.error, {
+		        factory.error,
+		        {
 		            "senderID"	: "40396801652",
-		            "ecb"		: "pushNotificationFactory.onNotificationGCM"
+		            "ecb"		: "factory.onNotificationGCM"
 		        });
 		}else{
 			console.log('ERROR, push notification kunnen nog niet opgezet worden voor dit platform.');
