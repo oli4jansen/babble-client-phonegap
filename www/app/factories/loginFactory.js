@@ -140,20 +140,12 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 		});
 	};
 
-	// Gebruikers info ophalen bij de API
-	/*factory.getUserInfo = function(callback) {
-		cacheFactory.get(URL + '/user/'+this.userId).success(function(data) {
-			callback(false, data.data[0]);
-		}).error(function(data){
-			callback('Error connecting to API', {});
-		});
-	};*/
-
+	// Gebruiker info ophalen bij de API
 	factory.getUserInfo = function(callback) {
 		cacheFactory.get(URL + '/user/'+this.userId, function(data) {
 			callback(false, data.data[0]);
 		}, function(error) {
-			alert('Error connecting to API', {});
+			callback('Error connecting to API', {});
 		});
 	}
 
@@ -168,10 +160,10 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 
 	// Alle matches van 1 persoon ophalen
 	factory.getMatches = function(callback) {
-		$http.get(URL + '/user/'+this.userId+'/matches').success(function(data) {
+		cacheFactory.get(URL + '/user/'+this.userId+'/matches', function(data) {
 			callback(false, data.data);
-		}).error(function(data){
-			callback('Error connecting to API', {});
+		}, function(error) {
+			alert('Error connecting to API', {});
 		});
 	};
 
