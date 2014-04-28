@@ -8,7 +8,7 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http)
 	factory.enablePushNotifications = function(url, success, error) {
 		if ( device.platform == 'android' || device.platform == 'Android' )
 		{
-		    pushNotification.register(
+		    pushService.register(
 		        factory.success,
 		        factory.error, {
 		            "senderID"	: "40396801652",
