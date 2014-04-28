@@ -152,7 +152,7 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 		if(factory.GCMRegIDList.indexOf(newRegID) === -1) {
 			factory.GCMRegIDList.push(newRegID);
 
-			$http.post(URL + '/user/regid', { accessToken: factory.accessToken, regIdList: JSON.stringify(factory.GCMRegIDList) }).success(function(data) {
+			$http.post(URL + '/user/'+factory.userId+'/regid', { accessToken: factory.accessToken, regIdList: JSON.stringify(factory.GCMRegIDList) }).success(function(data) {
 				console.log(data);
 			}).error(function(data){
 				alert('Failed to register for push notifications.');
