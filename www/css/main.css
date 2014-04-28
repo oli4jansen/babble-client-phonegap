@@ -107,7 +107,7 @@ img { vertical-align: top; }
 		color: white;
 	}
 	.btn.rounded, button.rounded {
-		border-radius: 3px;
+		border-radius: 5px;
 		margin: 5px 0;
 		box-shadow: inset 0 -2px rgba(0,0,0,0.1);
 	}
@@ -306,7 +306,7 @@ body.popup .container {
 			padding: 0;
 			background-color: #fff;
 			color: #4c4c4c;
-			border-radius: 10px;
+			border-radius: 5px;
 			width: 96%;
 			margin: 0 2% !important;
 			z-index: 10;
@@ -465,12 +465,10 @@ body.popup .container {
 			border-top: 0;
 		}
 		.container > div > .button-holder button.dislike.selected,
-		.container > div > .button-holder button.dislike:active {
-			box-shadow: 0 0 25px #d94c30;
-		}
+		.container > div > .button-holder button.dislike:active,
 		.container > div > .button-holder button.like.selected,
 		.container > div > .button-holder button.like:active {
-			box-shadow: 0 0 25px #27D42E;
+			box-shadow: 0 0 25px rgba(255,255,255,0.8);
 		}
 
 	.container img.fullScreen {
