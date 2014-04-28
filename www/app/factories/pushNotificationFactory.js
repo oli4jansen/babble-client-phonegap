@@ -31,7 +31,7 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 	window.onNotificationGCM = function(e) {
 		console.log(e);
 
-		alert('Received notification: '+e);
+		alert('Received notification: '+JSON.stringify(e);
 
 		switch( e.event ) {
 			case 'registered':
