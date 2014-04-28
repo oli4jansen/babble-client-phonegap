@@ -12,7 +12,7 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http)
 		        factory.success,
 		        factory.error, {
 		            "senderID"	: "40396801652",
-		            "ecb"		: "factory.onNotificationGCM"
+		            "ecb"		: "pushNotificationFactory.onNotificationGCM"
 		        });
 		}else{
 			console.log('ERROR, push notification kunnen nog niet opgezet worden voor dit platform.');
