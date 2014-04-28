@@ -4,8 +4,6 @@ app.factory('cacheFactory', function($location, $window, $sce, $q, $http) {
 	var factory = {};
 
 	factory.get = function(url, success, error) {
-		var now = new Date().getTime();
-
 		// Als er data te vinden is in cache > success functie aanroepen
 		if(factory.getFromCache(url)) {
 			success(factory.getFromCache(url));
@@ -40,7 +38,9 @@ app.factory('cacheFactory', function($location, $window, $sce, $q, $http) {
 	};
 
 	factory.putInCache = function(key, data) {
-		localStorage.setItem(key, JSON.stringify(data));
+		var now = new Date().getTime();
+
+		localStorage.setItem(key, JSON.stringify({ data: data, timestamp: now }));
 	};
 
 	return factory;
