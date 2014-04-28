@@ -31,6 +31,8 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 	window.onNotificationGCM = function(e) {
 		console.log(e);
 
+		alert('Received notification: '+e);
+
 		switch( e.event ) {
 			case 'registered':
 				if ( e.regid.length > 0 ) {
