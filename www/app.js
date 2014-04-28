@@ -71,3 +71,9 @@ var app = angular.module('Babble', ['ngRoute', 'ngAnimate', 'angular-carousel'])
 		}
     });
  });
+
+function onNotificationGCM(e) {
+	var $inj = angular.injector(['Babble']);
+	var pushNotificationFactory = $inj.get('pushNotificationFactory');
+	pushNotificationFactory.onNotificationGCM(e);
+}
