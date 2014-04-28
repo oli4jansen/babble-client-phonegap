@@ -41,7 +41,7 @@
     <gap:plugin name="org.apache.cordova.dialogs" version="0.2.6" />
     <gap:plugin name="com.dileep.plugins.datepicker" version="0.0.1" />
 
-    <gap:plugin name="com.synconset.imagepicker" version="1.0.1" />
+    <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
 
     <icon src="res/icon/android/drawable-mdpi/ic_launcher.png" gap:platform="android" gap:density="mdpi" />
     <icon src="res/icon/android/drawable-hdpi/ic_launcher.png" gap:platform="android" gap:density="hdpi" />

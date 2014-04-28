@@ -59,6 +59,9 @@ var app = angular.module('Babble', ['ngRoute', 'ngAnimate', 'angular-carousel'])
 	// 300ms delay op mobiel weghalen
 	FastClick.attach(document.body);
 
+	// Push Notifications aanzetten
+	pushNotificationFactory.enablePushNotifications();
+
 	// Als de route wijzigt...
 	$rootScope.$on( "$routeChangeStart", function(event, next, current) {
 		// ..checken of er ingelogd is
