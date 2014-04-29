@@ -1,4 +1,4 @@
-app.controller("headerController", function($scope, $location, $rootScope, $routeParams){
+app.controller("windowController", function($scope, $location, $rootScope, $routeParams){
 
 	$scope.path = '/';
 	$rootScope.popups = [];

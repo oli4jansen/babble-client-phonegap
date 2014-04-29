@@ -43,7 +43,7 @@
 	<meta name="mobile-web-app-capable" content="yes">
 </head>
 <body id="document" style="display:none">
-	<div class="header" ng-controller="headerController" ng-init="init()">
+	<div class="header" ng-controller="windowController" ng-init="init()">
 		<div id="popup" class="repeat-animation cards relative" ng-repeat="match in popups">
 			<div class="card current">
 				<h2>You and {{match.name}} matched!</h2>

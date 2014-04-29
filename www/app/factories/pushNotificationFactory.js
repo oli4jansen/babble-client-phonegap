@@ -46,7 +46,7 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 					alert('Inline notification');
 				} else if ( e.coldstart ) {
 	                if(e.payload.type !== undefined) {
-	                	if(e.payload.type === 'chat' && e.payload.herId !== undefined && e.payload.herName !== undefined) {
+	                	if(e.payload.type == 'chat' && e.payload.herId !== undefined && e.payload.herName !== undefined) {
 	                		$location.path('/chat/'+e.payload.herId+'/'+e.payload.herName);
 	                	}
 	                }

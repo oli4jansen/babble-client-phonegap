@@ -98,10 +98,6 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 							callback(err);
 						}
 					}else{
-
-						console.log('Got userData: ' + data);
-
-
 						factory.userInfo 	 = data;
 
 						try {
