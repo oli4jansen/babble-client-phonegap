@@ -105,13 +105,15 @@ app.factory('loginFactory', function($http, $location, $window, $sce, cacheFacto
 						factory.userInfo 	 = data;
 
 						try {
+							// Proberen de verkregen array met RegIDs te parsen
 							factory.GCMRegIDList = JSON.parse(data.GCMRegIDList);
 						} catch(e) {
+							// Als dat niet lukt, beginnen we opnieuw met een lege lijst
 							console.log(e);
 							factory.GCMRegIDList = [];
 						}
 
-						if(factory.GCMRegIDList.indexOf(factory.GCMRegIDCurrent) === -1) {
+						if(factory.GCMRegIDList.indexOf(factory.GCMRegIDCurrent) === -1 && factory.GCMRegIDCurrent !== null) {
 							factory.GCMRegIDList.push(factory.GCMRegIDCurrent);
 							factory.pushRegIDList();
 						}
