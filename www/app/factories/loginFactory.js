@@ -55,7 +55,7 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 	// Uitloggen bij Facebook
 	factory.logOut = function() {
 		FB.logout(function(response) {
-			$route.reload();
+			location.reload();
 		});
 	};
 
