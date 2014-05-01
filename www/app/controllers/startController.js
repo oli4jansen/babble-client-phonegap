@@ -1,4 +1,4 @@
-app.controller("startController", function($scope, $location, $http, $rootScope, loginFactory, $sce){
+app.controller("startController", function($scope, $location, $http, $rootScope, $sce){
 
 	$scope.init = function() {
 		if(localStorage.getItem('babbleAccessToken') !== undefined && localStorage.getItem('babbleAccessToken') !== null && localStorage.getItem('babbleAccessToken') !== 'null') {

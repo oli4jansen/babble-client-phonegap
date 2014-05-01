@@ -331,8 +331,13 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 		// AccessToken instellen
 		factory.accessToken = response.authResponse.accessToken;
 
-		// Authenticate gebruiker met accessToken
-		factory.authenticate({ accessToken: response.authResponse.accessToken });
+		if(localStorage.getItem('babbleAccessToken') !== undefined && localStorage.getItem('babbleAccessToken') !== null && localStorage.getItem('babbleAccessToken') !== 'null' && localStorage.getItem('babbleAccessToken') == factory.accessToken) {
+			// AccessToken gevonden in localStorage: er is al eens ingelogd met deze accessToken
+			alert('WELCOME BACK');
+		}else{
+			// Authenticate gebruiker met accessToken
+			factory.authenticate({ accessToken: response.authResponse.accessToken });
+		}
 	});
 
 	// Facebook SDK instellen met ons Facebook App ID
