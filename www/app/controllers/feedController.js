@@ -15,9 +15,9 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                 }else if(data.status === '401') {
                     loginFactory.loggedIn = 0;
                     loginFactory.logOut();
-                    setTimeout(function(){
+/*                    setTimeout(function(){
                         $route.reload();
-                    }, 1000);
+                    }, 1000);*/
                 }else{
                     $scope.status = $sce.trustAsHtml('We couldn\'t find anyone near you.');
                 }
