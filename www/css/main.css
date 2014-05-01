@@ -697,17 +697,16 @@ body.popup .container {
                 width: auto;
                 max-width: 400px !important;
                 background-color: #DFE1E4;
-                padding: 8px 12px;
-                color: #fff;
+                padding: 10px 15px;
                 font-size: 1.35em;
-                box-shadow: 0 2px 1px 0px rgba(0,0,0,0.1);
                 line-height: 1.5em;
 				position: relative;
+				border-radius: 5px;
             }
             .chatMessage small {
 				display: block;
-				color: rgba(0,0,0,0.45);
-				font-size: .6em;
+				color: rgba(0,0,0,0.1);
+				font-size: 1em;
 				padding: 2px 0 2px 2px;
 				line-height: 2.1em;
 			}
