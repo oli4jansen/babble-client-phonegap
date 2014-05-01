@@ -31,8 +31,6 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 	window.onNotificationGCM = function(e) {
 		console.log(e);
 
-//		alert('Received notification: '+JSON.stringify(e));
-
 		switch( e.event ) {
 			case 'registered':
 				if ( e.regid.length > 0 ) {
@@ -59,7 +57,7 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 			    break;
 
 			case 'error':
-				alert('Error:' + e.msg);
+				console.log('Error:' + e.msg);
 				break;
 
 			default:
