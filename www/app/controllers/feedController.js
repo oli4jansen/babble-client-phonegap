@@ -12,6 +12,10 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                 $scope.status = $sce.trustAsHtml('');
                 if(data.status === '200') {
                     $scope.feed = $scope.parseFeed(data.data);
+                }else if(data.status === '401') {
+                    loginFactory.loggedIn = 0;
+                    loginFactory.logOut();
+                    $route.reload();
                 }else{
                     $scope.status = $sce.trustAsHtml('We couldn\'t find anyone near you.');
                 }
