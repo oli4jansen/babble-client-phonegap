@@ -49,7 +49,7 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
     $scope.like = function() {
         var herId = $scope.feed[0].id;
         var herName = $scope.feed[0].name;
-        feedFactory.postLiked(loginFactory.userId, herId, herName).success(function(data){
+        feedFactory.postLiked(loginFactory.userId, herId, loginFactory.userInfo.name).success(function(data){
             if(data.status !== '200') {
                 alert('Failed to like.');
             }else if(data.data === 'match'){

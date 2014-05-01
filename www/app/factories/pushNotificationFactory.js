@@ -45,7 +45,8 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 						if(e.payload.type == 'match') {
 							// Match popup laten zien
 			                $('body').addClass('popup');
-			                $rootScope.popups.push({name: e.payload.herName, id: e.payload.herId})
+			                $rootScope.popups.push({name: e.payload.herName, id: e.payload.herId});
+			                $rootScope.$apply();
 						}
 					}						
 				} else if ( e.coldstart ) {
