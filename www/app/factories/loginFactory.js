@@ -37,7 +37,7 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 	 */
 
 	// Inloggen bij Facebook
-	factory.logIn = function() {
+	factory.logInFB = function() {
 		FB.login(
 	        function(response) {
 	            if (response.authResponse) {
@@ -80,55 +80,7 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 				// Status 200 betekent:
 				//   -  gebruiker bestaat en accessToken is geldig en bijgewerkt
 				//   -  gebruiker bestond niet maar is aangemaakt met de geleverde data
-
-				// Er is ingelogd
-				factory.loggedIn 			= true;
-
-				// Het profiel bestaat in de database
-				factory.profileCompleted 	= true;
-
-				// Het userID zoals we die terugkregen van de server
-				factory.userId 				= data.data.id;
-
-				// Alle info van de gebruiker ophalen en instellen in de factory zodat deze beschikbaar is voor verschillende controllers
-				factory.getUserInfo(function(err, data) {
-					if(err) {
-						if(!callback) {
-							alert(err);
-						}else{
-							callback(err);
-						}
-					}else{
-						factory.userInfo 	 = data;
-
-						try {
-							// Proberen de verkregen array met RegIDs te parsen
-							factory.GCMRegIDList = JSON.parse(data.GCMRegIDList);
-						} catch(e) {
-							// Als dat niet lukt, beginnen we opnieuw met een lege lijst
-							console.log(e);
-							factory.GCMRegIDList = [];
-						}
-
-						if(factory.GCMRegIDList.indexOf(factory.GCMRegIDCurrent) === -1 && factory.GCMRegIDCurrent !== null) {
-							factory.GCMRegIDList.push(factory.GCMRegIDCurrent);
-							factory.pushRegIDList();
-						}
-
-						console.log('Updated list:');
-						console.log(factory.GCMRegIDList);
-
-						localStorage.setItem('babbleAccesToken', factory.accessToken);
-
-						// Shit is geregeld; doorsturen naar de feed
-						if(!callback) {
-							$location.path( "/feed" );
-						}else{
-							callback('');
-						}
-					}
-				});
-
+				factory.logIn(data, callback);
 			}else if(data.status === 206) {
 				// Status 206 betekent: gebruiker bestaat niet en er was alleen een accessToken aanwezig in de data
 
@@ -167,6 +119,56 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 				navigator.notification.alert('Couldn\'t connect to the API server.', function(){return;}, 'Woops..');
 			}else{
 				callback('Couldn\'t connect to the API server.');
+			}
+		});
+	};
+
+	factory.logIn = function(data, callback) {
+		// Er is ingelogd
+		factory.loggedIn 			= true;
+
+		// Het profiel bestaat in de database
+		factory.profileCompleted 	= true;
+
+		// Het userID zoals we die terugkregen van de server
+		factory.userId 				= data.data.id;
+
+		// Alle info van de gebruiker ophalen en instellen in de factory zodat deze beschikbaar is voor verschillende controllers
+		factory.getUserInfo(function(err, data) {
+			if(err) {
+				if(!callback) {
+					alert(err);
+				}else{
+					callback(err);
+				}
+			}else{
+				factory.userInfo 	 = data;
+
+				try {
+					// Proberen de verkregen array met RegIDs te parsen
+					factory.GCMRegIDList = JSON.parse(data.GCMRegIDList);
+				} catch(e) {
+					// Als dat niet lukt, beginnen we opnieuw met een lege lijst
+					console.log(e);
+					factory.GCMRegIDList = [];
+				}
+
+				if(factory.GCMRegIDList.indexOf(factory.GCMRegIDCurrent) === -1 && factory.GCMRegIDCurrent !== null) {
+					factory.GCMRegIDList.push(factory.GCMRegIDCurrent);
+					factory.pushRegIDList();
+				}
+
+				console.log('Updated list:');
+				console.log(factory.GCMRegIDList);
+
+				localStorage.setItem('babbleAccessToken', factory.accessToken);
+
+				// Shit is geregeld; doorsturen naar de feed
+				if(!callback) {
+					$location.path( "/feed" );
+				}else{
+					callback('');
+				}
 			}
 		});
 	};
@@ -337,10 +339,11 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 		if(localStorage.getItem('babbleAccessToken') !== undefined && localStorage.getItem('babbleAccessToken') !== null && localStorage.getItem('babbleAccessToken') !== 'null' && localStorage.getItem('babbleAccessToken') == factory.accessToken) {
 			// AccessToken gevonden in localStorage: er is al eens ingelogd met deze accessToken
 			alert('WELCOME BACK');
+			factory.logIn({ accessToken: response.authResponse.accessToken });
 		}else{
 			// Authenticate gebruiker met accessToken
 			alert('Have to auth');
-//			factory.authenticate({ accessToken: response.authResponse.accessToken });
+			factory.authenticate({ accessToken: response.authResponse.accessToken });
 		}
 	});
 

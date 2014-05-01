@@ -3,12 +3,12 @@ var app = angular.module('Babble', ['ngRoute', 'ngAnimate', 'angular-carousel'])
 
 	// Routes opgeven
 	$routeProvider.when('/', {
-		// Route / is de start pagina
+/*		// Route / is de start pagina
 
 //		templateUrl: 'app/views/login.html',
 		controller: 'startController'
 
-	}).when('/login', {
+	}).when('/login', {*/
 		// Route /login is de login pagina
 
 		templateUrl: 'app/views/login.html',
