@@ -1,4 +1,4 @@
-app.controller("feedController", function($scope, $sce, $rootScope, feedFactory, loginFactory){
+app.controller("feedController", function($scope, $sce, $rootScope, feedFactory, loginFactory, $route){
 
     $scope.status = $sce.trustAsHtml('<div class="loader"><span class="loaderA"></span><span class="loaderMain"></span><span class="loaderB"></span></div>Looking for people');
 
@@ -15,7 +15,9 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                 }else if(data.status === '401') {
                     loginFactory.loggedIn = 0;
                     loginFactory.logOut();
-                    $route.reload();
+                    setTimeout(function(){
+                        $route.reload();
+                    }, 1000);
                 }else{
                     $scope.status = $sce.trustAsHtml('We couldn\'t find anyone near you.');
                 }
