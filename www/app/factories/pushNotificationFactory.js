@@ -1,4 +1,4 @@
-app.factory('pushNotificationFactory', function($location, $window, $sce, $http, loginFactory) {
+app.factory('pushNotificationFactory', function($location, $window, $sce, $http, loginFactory, $rootScope) {
 
 	// Deze factory is een object
 	var factory = {};
@@ -33,39 +33,36 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 
 		switch( e.event ) {
 			case 'registered':
-				if ( e.regid.length > 0 ) {
-					console.log('Got our regID');
-					loginFactory.GCMRegIDCurrent = e.regid;
-				}
+				// Bevestiging van GCM met een Registration ID, nodig op te pushen
+				if ( e.regid.length > 0 ) loginFactory.GCMRegIDCurrent = e.regid;
 				break;
 
 			case 'message':
+				// Een 'echte' notification
 				if ( e.foreground ) {
-					alert('Inline notification');
-				} else if ( e.coldstart ) {
-					console.log('COLDSTART NOTIFICATION');
+					// Notificaties die binnenkomen terwijl de gebruiker in de app is
 					if(e.payload.type !== undefined) {
-						if(e.payload.type == 'chat' && e.payload.herId !== undefined && e.payload.herName !== undefined) {
-
-							console.log('Type is chat');
-
-							loginFactory.desiredLocation = '/chat/'+e.payload.herId+'/'+e.payload.herName;
-
+						if(e.payload.type == 'match') {
+							// Match popup laten zien
+			                $('body').addClass('popup');
+			                $rootScope.popups.push({name: herName, id: herId})
 						}
 					}						
-	            } else {
-					alert('Background notification');
+				} else if ( e.coldstart ) {
+					// Notificaties waar op geklikt is vanuit het Notification Center v/d telefoon
+					if(e.payload.type !== undefined) {
+						if(e.payload.type == 'chat' && e.payload.herId !== undefined && e.payload.herName !== undefined) {
+							loginFactory.desiredLocation = '/chat/'+e.payload.herId+'/'+e.payload.herName;
+						}else if(e.payload.type == 'match') {
+							loginFactory.desiredLocation = '/chat/'+e.payload.herId+'/'+e.payload.herName;							
+						}
+					}
 	            }
-
 			    break;
 
 			case 'error':
 				console.log('Error:' + e.msg);
 				break;
-
-			default:
-				alert('Unknown notification event');
-			break;
 		}
 	};
 

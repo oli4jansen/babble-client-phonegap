@@ -15,15 +15,11 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                 }else if(data.status === '401') {
                     loginFactory.loggedIn = 0;
                     loginFactory.logOut();
-/*                    setTimeout(function(){
-                        $route.reload();
-                    }, 1000);*/
                 }else{
                     $scope.status = $sce.trustAsHtml('We couldn\'t find anyone near you.');
                 }
         	}).error(function(data) {
-                $scope.status = $sce.trustAsHtml('Something went wrong.');
-                alert('Woops:'+JSON.stringify(data));
+                $scope.status = $sce.trustAsHtml('Couldn\'t connect to the server.');
             });
         }
     };
@@ -45,7 +41,7 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
                     $scope.status = $sce.trustAsHtml('We couldn\'t find anyone near you.');
                 }
             }).error(function(data){
-                $scope.status = $sce.trustAsHtml('Something went wrong.');
+                $scope.status = $sce.trustAsHtml('Couldn\'t connect to the server.');
             });
         }
     };
@@ -53,7 +49,7 @@ app.controller("feedController", function($scope, $sce, $rootScope, feedFactory,
     $scope.like = function() {
         var herId = $scope.feed[0].id;
         var herName = $scope.feed[0].name;
-        feedFactory.postLiked(loginFactory.userId, herId).success(function(data){
+        feedFactory.postLiked(loginFactory.userId, herId, herName).success(function(data){
             if(data.status !== '200') {
                 alert('Failed to like.');
             }else if(data.data === 'match'){
