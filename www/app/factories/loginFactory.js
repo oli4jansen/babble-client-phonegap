@@ -118,7 +118,7 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 						console.log('Updated list:');
 						console.log(factory.GCMRegIDList);
 
-						document.cookie = 'babbleAccesToken='+factory.accessToken+';';
+						localStorage.setItem('babbleAccesToken', factory.accessToken);
 
 						// Shit is geregeld; doorsturen naar de feed
 						if(!callback) {
