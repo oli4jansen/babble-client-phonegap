@@ -161,7 +161,13 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 				console.log('Updated list:');
 				console.log(factory.GCMRegIDList);
 
-				localStorage.setItem('babbleAccessToken', factory.accessToken);
+				localStorage.setItem(
+					'babbleLogInHash',
+					JSON.stringify({
+						accessToken: factory.accessToken,
+						userId: factory.userId
+					})
+				);
 
 				// Shit is geregeld; doorsturen naar de feed
 				if(!callback) {
@@ -336,13 +342,11 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 		console.log(localStorage.getItem('babbleAccessToken'));
 		console.log(factory.accessToken);
 
-		if(localStorage.getItem('babbleAccessToken') !== undefined && localStorage.getItem('babbleAccessToken') !== null && localStorage.getItem('babbleAccessToken') !== 'null' && localStorage.getItem('babbleAccessToken') == factory.accessToken) {
+		if(localStorage.getItem('babbleAccessToken') !== undefined && localStorage.getItem('babbleAccessToken') !== null && localStorage.getItem('babbleAccessToken') !== 'null' && JSON.parse(localStorage.getItem('babbleAccessToken')).accessToken == factory.accessToken) {
 			// AccessToken gevonden in localStorage: er is al eens ingelogd met deze accessToken
-			alert('WELCOME BACK');
-			factory.logIn({ accessToken: response.authResponse.accessToken });
+			factory.logIn({ data: { id: JSON.parse(localStorage.getItem('babbleAccessToken')).userId }});
 		}else{
 			// Authenticate gebruiker met accessToken
-			alert('Have to auth');
 			factory.authenticate({ accessToken: response.authResponse.accessToken });
 		}
 	});
