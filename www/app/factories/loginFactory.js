@@ -26,7 +26,7 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 	factory.GCMRegIDCurrent;
 
 	// GCM Registration ID list from DB
-	factory.GCMRegIDList = [];
+	factory.GCMRegIDDatabase = ;
 
 	// UserID en info
 	factory.userId;
@@ -155,13 +155,10 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 					factory.GCMRegIDList = [];
 				}
 
-				if(factory.GCMRegIDList.indexOf(factory.GCMRegIDCurrent) === -1 && factory.GCMRegIDCurrent !== null) {
-					factory.GCMRegIDList.push(factory.GCMRegIDCurrent);
-					factory.pushRegIDList();
+				if(factory.GCMRegIDDatabase !== factory.GCMRegIDCurrent && factory.GCMRegIDCurrent.length > 10) {
+					console.log('Updated RegID from '+factory.GCMRegIDDatabase+' top '+factory.GCMRegIDCurrent);
+					factory.updateRegID();
 				}
-
-				console.log('Updated list:');
-				console.log(factory.GCMRegIDList);
 
 				localStorage.setItem(
 					'babbleLogInHash',
@@ -185,17 +182,14 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 		});
 	};
 
-	factory.pushRegIDList = function(newRegID) {
+	factory.updateRegID = function() {
 
-		console.log('Pushing new list to DB:');
-		console.log(factory.GCMRegIDList);
+		console.log('Pushing new RegID to DB');
 
-
-		$http.post(URL + '/user/'+factory.userId+'/regid', { accessToken: factory.accessToken, regIdList: JSON.stringify(factory.GCMRegIDList) }).success(function(data) {
-			console.log(data);
+		$http.post(URL + '/user/'+factory.userId+'/regid', { accessToken: factory.accessToken, regId: factory.GCMRegIDCurrent }).success(function(data) {
+			console.log('Successfully updated RegID: '+data);
 		}).error(function(data){
-			alert('Failed to register for push notifications.');
-			console.log(data);
+			console.log('Failed to update regID: '+data);
 		});
 	};
 

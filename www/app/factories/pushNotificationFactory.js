@@ -16,16 +16,16 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 		            "ecb"		: "onNotificationGCM"
 		        });
 		}else{
-			console.log('ERROR, push notification kunnen nog niet opgezet worden voor dit platform.');
+			console.log('ERROR, push notification kunnen (nog) niet opgezet worden voor dit platform.');
 		}
 	};
 
 	factory.success = function(data) {
-//		alert('Success:' + data);
+		console.log('pushNotificationFactory Success:' + data);
 	};
 
 	factory.error = function(data) {
-//		alert('error:' + data);
+		console.log('pushNotificationFactory Error:' + data);
 	};
 
 	window.onNotificationGCM = function(e) {
