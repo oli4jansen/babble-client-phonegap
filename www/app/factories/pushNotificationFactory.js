@@ -43,11 +43,13 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 				if ( e.foreground ) {
 					alert('Inline notification');
 				} else if ( e.coldstart ) {
-	                if(e.payload.type !== undefined) {
-	                	if(e.payload.type == 'chat' && e.payload.herId !== undefined && e.payload.herName !== undefined) {
-	                		$location.path('/chat/'+e.payload.herId+'/'+e.payload.herName);
-	                	}
-	                }
+					document.addEventListener("babbleLoggedIn",function() {
+						if(e.payload.type !== undefined) {
+							if(e.payload.type == 'chat' && e.payload.herId !== undefined && e.payload.herName !== undefined) {
+								$location.path('/chat/'+e.payload.herId+'/'+e.payload.herName);
+							}
+						}						
+					},false);
 	            } else {
 					alert('Background notification');
 	            }

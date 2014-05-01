@@ -168,6 +168,9 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 					})
 				);
 
+				var event = new Event('babbleLoggedIn');
+				document.dispatchEvent(event);
+
 				// Shit is geregeld; doorsturen naar de feed
 				if(!callback) {
 					$location.path( "/feed" );
