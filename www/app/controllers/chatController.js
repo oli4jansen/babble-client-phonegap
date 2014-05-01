@@ -174,9 +174,9 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	      time = new Date(timeOri);
 	      if(author === myName) className = 'myMessage';
 	      content.append('<div id="'+id+'" class="chatMessage '+ className +'"" style="opacity: 0.1;">'
-	             + '<span>' + message + '<small>'
+	             + '<span>' + message + '</span><small>'
  	            + time.getDate() + ' ' + monthNames[time.getMonth()] + ' ' + (time.getHours() < 10 ? '0' + time.getHours() : time.getHours()) + ':'
-	             + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes())+'</small></span></div>');
+	             + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes())+'</small></div>');
 
   			var n = $('#content').height();
 				$('.ng-scope').animate({ scrollTop: n }, 0, function() {
