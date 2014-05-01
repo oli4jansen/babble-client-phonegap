@@ -46,7 +46,7 @@ app.controller("windowController", function($scope, $location, $rootScope, $rout
 				$('body').removeClass('transparent');
 			}
 			if(next.originalPath === '/' && current.originalPath === '/feed') {
-				navigator.app.exitApp();
+//				navigator.app.exitApp();
 			}
 		});
 	};
