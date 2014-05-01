@@ -338,12 +338,12 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 		// AccessToken instellen
 		factory.accessToken = response.authResponse.accessToken;
 
-		console.log(localStorage.getItem('babbleAccessToken'));
+		console.log(localStorage.getItem('babbleLogInHash'));
 		console.log(factory.accessToken);
 
-		if(localStorage.getItem('babbleAccessToken') !== undefined && localStorage.getItem('babbleAccessToken') !== null && localStorage.getItem('babbleAccessToken') !== 'null' && JSON.parse(localStorage.getItem('babbleAccessToken')).accessToken == factory.accessToken) {
+		if(localStorage.getItem('babbleLogInHash') !== undefined && localStorage.getItem('babbleLogInHash') !== null && localStorage.getItem('babbleLogInHash') !== 'null' && JSON.parse(localStorage.getItem('babbleLogInHash')).accessToken == factory.accessToken) {
 			// AccessToken gevonden in localStorage: er is al eens ingelogd met deze accessToken
-			factory.logIn({ data: { id: JSON.parse(localStorage.getItem('babbleAccessToken')).userId }});
+			factory.logIn({ data: { id: JSON.parse(localStorage.getItem('babbleLogInHash')).userId }});
 		}else{
 			// Authenticate gebruiker met accessToken
 			factory.authenticate({ accessToken: response.authResponse.accessToken });
