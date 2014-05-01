@@ -43,9 +43,16 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 				if ( e.foreground ) {
 					alert('Inline notification');
 				} else if ( e.coldstart ) {
+					console.log('COLDSTART NOTIFICATION');
 					document.addEventListener("babbleLoggedIn",function() {
+						console.log('babbleLoggedIn listener called');
+
 						if(e.payload.type !== undefined) {
 							if(e.payload.type == 'chat' && e.payload.herId !== undefined && e.payload.herName !== undefined) {
+
+								console.log('Type is chat');
+
+
 								$location.path('/chat/'+e.payload.herId+'/'+e.payload.herName);
 							}
 						}						
@@ -54,8 +61,6 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 					alert('Background notification');
 	            }
 
-				alert('MSG: ' + e.payload.message);
-				alert('MSGCNT: ' + e.payload.msgcnt);
 			    break;
 
 			case 'error':
