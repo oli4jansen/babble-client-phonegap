@@ -72,7 +72,6 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 
 		console.log('Start authentication');
 
-
 		factory.authenticationStatus = 'Please wait..';
 		// POST de data naar het API endpoint
 		$http.post(URL + '/user/authenticate', data).success(function(data) {
