@@ -3,8 +3,6 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 	// Deze factory is een object
 	var factory = {};
 
-	factory.desiredLocation = false;
-
 	var pushService = window.plugins.pushNotification;
 
 	factory.enablePushNotifications = function(url, success, error) {
@@ -46,20 +44,15 @@ app.factory('pushNotificationFactory', function($location, $window, $sce, $http,
 					alert('Inline notification');
 				} else if ( e.coldstart ) {
 					console.log('COLDSTART NOTIFICATION');
-//					document.addEventListener("babbleLoggedIn",function() {
-//						console.log('babbleLoggedIn listener called');
+					if(e.payload.type !== undefined) {
+						if(e.payload.type == 'chat' && e.payload.herId !== undefined && e.payload.herName !== undefined) {
 
-						if(e.payload.type !== undefined) {
-							if(e.payload.type == 'chat' && e.payload.herId !== undefined && e.payload.herName !== undefined) {
+							console.log('Type is chat');
 
-								console.log('Type is chat');
+							loginFactory.desiredLocation = '/chat/'+e.payload.herId+'/'+e.payload.herName;
 
-								factory.desiredLocation = '/chat/'+e.payload.herId+'/'+e.payload.herName;
-
-//								$location.path('/chat/'+e.payload.herId+'/'+e.payload.herName);
-							}
-						}						
-//					},false);
+						}
+					}						
 	            } else {
 					alert('Background notification');
 	            }

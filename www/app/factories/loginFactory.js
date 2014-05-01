@@ -32,6 +32,9 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 	factory.userId;
 	factory.userInfo = [];
 
+	// Desired location passed from pushNotificationFactory
+	factory.desiredLocation = false;
+
 	/*
 	 *	Facebook SDK functions
 	 */
@@ -168,13 +171,10 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 					})
 				);
 
-				var event = new Event('babbleLoggedIn');
-				document.dispatchEvent(event);
-
 				// Shit is geregeld; doorsturen naar de feed
 				if(!callback) {
-					if(pushNotificationFactory.desiredLocation) {
-						$location.path(pushNotificationFactory.desiredLocation);
+					if(factory.desiredLocation) {
+						$location.path(factory.desiredLocation);
 					}else{
 						$location.path( "/feed" );
 					}
