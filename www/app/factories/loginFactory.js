@@ -1,4 +1,4 @@
-app.factory('loginFactory', function($http, $location, $route, $window, $sce, cacheFactory) {
+app.factory('loginFactory', function($http, $location, $route, $window, $sce, cacheFactory, pushNotificationFactory) {
 
 	// API URL
 	var URL = 'http://www.oli4jansen.nl:81';
@@ -173,7 +173,11 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 
 				// Shit is geregeld; doorsturen naar de feed
 				if(!callback) {
-					$location.path( "/feed" );
+					if(pushNotificationFactory.desiredLocation) {
+						$location.path(pushNotificationFactory.desiredLocation);
+					}else{
+						$location.path( "/feed" );
+					}
 				}else{
 					callback('');
 				}
