@@ -69,8 +69,10 @@
 		$(document).ready(function() {
 			// En de telefoon klaar is
 			document.addEventListener('deviceready', function onDeviceReady() {
-				// Splashscreen verbergen
-				navigator.splashscreen.hide();
+				setTimeout(function(){
+					// Splashscreen verbergen
+					navigator.splashscreen.hide();
+				}, 500);
 				// Start de Angular app
 				angular.bootstrap(document.getElementById("document"), ['Babble']);
 				// En laat de body zien
