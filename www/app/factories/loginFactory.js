@@ -55,6 +55,7 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 	// Uitloggen bij Facebook
 	factory.logOut = function() {
 		FB.logout(function(response) {
+			document.cookie = "babbleAccesToken=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 			location.reload();
 		});
 	};
@@ -116,6 +117,8 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 
 						console.log('Updated list:');
 						console.log(factory.GCMRegIDList);
+
+						document.cookie = 'babbleAccesToken='+factory.accessToken+';';
 
 						// Shit is geregeld; doorsturen naar de feed
 						if(!callback) {
