@@ -26,7 +26,7 @@ app.factory('loginFactory', function($http, $location, $route, $window, $sce, ca
 	factory.GCMRegIDCurrent;
 
 	// GCM Registration ID list from DB
-	factory.GCMRegIDDatabase = ;
+	factory.GCMRegIDDatabase;
 
 	// UserID en info
 	factory.userId;
