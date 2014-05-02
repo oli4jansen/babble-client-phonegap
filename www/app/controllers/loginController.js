@@ -7,7 +7,7 @@ app.controller("loginController", function($scope, $location, $http, $rootScope,
 
 	$scope.logIn = function() {
 		$scope.status = $sce.trustAsHtml('<div class="loader"><span class="loaderA"></span><span class="loaderMain"></span><span class="loaderB"></span></div>');
-		loginFactory.logIn();
+		loginFactory.logInFB();
 	};
 
 	$scope.status = loginFactory.status;

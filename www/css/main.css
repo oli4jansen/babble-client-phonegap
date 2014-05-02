@@ -136,6 +136,7 @@ img { vertical-align: top; }
 	padding: 0 15px;
 	left: 0;
 	display: block;
+	width: 100%;
 }
 
 textarea, input[type=text], input[type=number], input[type=date] {
