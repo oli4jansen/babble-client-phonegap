@@ -173,7 +173,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
     "July", "August", "September", "October", "November", "December" ];
 
 	    // DOM bewerkingsfunctie: message toevoegen
-	    function addMessage(id, author, message, timeOri) {
+	    function addMessage(id, author, body, timeOri) {
 /*	    	var className = '';
 	      time = new Date(timeOri);
 	      if(author === myName) className = 'myMessage';
@@ -196,7 +196,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 			}else{
 				message.myMessage = false;
 			}
-			message.body = message;
+			message.body = body;
 			message.time = time.getDate() + ' ' + monthNames[time.getMonth()] + ' ' + (time.getHours() < 10 ? '0' + time.getHours() : time.getHours()) + ':' + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes());
 
 			$scope.messages.push(message);
