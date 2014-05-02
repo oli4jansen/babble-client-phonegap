@@ -471,11 +471,67 @@ body.popup .container {
 			transition: 0;
 			border-top: 0;
 		}
-		.container > div > .button-holder button.dislike.selected,
-		.container > div > .button-holder button.dislike:active,
-		.container > div > .button-holder button.like.selected,
-		.container > div > .button-holder button.like:active {
-			box-shadow: 0 0 25px rgba(255,255,255,0.8);
+		.container > div > .button-holder button.dislike.selected:before,
+		.container > div > .button-holder button.dislike:active:before,
+		.container > div > .button-holder button.like.selected:before,
+		.container > div > .button-holder button.like:active:before {
+		    content: "";
+		    display: block;
+		    position: absolute;
+		    width: 50px;
+		    background: transparent;
+		    height: 50px;
+		    left: 50%;
+		    top: 50%;
+		    border-radius: 50%;
+		    z-index: -9;
+		    border: 0px solid #27D42E;
+		    -webkit-animation: pulse 1s;
+		    animation: pulse 1s;
+		}
+
+		.container > div > .button-holder button.dislike.selected:before,
+		.container > div > .button-holder button.dislike:active:before {
+		    border: 0px solid #d94c30;			
+		}
+
+
+		@-webkit-keyframes pulse
+		{
+		    0% {
+		        border-width: 0px;
+		        margin-top: -25px;
+		        margin-left: -25px;
+		        opacity: 0;
+		    }
+		    15% {
+		        opacity: 1;
+		    }
+		    100% {
+		        border-width: 160px;
+		        margin-top: -185px;
+		        margin-left: -185px;
+		        opacity: 0;
+		    }
+		}
+
+		@keyframes pulse
+		{
+		    0% {
+		        border-width: 0px;
+		        margin-top: -25px;
+		        margin-left: -25px;
+		        opacity: 0;
+		    }
+		    15% {
+		        opacity: 1;
+		    }
+		    100% {
+		        border-width: 160px;
+		        margin-top: -185px;
+		        margin-left: -185px;
+		        opacity: 0;
+		    }
 		}
 
 	.container img.fullScreen {
