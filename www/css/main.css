@@ -130,6 +130,13 @@ img { vertical-align: top; }
 .hidden {
 	display: none;
 }
+.bottom-buttons {
+	position: fixed;
+	bottom: 10px;
+	padding: 0 15px;
+	left: 0;
+	display: block;
+}
 
 textarea, input[type=text], input[type=number], input[type=date] {
 	display: block;
