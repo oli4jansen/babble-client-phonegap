@@ -15,6 +15,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	$scope.range = 10;
 
 	$scope.messages = [];
+	$scope.olderMessagesAvailable = false;
 
 	$scope.monthNames = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
@@ -190,10 +191,15 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
     // Is verantwoordelijk voor het ophalen van de berichten uit de opslag
     $scope.loadMessagesFromStorage = function(range, offset) {
+    	console.log('Getting messages: range:'+range+' & offset:'+offset);
+
     	var history = localStorage.getItem('chat-history-'+$scope.herId);
 		
 		if(history !== null && history !== 'null') {
 			history = JSON.parse(history);
+
+			console.log('Total number of messages available in storage:'+history.length);
+
 			history = history.splice(0, history.length-(range + offset));
 
 			var i = 0;

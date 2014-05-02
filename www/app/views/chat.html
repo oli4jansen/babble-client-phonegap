@@ -1,7 +1,7 @@
 <div ng-init="init()">
 	<div id="content">
 
-		<button ng-click="getOlderMessages()">Older messages</button>
+		<button ng-if="olderMessagesAvailable" ng-click="getOlderMessages()">Older messages</button>
 
 		<div id="{{message.id}}" class="chatMessage" ng-class="{myMessage: message.myMessage==true}" ng-repeat="message in messages | orderBy:'+id'">
 			<span>{{message.body}}</span>
