@@ -2,10 +2,14 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	var URL = 'www.oli4jansen.nl:81';
 
+	// Uit de URL halen we de naam en het ID van degene met wie we gaan chatten
 	$scope.herId = $routeParams.userId;
 	$scope.herName = $routeParams.userName;
-	$scope.messageCounter = 'Connecting to '+$scope.herName+'...';
+
+	$scope.status = 'Connecting to '+$scope.herName+'...';
 	$scope.imageURL = 'img/unknown.png';
+
+	$scope.messages = [];
 
 	$scope.init = function() {
 		$('.header h1').html($scope.herName);
@@ -62,15 +66,15 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	                input.removeAttr('disabled');
 
 	                // Counter instellen
-	                $scope.messageCounter = 26 - json.counter;
-	                $scope.messageCounter = 'Only ' + $scope.messageCounter + ' messages left.';
+	                $scope.status = 26 - json.counter;
+	                $scope.status = 'Only ' + $scope.status + ' messages left.';
 	                $scope.$apply();
 
 	            }else if (json.data === 'visible') {
 	            	input.removeAttr('disabled').focus();
 
 	            	// Input text instellen
-	                $scope.messageCounter = 'Say hi to '+$scope.herName;
+	                $scope.status = 'Say hi to '+$scope.herName;
 	                $scope.$apply();
 
 	            }else if(json.data === 'declined') {
@@ -131,11 +135,11 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	        } else if (json.type === 'update') {
 
 	        	if(json.counter < 26) {
-	                $scope.messageCounter = 26 - json.counter;
-	                $scope.messageCounter = 'Only '+$scope.messageCounter+' messages left.';
+	                $scope.status = 26 - json.counter;
+	                $scope.status = 'Only '+$scope.status+' messages left.';
 		        	$scope.$apply();
 		        } else if(json.counter === 26 && $scope.status === 'hidden') {
-	                $scope.messageCounter = '';
+	                $scope.status = '';
 		        	alert('You can see '+$scope.herName+'\'s pictures!');
 		        }
 
@@ -170,7 +174,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	    // DOM bewerkingsfunctie: message toevoegen
 	    function addMessage(id, author, message, timeOri) {
-	    	var className = '';
+/*	    	var className = '';
 	      time = new Date(timeOri);
 	      if(author === myName) className = 'myMessage';
 	      content.append('<div id="'+id+'" class="chatMessage '+ className +'"" style="opacity: 0.1;">'
@@ -181,12 +185,29 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
   			var n = $('#content').height();
 				$('.ng-scope').animate({ scrollTop: n }, 0, function() {
 					$('.chatMessage#'+id).animate({opacity: 1}, 150);
-				});
+				});*/
+
+			var time = new Date(timeOri);
+
+			var message = {};
+			message.id = id;
+			if(author === myName) {
+				message.myMessage = true;
+			}else{
+				message.myMessage = false;
+			}
+			message.body = message;
+			message.time = time.getDate() + ' ' + monthNames[time.getMonth()] + ' ' + (time.getHours() < 10 ? '0' + time.getHours() : time.getHours()) + ':' + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes());
+
+			$scope.messages.push(message);
 	    }
 
 	    function refreshDOM() {
-				content.empty();
+			
+			//content.empty();
+	    	
 	    	var history = JSON.parse(localStorage.getItem('chat-history-'+herName));
+	    	
 	    	for (var key in history) {
 	    		addMessage(history[key].id, history[key].author, history[key].message, history[key].time);
 	    	}

@@ -1,7 +1,14 @@
 <div ng-init="init()">
-	<div id="content"></div>
+	<div id="content">
+
+		<div id="{{message.id}}" class="chatMessage" ng-class="{myMessage: message.myMessage==true}" ng-repeat="message in messages">
+			<span>{{message.body}}</span>
+			<small>{{message.time}}</small>
+		</div>
+		
+	</div>
 	<div id="inputDiv">
-		<input type="text" id="input" disabled="disabled" placeholder="{{messageCounter}}" />
+		<input type="text" id="input" disabled="disabled" placeholder="{{status}}" />
 		<a id="submitMessage">Send</a>
 	</div>
 </div>
