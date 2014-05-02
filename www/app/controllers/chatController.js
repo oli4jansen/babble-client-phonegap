@@ -200,8 +200,6 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 			history.forEach(function(item) {
 				if(i<range) {
 		    		$scope.parseMessage(item.id, item.author, item.message, item.time);
-		    	}else{
-		    		break;
 		    	}
 	    		i++;
 	    	});
