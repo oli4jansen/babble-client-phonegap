@@ -101,7 +101,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	        	// Voor elk ontvangen bericht v/d nog niet gelezen chatgeschiedenis:
 	            json.data.forEach(function(item){
 	            	// Bericht toevoegen aan history array
-	            	history.push({ id: item.id, author: item.author, message: item.text, time: new Date(item.time) };
+	            	history.push({ id: item.id, author: item.author, message: item.text, time: new Date(item.time) });
 	            });
 
 	            // History array weer in localStorage zetten
