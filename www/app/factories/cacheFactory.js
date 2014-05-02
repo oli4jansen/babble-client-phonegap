@@ -3,6 +3,7 @@ app.factory('cacheFactory', function($location, $window, $sce, $q, $http) {
 	// Deze factory is een object
 	var factory = {};
 
+	// Replace functie voor $http.get()
 	factory.get = function(url, success, error) {
 		// Als er data te vinden is in cache > success functie aanroepen
 		if(factory.getFromCache(url)) {

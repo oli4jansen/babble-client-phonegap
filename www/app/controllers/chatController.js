@@ -101,8 +101,15 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	        	// Voor elk ontvangen bericht v/d nog niet gelezen chatgeschiedenis:
 	            json.data.forEach(function(item){
-	            	// Bericht toevoegen aan history array
-	            	history.push({ id: item.id, author: item.author, message: item.text, time: new Date(item.time) });
+	            	var message = {
+	            		id: item.id,
+	            		author: item.author,
+	            		message: item.text,
+	            		time: new Date(item.time)
+	            	}
+
+	            	// Bericht toevoegen aan history array als het er nog niet in stond
+	            	if(history.indexOf(message) > -1) history.push(message);
 	            });
 
 	            // History array weer in localStorage zetten
@@ -124,8 +131,11 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	        		history = JSON.parse(history);
 	        	}
 
+	        	// Bericht opstellen
+	        	var message = { id: json.data.id, author: json.data.author, message: json.data.text, time: new Date(json.data.time) };
+
 	        	// Dit bericht aan de array toevoegen
-	        	history.push({ id: json.data.id, author: json.data.author, message: json.data.text, time: new Date(json.data.time) });
+	        	if(history.indexOf(message) > -1) history.push(message);
 
 	        	// Array weer in localstorage zetten
 	        	localStorage.setItem('chat-history-'+$scope.herId, JSON.stringify(history));
@@ -198,9 +208,19 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 		if(history !== null && history !== 'null') {
 			history = JSON.parse(history);
 
-			console.log('Total number of messages available in storage:'+history.length);
+			var totalMessagesCount = history.length;
 
-			history = history.splice(0, history.length-(range + offset));
+			var spliceTo = history.length-(range + offset);
+
+			history.splice(0, spliceTo);
+
+			console.log('Splice from 0 to '+spliceTo);
+			
+			console.log('Result length:'+history.length);
+			console.log(history);
+
+			var newMessagesCount = $scope.messages.length + range;
+			if(newMessagesCount < totalMessagesCount) $scope.olderMessagesAvailable = true;
 
 			var i = 0;
 			history.forEach(function(item) {
@@ -209,8 +229,6 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 		    	}
 	    		i++;
 	    	});
-	    	
-	    	if($scope.messages.length < history.length) $scope.olderMessagesAvailable = true;
 	    }
     };
 
