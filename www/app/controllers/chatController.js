@@ -6,10 +6,16 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	$scope.herId = $routeParams.userId;
 	$scope.herName = $routeParams.userName;
 
-	$scope.status = 'Connecting to '+$scope.herName+'...';
+	$scope.status = 'Updating chat, please wait..';
 	$scope.imageURL = 'img/unknown.png';
 
+	$scope.offset = 0;
+	$scope.range = 10;
+
 	$scope.messages = [];
+
+	$scope.monthNames = [ "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December" ];
 
 	$scope.init = function() {
 		$('.header h1').html($scope.herName);
@@ -42,7 +48,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	    // Als de verbinding gemaakt is: stuur eigen naam en naam waarmee je wil chatten
 	    connection.onopen = function () {
-	    	refreshDOM();
+	    	$scope.refreshMessages();
 	        connection.send(JSON.stringify({ myName: myName, herName: herName }));
 	    };
 
@@ -103,7 +109,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	            localStorage.setItem('chat-history-'+herName, JSON.stringify(history));
 
 	            // Hele DOM in 1x updaten ipv per bericht
-	            refreshDOM();
+	            $scope.refreshMessages();
 
 	            connection.send(JSON.stringify({ gotMessage: json.data }));
 	        } else if (json.type === 'message') { // it's a single message
@@ -125,7 +131,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	          localStorage.setItem('chat-history-'+herName, JSON.stringify(history));
 
 	          // Bericht ook toevoegen aan DOM
-	          addMessage(json.data.id, json.data.author, json.data.text, json.data.time);
+	          $scope.parseMessage(json.data.id, json.data.author, json.data.text, json.data.time);
 
 						// Leuk geluidje laten horen
 						if(json.data.author !== myName) navigator.notification.beep(1);
@@ -169,48 +175,55 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	        }
 	    }, 3000);
 
-	    var monthNames = [ "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December" ];
+	};
 
-	    // DOM bewerkingsfunctie: message toevoegen
-	    function addMessage(id, author, body, timeOri) {
-/*	    	var className = '';
-	      time = new Date(timeOri);
-	      if(author === myName) className = 'myMessage';
-	      content.append('<div id="'+id+'" class="chatMessage '+ className +'"" style="opacity: 0.1;">'
-	             + '<span>' + message + '</span><small>'
- 	            + time.getDate() + ' ' + monthNames[time.getMonth()] + ' ' + (time.getHours() < 10 ? '0' + time.getHours() : time.getHours()) + ':'
-	             + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes())+'</small></div>');
+	$scope.getOlderMessages = function() {
+		$scope.offset = $scope.offset + $scope.range;
+		$scope.loadMessagesFromStorage($scope.range, $scope.offset);
+	};
 
-  			var n = $('#content').height();
-				$('.ng-scope').animate({ scrollTop: n }, 0, function() {
-					$('.chatMessage#'+id).animate({opacity: 1}, 150);
-				});*/
+	$scope.refreshMessages = function() {
+    	$scope.messages = [];
+		$scope.loadMessagesFromStorage($scope.range, $scope.offset);
+    };
 
-			var time = new Date(timeOri);
+    $scope.loadMessagesFromStorage = function(range, offset) {
+    	var history = JSON.parse(localStorage.getItem('chat-history-'+herName));
+		history = history.splice(0, history.length-(range + offset));
 
-			var message = {};
-			message.id = id;
-			if(author === myName) {
-				message.myMessage = true;
-			}else{
-				message.myMessage = false;
-			}
-			message.body = body;
-			message.time = time.getDate() + ' ' + monthNames[time.getMonth()] + ' ' + (time.getHours() < 10 ? '0' + time.getHours() : time.getHours()) + ':' + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes());
-
-			$scope.messages.push(message);
-	    }
-
-	    function refreshDOM() {
-			
-			//content.empty();
-	    	
-	    	var history = JSON.parse(localStorage.getItem('chat-history-'+herName));
-	    	
-	    	for (var key in history) {
-	    		addMessage(history[key].id, history[key].author, history[key].message, history[key].time);
+		var i = 0;
+		for (var key in history) {
+			if(i<range) {
+	    		$scope.parseMessage(history[key].id, history[key].author, history[key].message, history[key].time);
+	    	}else{
+	    		break;
 	    	}
-	    }
+    		i++;
+    	}
+    };
+
+	$scope.parseMessage = function(id, author, body, timestamp) {
+		// Tijd parsen
+		var time = new Date(timestamp);
+		
+		// Leeg message object aanmaken
+		var message = {};
+
+		// Shit toevoegen aan het object
+		message.id = id;
+		if(author === myName) {
+			message.myMessage = true;
+		}else{
+			message.myMessage = false;
+		}
+		message.body = body;
+		message.time = time.getDate() + ' ' + $scope.monthNames[time.getMonth()] + ' ' + (time.getHours() < 10 ? '0' + time.getHours() : time.getHours()) + ':' + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes());
+
+		// Object in de array zetten
+		$scope.messages.push(message);
+
+		// Pagina naar beneden laten scrollen
+  		var n = $('#content').height();
+		$('.ng-scope').animate({ scrollTop: n }, 0);
 	};
 });
