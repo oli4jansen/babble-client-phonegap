@@ -2,6 +2,8 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	var URL = 'www.oli4jansen.nl:81';
 
+	$scope.myId = loginFactory.userId;
+
 	// Uit de URL halen we de naam en het ID van degene met wie we gaan chatten
 	$scope.herId = $routeParams.userId;
 	$scope.herName = $routeParams.userName;
@@ -22,9 +24,6 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 		var content = $('#content');
 		var input = $('#input');
-
-		var myName = loginFactory.userId;
-		var herName = $routeParams.userId;
 
 		window.WebSocket = window.WebSocket || window.MozWebSocket;
 
@@ -49,7 +48,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	    // Als de verbinding gemaakt is: stuur eigen naam en naam waarmee je wil chatten
 	    connection.onopen = function () {
 	    	$scope.refreshMessages();
-	        connection.send(JSON.stringify({ myName: myName, herName: herName }));
+	        connection.send(JSON.stringify({ myName: $scope.myId, herName: $scope.herId }));
 	    };
 
 	    // Binnenkomende berichten:
@@ -89,7 +88,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	        } else if (json.type === 'history') {
 
-	        	var history = localStorage.getItem('chat-history-'+herName);
+	        	var history = localStorage.getItem('chat-history-'+$scope.herId);
 	        	if(history === null || history === 'null') {
 	        		// History bestond nog niet in localStorage
 	           		console.log('Your message history storage for this chat was empty, so we created one.');
@@ -106,7 +105,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	            }
 
 	            // History array weer in localStorage zetten
-	            localStorage.setItem('chat-history-'+herName, JSON.stringify(history));
+	            localStorage.setItem('chat-history-'+$scope.herId, JSON.stringify(history));
 
 	            // Hele DOM in 1x updaten ipv per bericht
 	            $scope.refreshMessages();
@@ -114,7 +113,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	            connection.send(JSON.stringify({ gotMessage: json.data }));
 	        } else if (json.type === 'message') { // it's a single message
 	            // Add message to localStorage
-	            var history = localStorage.getItem('chat-history-'+herName);
+	            var history = localStorage.getItem('chat-history-'+$scope.herId);
 	           	if(history === null || history === 'null') {
 	           		// History bestond nog niet in localStorage
 	           		console.log('Your message history storage for this chat was empty, so we created one.');
@@ -128,13 +127,13 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	        	history[json.data.id] = { author: json.data.author, message: json.data.text, time: new Date(json.data.time) };
 
 	        	// Array weer in localstorage zetten
-	          localStorage.setItem('chat-history-'+herName, JSON.stringify(history));
+	          localStorage.setItem('chat-history-'+$scope.herId, JSON.stringify(history));
 
 	          // Bericht ook toevoegen aan DOM
 	          $scope.parseMessage(json.data.id, json.data.author, json.data.text, json.data.time);
 
 						// Leuk geluidje laten horen
-						if(json.data.author !== myName) navigator.notification.beep(1);
+						if(json.data.author !== $scope.myId) navigator.notification.beep(1);
 
 	          // Laten weten dat we het bericht ontvangen hebben
 	          connection.send(JSON.stringify({ gotMessage: json.data }));
@@ -177,18 +176,21 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 	};
 
+	// Functie die aangeroepen wordt als de huidige berichten mogen blijven staan en er oudere bij moeten komen
 	$scope.getOlderMessages = function() {
 		$scope.offset = $scope.offset + $scope.range;
 		$scope.loadMessagesFromStorage($scope.range, $scope.offset);
 	};
 
+	// Functie die aangeroepen wordt als alle berichten opnieuw opgehaald moeten worden
 	$scope.refreshMessages = function() {
     	$scope.messages = [];
 		$scope.loadMessagesFromStorage($scope.range, $scope.offset);
     };
 
+    // Is verantwoordelijk voor het ophalen van de berichten uit de opslag
     $scope.loadMessagesFromStorage = function(range, offset) {
-    	var history = JSON.parse(localStorage.getItem('chat-history-'+herName));
+    	var history = JSON.parse(localStorage.getItem('chat-history-'+$scope.herId));
 		history = history.splice(0, history.length-(range + offset));
 
 		var i = 0;
@@ -211,7 +213,7 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
 		// Shit toevoegen aan het object
 		message.id = id;
-		if(author === myName) {
+		if(author === $scope.myId) {
 			message.myMessage = true;
 		}else{
 			message.myMessage = false;
