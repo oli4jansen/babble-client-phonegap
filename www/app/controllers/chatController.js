@@ -117,23 +117,23 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	           	if(history === null || history === 'null') {
 	           		// History bestond nog niet in localStorage
 	           		console.log('Your message history storage for this chat was empty, so we created one.');
-	        		history = {};
+	        		history = [];
 	        	}else{
 	        		// History bestond al in localStorage
 	        		history = JSON.parse(history);
 	        	}
 
 	        	// Dit bericht aan de array toevoegen
-	        	history[json.data.id] = { author: json.data.author, message: json.data.text, time: new Date(json.data.time) };
+	        	history.push({ id: json.data.id, author: json.data.author, message: json.data.text, time: new Date(json.data.time) });
 
 	        	// Array weer in localstorage zetten
-	          localStorage.setItem('chat-history-'+$scope.herId, JSON.stringify(history));
+	        	localStorage.setItem('chat-history-'+$scope.herId, JSON.stringify(history));
 
-	          // Bericht ook toevoegen aan DOM
-	          $scope.parseMessage(json.data.id, json.data.author, json.data.text, json.data.time);
+	        	// Bericht ook toevoegen aan DOM
+	        	$scope.parseMessage(json.data.id, json.data.author, json.data.text, json.data.time);
 
-						// Leuk geluidje laten horen
-						if(json.data.author !== $scope.myId) navigator.notification.beep(1);
+				// Leuk geluidje laten horen
+				if(json.data.author !== $scope.myId) navigator.notification.beep(1);
 
 	          // Laten weten dat we het bericht ontvangen hebben
 	          connection.send(JSON.stringify({ gotMessage: json.data }));
@@ -190,18 +190,22 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 
     // Is verantwoordelijk voor het ophalen van de berichten uit de opslag
     $scope.loadMessagesFromStorage = function(range, offset) {
-    	var history = JSON.parse(localStorage.getItem('chat-history-'+$scope.herId));
-		history = history.splice(0, history.length-(range + offset));
+    	var history = localStorage.getItem('chat-history-'+$scope.herId);
+		
+		if(history !== null && history !== 'null') {
+			history = JSON.parse(history);
+			history = history.splice(0, history.length-(range + offset));
 
-		var i = 0;
-		for (var key in history) {
-			if(i<range) {
-	    		$scope.parseMessage(history[key].id, history[key].author, history[key].message, history[key].time);
-	    	}else{
-	    		break;
-	    	}
-    		i++;
-    	}
+			var i = 0;
+			history.forEach(function(item) {
+				if(i<range) {
+		    		$scope.parseMessage(item.id, item.author, item.message, item.time);
+		    	}else{
+		    		break;
+		    	}
+	    		i++;
+	    	});
+	    }
     };
 
 	$scope.parseMessage = function(id, author, body, timestamp) {
