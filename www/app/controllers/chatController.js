@@ -92,17 +92,17 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 	        	if(history === null || history === 'null') {
 	        		// History bestond nog niet in localStorage
 	           		console.log('Your message history storage for this chat was empty, so we created one.');
-	        		history = {};
+	        		history = [];
 	        	}else{
 	        		// History bestond al in localStorage
 	        		history = JSON.parse(history);
 	        	}
 
 	        	// Voor elk ontvangen bericht v/d nog niet gelezen chatgeschiedenis:
-	            for (var i=0; i < json.data.length; i++) {
+	            json.data.forEach(function(item){
 	            	// Bericht toevoegen aan history array
-	            	history[json.data[i].id] = { author: json.data[i].author, message: json.data[i].text, time: new Date(json.data[i].time) };
-	            }
+	            	history.push({ id: item.id, author: item.author, message: item.text, time: new Date(item.time) };
+	            });
 
 	            // History array weer in localStorage zetten
 	            localStorage.setItem('chat-history-'+$scope.herId, JSON.stringify(history));
