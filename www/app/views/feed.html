@@ -4,7 +4,7 @@
 		<div person-card person-info="card" like-function="like()" dislike-function="dislike()" class="card repeat-animation" id="{{card.id}}" ng-class="{current: $first}" ng-repeat="card in feed | filter: f"></div>
 	</div>
 
-	<div class="like-buttons button-holder" ng-if="cards.length">
+	<div class="like-buttons button-holder" ng-if="feed.length">
 		<button class="dislike rounded red" ng-click="dislike()">Nah</button><button class="like rounded green" ng-click="like()">Like</button>
 	</div>
 

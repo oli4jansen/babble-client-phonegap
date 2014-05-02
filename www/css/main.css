@@ -485,6 +485,10 @@ body.popup .container {
 		top: 48px;
 	}
 
+#feedStatus {
+	font-size: 1.4em;
+	font-family: 'Roboto Condensed';
+}
 
 .form-section #images > * {
 	display: none;
