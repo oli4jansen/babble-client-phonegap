@@ -209,6 +209,8 @@ app.controller("chatController", function($scope, $route, $routeParams, $locatio
 		    	}
 	    		i++;
 	    	});
+	    	
+	    	if($scope.messages.length < history.length) $scope.olderMessagesAvailable = true;
 	    }
     };
 
